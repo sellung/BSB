@@ -19,36 +19,29 @@
 Guard guard;
 
 void Guard::leave(){
-	
+	cpu.disable_int();
 	Gate *g = (Gate *)queue.dequeue();
-
-	if(g !=0){
-		//kout << "leave" << endl;
-		//cpu.disable_int();
-		g->queued(false);
-		g->epilogue();
-		//cpu.enable_int();
+	while(g){ 				// if there are something in the queue
+		g->queued(false); 	// validate dequeue operation for the refence 
+		cpu.enable_int();
+		g->epilogue();		// run epilogue. Here we don't need to block the epilogue operation, because 
+		cpu.disable_int();
+		g = (Gate *)queue.dequeue();						// we are already in a critic section
 	}
-	retne();
+	retne();				//  leave critic section. 
+	cpu.enable_int();
 } 
 
 void Guard::relay (Gate* item){
-	if(item->prologue()){
-		if(avail()){
-			//kout << "available" << item->queued() << count++ << endl;
-			//enter();
-			// if(item->queued()){
-			// 	leave();
-			// }else{
+	if(item->prologue()){			// if the prologue tell us that an epilogue will be run then,
+		if(avail()){				// we check if critic section is available
 			enter();
+			cpu.enable_int();				// when critic section is available enter in critic section
 			item->epilogue();
-			
-			leave();
-			// }	
-		}else{
-			//kout << " nicht available" << count++ << endl;
-			if(!item->queued()){
-		 		//kout << " Item in queued" << endl;
+					// and run the epilogue
+			leave();				// leave critic section when all is finish
+		}else{						// critic section is not available
+			if(!item->queued()){	// queue the action for the late run
 		 		queue.enqueue(item);
 		 		item->queued(true);
 			}
