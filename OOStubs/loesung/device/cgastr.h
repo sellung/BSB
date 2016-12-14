@@ -18,11 +18,18 @@
 #include "machine/cgascr.h"
 
 class CGA_Stream 
-/* Hier muesst ihr selbst Code vervollstaendigen */         
- {
-private:
+/* Hier muesst ihr selbst Code vervollstaendigen */  
+	: public O_Stream, public CGA_Screen       
+ {	
+ 	private:
       CGA_Stream(CGA_Stream &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+	/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+	public:
+		CGA_Stream() : O_Stream(), CGA_Screen() {};
+		void flush(); 
  };
+
+extern CGA_Stream kout;
 
 #endif

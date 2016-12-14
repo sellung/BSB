@@ -214,6 +214,10 @@ bochs-gdb: $(OBJDIR)/bootdisk.img
 qemu: $(OBJDIR)/bootdisk.vmi
 	$(QEMUBINDIR)/qemu -fda $(OBJDIR)/bootdisk.vmi -boot a -k en-us
 
+myqemu: $(OBJDIR)/bootdisk.vmi
+	DISPLAY=:0 qemu-system-x86_64 -fda $(OBJDIR)/bootdisk.vmi -boot a -k en-us
+
+run: all myqemu
 # --------------------------------------------------------------------------
 # 'qemu-smp' ruft den qemu-Emulator mit SMP-Support und 2 CPUs mit dem System auf.
 

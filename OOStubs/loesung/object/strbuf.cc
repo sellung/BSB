@@ -16,3 +16,11 @@
 #include "object/strbuf.h"
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+void Stringbuffer::put(char c){
+	if(Stringbuffer::currentindex >= MAX_SIZE_BUFFER){
+		flush();
+	}
+	Stringbuffer::value[Stringbuffer::currentindex] = c;
+	Stringbuffer::currentindex += 1;
+}
+

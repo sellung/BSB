@@ -11,7 +11,8 @@
 /* INCLUDES */
 
 #include "machine/keyctrl.h"
- 
+#include "device/cgastr.h" // only for test
+
 /* STATIC MEMERS */
 
 unsigned char Keyboard_Controller::normal_tab[] =
@@ -250,15 +251,18 @@ void Keyboard_Controller::get_ascii_code ()
 //                      maximale Geschwindigkeit eingestellt.
 
 Keyboard_Controller::Keyboard_Controller () : 
-   ctrl_port (0x64), data_port (0x60)
+   ctrl_port (0x64), data_port (0x60), 	leds (0x0)
  {
+    //kout << "init tttttttttttttttttt" << endl;
    // alle LEDs ausschalten (bei vielen PCs ist NumLock nach dem Booten an)
+
    set_led (led::caps_lock, false);
    set_led (led::scroll_lock, false);
    set_led (led::num_lock, false);
 
    // maximale Geschwindigkeit, minimale Verzoegerung
-   set_repeat_rate (0, 0);  
+   //set_repeat_rate (0, 0);  
+
  }
 
 // KEY_HIT: Dient der Tastaturabfrage nach dem Auftreten einer Tastatur-
@@ -269,13 +273,27 @@ Keyboard_Controller::Keyboard_Controller () :
 //          mit Key::valid () ueberprueft werden kann.
 
 Key Keyboard_Controller::key_hit ()
- {
-   Key invalid;  // nicht explizit initialisierte Tasten sind ungueltig
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-/* Hier muesst ihr selbst Code vervollstaendigen */          
- 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-   return invalid;
+{
+  Key invalid;  // nicht explizit initialisierte Tasten sind ungueltig
+  int status;
+  
+  do
+  {                                 // warten, bis das letzte Kommando
+    status = ctrl_port.inb();       // verarbeitet wurde.   
+   // kout << (status) << endl;
+  } while ((status & outb) == 0);
+
+
+  code = data_port.inb();
+
+  if(key_decoded()){
+      invalid = gather;
+  }else {
+
+  } 
+  
+  
+  return invalid;
  }
 
 // REBOOT: Fuehrt einen Neustart des Rechners durch. Ja, beim PC macht
@@ -307,19 +325,111 @@ void Keyboard_Controller::reboot ()
 //                  (sehr langsam).
 
 void Keyboard_Controller::set_repeat_rate (int speed, int delay)
- {
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
-/* Hier muesst ihr selbst Code vervollstaendigen */          
-          
- }
+{
+  int status;
+  // Konfigurieren des Speed-Steuerbytes
+   char steuer = (speed & 0x1F) & ((delay & 0x2)<<5);  
+   
+  do
+    {
+    status = ctrl_port.inb ();        // warten, bis das letzte Kommando
+    } while ((status & inpb) != 0);       // verarbeitet wurde.
+  
+  data_port.outb(kbd_cmd::set_speed);   // Befehlscode schicken
+   
+  // Auf Bestätigungsbyte warten
+  do
+  {                                     // warten, bis ein Byte im Ausgabepuffer ankommt
+    status = ctrl_port.inb();  
+    code = data_port.inb();     
+  } while ((status & outb) == 0 && code == kbd_reply::ack);   
+   ctrl_port.outb(steuer);
+  // Das Byte aus dem Ausgabepuffer auslesen und prüfen, ob es Bestätigungsbyteist!
+  code = data_port.inb();
+  if(code == kbd_reply::ack)
+  {
+    // Ist das notwendig, wenn ich das Bestätigungsbyte gelesen habe,
+    // muss das alte Kommando bereits gelesen sein...
+    /*
+    do
+    {
+      status = ctrl_port.inb ();      // warten, bis das letzte Kommando
+    } while ((status & inpb) != 0);     // verarbeitet wurde.
+    */
+    data_port.outb(steuer);       // LEDs schalten
+  }
+  else // Kann das passieren, weil eine Taste gedrück wurde? Dann muss weiter gewartet werden?
+  {}
+  
+  /*
+  int status;
+  int puffercontent;
+  do
+  {
+    status = ctrl_port.inb();
+  } while ((status & inpb) != 0);
+  
+  data_port.outb(kbd_cmd::set_speed);
+  do
+  {
+    status = ctrl_port.inb();
+    puffercontent = data_port.inb();
+  } while (((status & outb) != 0) && ((puffercontent & kbd_reply::ack) !=0 )) ;
+   data_port.outb(speed);
+   */
+}
 
 // SET_LED: setzt oder loescht die angegebene Leuchtdiode
 
 void Keyboard_Controller::set_led (char led, bool on)
  {
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+   int status;
+  // Konfigurieren des LED-Steuerbytes
+  if(on)
+  {
+    leds = leds | led; // Das für das jeweilige LED relevante Bit setzen!
+  }
+  else
+  {
+    leds = leds & (~led); // Das für das jeweilige LED relevante Bit löschen!
+  }
+
+   
+   
+  do
+    {
+    status = ctrl_port.inb ();        // warten, bis das letzte Kommando
+    } while ((status & inpb) != 0);       // verarbeitet wurde.
+  data_port.outb(kbd_cmd::set_led);   // Befehlscode schicken
+   
+  // Auf Bestätigungsbyte warten
+  do
+  {                                     // warten, bis ein Byte im Ausgabepuffer ankommt (ACK)
+    status = ctrl_port.inb();	     
+  } while ((status & outb) == 0);
+
+	code = data_port.inb(); 
+
+	if(code == kbd_reply::ack)
+{
+
+	data_port.outb(leds);
+}
+
+  do
+  {                                     // warten, bis ein Byte im Ausgabepuffer ankommt (ACK)
+    status = ctrl_port.inb();
+	      
+  } while ((status & outb) == 0);
+
+code = data_port.inb(); 
+
+	if(code == kbd_reply::ack){
+
+}
  
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
-          
+   
+   
  }
+

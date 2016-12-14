@@ -16,6 +16,8 @@
 
 class Keyboard_Controller
  {
+
+//  CGA_Stream kout;   // only for test
 private:
     Keyboard_Controller(const Keyboard_Controller &copy); // Verhindere Kopieren
 private:

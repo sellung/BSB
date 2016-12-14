@@ -2,22 +2,32 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                         C G A _ S T R E A M                               */
+/*                                 P A N I C                                 */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Die Klasse CGA_Stream ermoeglicht die Ausgabe verschiedener Datentypen    */
-/* als Zeichenketten auf dem CGA Bildschirm eines PCs.                       */
-/* Fuer weitergehende Formatierung oder spezielle Effekte stehen die         */
-/* Methoden der Klasse CGA_Screen zur Verfuegung.                            */
+/* Standard Unterbrechungsbehandlung.                                        */
 /*****************************************************************************/
-
-#include "device/cgastr.h"
-
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+/* Hier muesst ihr selbst Code vervollstaendigen */ 
+ 
+#include "panic.h"
+#include "machine/cpu.h"
 
-CGA_Stream kout;
+Panic panic;
 
-void CGA_Stream::flush(){
-	print(CGA_Stream::O_Stream::Stringbuffer::value, O_Stream::currentindex, color);
-	currentindex = 0;
-} 
+ void Panic::trigger (){
+ 	kout << " Panic trigger" << endl;
+ }
+
+ char* Panic::tostring(){
+ 		// kout << "Ich bin Panic" << endl;
+ 	return "Ich bin Panic";
+ }
+
+ bool Panic::prologue(){
+ 	kout.setcolor(0x04);
+ 	kout << "[ x ] PANIC: ERROR CPU go down" << endl;
+ 	kout.resetcolor();
+ 	cpu.halt();
+ 	return false;
+ }

@@ -10,6 +10,10 @@
 /*****************************************************************************/
 
 /* INCLUDES */
+//#include "device/cgastr.h" // only for test
+#include "machine/plugbox.h"
+#include "device/keyboard.h"
+#include "guard/guard.h"
 
 /* FUNKTIONEN */
                
@@ -19,6 +23,9 @@ extern "C" void guardian (unsigned int slot);
 /*           erweitert.                                                     */
 
 void guardian (unsigned int slot)
- {
- 
- }
+{
+	//(plugbox.report(slot)).trigger();
+	
+	Gate *g = &(plugbox.report(slot));
+	guard.relay(g);
+}
