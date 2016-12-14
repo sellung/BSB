@@ -11,7 +11,9 @@
 #ifndef __application_include__
 #define __application_include__
 
-class Application 
+#include "thread/entrant.h"
+
+class Application : public Entrant
  
  {
 private:
@@ -19,7 +21,7 @@ private:
 
 public:
 /* Hier muesst ihr selbst Code vervollstaendigen */                  
-          
+    Application(void* tos): Entrant(tos){} 
     void action ();
  };
 

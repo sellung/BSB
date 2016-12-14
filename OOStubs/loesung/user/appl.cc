@@ -13,14 +13,29 @@
 #include "user/appl.h"
 #include "device/cgastr.h"
 /* Hier muesst ihr selbst Code vervollstaendigen */         
-         
+#include "device/keyboard.h"
+#include "machine/cpu.h"
+#include "guard/secure.h"
 /* GLOBALE VARIABLEN */
 
-extern CGA_Stream kout;
+//extern CGA_Stream kout;
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
-         
+
+//CGA_Stream kout;
+
 void Application::action ()
  {
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 
+ 	kout << "Hello world" << endl;
+
+ 	/* Hier muesst ihr selbst Code vervollstaendigen 
+ 	keyboard.plugin();
+ 	 while(1){
+ 	 	Secure secure;
+ 	 	//cpu.disable_int();
+ 	 	kout.setpos(20, 20);
+ 		kout << "Hello world";
+ 		kout.flush();
+ 		//cpu.enable_int();	
+ 		//secure.~Secure();
+ 	 }*/
  }
