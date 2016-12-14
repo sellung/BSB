@@ -50,17 +50,17 @@ toc_switch:
 	; [esp + 4] give us the first parameter
 	mov eax, [esp + 4]
 	mov [eax + ebx_offset], ebx
-    mov [eax + 4 + esi_offset], esi
-    mov [eax + 4 + edi_offset], edi
-    mov [eax + 4 + ebp_offset], ebp 
-    mov [eax + 4 + esp_offset], esp,
+    mov [eax + esi_offset], esi
+    mov [eax + edi_offset], edi
+    mov [eax + ebp_offset], ebp 
+    mov [eax  + esp_offset], esp,
 	; now we set the processor register with the content of reg_then
 	; [esp + 8] give us the second parameter
 	mov eax, [esp + 8]
-	mov ebx, [eax + 8 + ebx_offset] 
-    mov esi, [eax + 8 + esi_offset]
-    mov edi, [eax + 8 + edi_offset]
-    mov ebp, [eax + 8 + ebp_offset]  
-    mov esp, [eax + 8 + esp_offset]
+	mov ebx, [eax + ebx_offset] 
+    mov esi, [eax + esi_offset]
+    mov edi, [eax + edi_offset]
+    mov ebp, [eax + ebp_offset]  
+    mov esp, [eax + esp_offset]
 
     iret
