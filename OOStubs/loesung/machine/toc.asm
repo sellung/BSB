@@ -48,17 +48,19 @@ toc_switch:
 	; we backup firstly regs_now. regs_now is a pointer of struct toc, then
 	; we can write direct to the address who regs_now pointing
 	; [esp + 4] give us the first parameter
-	mov [esp + 4 + ebx_offset], ebx
-    mov [esp + 4 + esi_offset], esi
-    mov [esp + 4 + edi_offset], edi
-    mov [esp + 4 + ebp_offset], ebp 
-    mov [ebp + 4 + esp_offset], esp,
+	mov eax, [esp + 4]
+	mov [eax + ebx_offset], ebx
+    mov [eax + 4 + esi_offset], esi
+    mov [eax + 4 + edi_offset], edi
+    mov [eax + 4 + ebp_offset], ebp 
+    mov [eax + 4 + esp_offset], esp,
 	; now we set the processor register with the content of reg_then
 	; [esp + 8] give us the second parameter
-	mov ebx, [esp + 8 + ebx_offset] 
-    mov esi, [esp + 8 + esi_offset]
-    mov edi, [esp + 8 + edi_offset]
-    mov ebp, [esp + 8 + ebp_offset]  
-    mov esp, [ebp + 8 + esp_offset]
+	mov eax, [esp + 8]
+	mov ebx, [eax + 8 + ebx_offset] 
+    mov esi, [eax + 8 + esi_offset]
+    mov edi, [eax + 8 + edi_offset]
+    mov ebp, [eax + 8 + ebp_offset]  
+    mov esp, [eax + 8 + esp_offset]
 
     iret
