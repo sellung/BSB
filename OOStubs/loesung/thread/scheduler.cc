@@ -12,15 +12,18 @@
  
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "thread/scheduler.h"
 
 void Scheduler::ready(Entrant& that) {
-	entrant = that;
-	readylist.enqueue(that);
+	*entrant = that;
+	readylist.enqueue(entrant);
 }
 
 void Scheduler::schedule() {
-	entrant = readylist.dequeue();
-	entrant->action();
+	Entrant* entrant  = (Entrant*)readylist.dequeue();
+
+	//entrant->action();
+	go(*entrant);
 }
 
 void Scheduler::exit() {
@@ -28,11 +31,12 @@ void Scheduler::exit() {
 	schedule();
 }
 void Scheduler::kill(Entrant& that) {
-	readylist.remove(that);
+	readylist.remove(&that);
 	//schedule();
 }
 void Scheduler::resume(){
 	//readylist.remove(entrant);
+	Entrant* entrant  = (Entrant*) active();
 	readylist.enqueue(entrant);
 	schedule();
 }

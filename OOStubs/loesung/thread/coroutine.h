@@ -27,7 +27,7 @@ private:
       Coroutine(const Coroutine &copy); // Verhindere Kopieren
 /* Hier muesst ihr selbst Code vervollstaendigen */     
   public:
-  	struct toc *toc;
+  	struct toc toc;
   	Coroutine(void* tos);
 
   	void go();
@@ -36,6 +36,6 @@ private:
  };
 
 // Prototype of function kickoff
-void kickoff(Coroutine* object);
+void kickoff(void* object);
 
 #endif

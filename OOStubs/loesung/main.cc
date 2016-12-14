@@ -2,19 +2,23 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 //#include "machine/cgascr.h"
+#include "thread/scheduler.h"
 #include "user/appl.h"
-#include "device/cgastr.h"
-#include "machine/plugbox.h"
-#include "device/keyboard.h"
 
+void* stack_1[1024];
+void* stack_2[1024];
 
+Scheduler scheduler;
 
 int main()
 {	
-	//CGA_Stream kout;
-	kout.clearscreen();
-    
-    Application appl;
 
-    appl.action();
- }
+	Application app1(stack_1);
+	Application app2(stack_2);
+
+	scheduler.ready(app1);
+	scheduler.ready(app2);
+	//while(3){
+	scheduler.schedule();
+	//}
+}

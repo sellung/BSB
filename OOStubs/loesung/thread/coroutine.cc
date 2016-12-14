@@ -29,13 +29,12 @@ extern "C"
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 
 Coroutine::Coroutine(void* tos){
-	toc = {};
-	toc_settle(toc, tos, kickoff, *this);
+	toc_settle(&toc, tos, kickoff, this);
 }
 void Coroutine::go(){
-	toc_go(toc);
+	toc_go(&toc);
 }
 
 void Coroutine::resume(Coroutine& next){
-	toc_switch(toc, next.toc);
+	toc_switch(&toc, &(next.toc));
 }

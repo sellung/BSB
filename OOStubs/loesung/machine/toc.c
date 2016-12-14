@@ -24,7 +24,7 @@
 void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* object)
 {
 /* Hier muesst ihr selbst Code vervollstaendigen */
- 
+ 	
 	// Initialize stack pointer with the Top of Stack (high memory)
 	void **sp = (void**)tos; 
 	// decrement the Stack pointer of the size of the pointer in 32 bits architecture (32bits)
@@ -38,5 +38,7 @@ void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* obje
 
 	*sp = kickoff; 
 
-	sp -= 12; 
+	regs->esp = *sp;
+
+	//sp -= 12; 
 }

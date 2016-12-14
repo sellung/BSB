@@ -13,15 +13,15 @@
 /*****************************************************************************/
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
-#include "thread/dispatcher.h"
+#include "thread/dispatch.h"
 
 void Dispatcher::go (Coroutine& first){
-	lifeptr = first;
+	*lifeptr = first;
 	first.go();
 }
 void Dispatcher::dispatch (Coroutine& next){
-	lifeptr.resume(next);
-	lifeptr = next;
+	lifeptr->resume(next);
+	*lifeptr = next;
 }
 Coroutine* Dispatcher::active(){
 	return lifeptr;

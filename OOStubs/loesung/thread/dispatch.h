@@ -26,7 +26,9 @@ private:
 /* Hier muesst  ihr selbst Code vervollstaendigen */ 
   public:
   	Coroutine* lifeptr; 
-  	Dispatcher():lifeptr{0} {};
+  	Dispatcher() {
+  		lifeptr = 0;
+  	};
 
   	void go (Coroutine& first);
   	void dispatch (Coroutine& next);

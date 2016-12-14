@@ -15,6 +15,8 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
  #include "thread/coroutine.h"
 
-void kickoff(Coroutine* object){
-	object->action();
+void kickoff(void* object){
+	((Coroutine*)object)->action();
 	//while(1){}
+
+}

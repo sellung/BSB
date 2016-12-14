@@ -25,7 +25,11 @@
 
 void Application::action ()
  {
- 	/* Hier muesst ihr selbst Code vervollstaendigen */ 
+ 	kout << "Hello world";
+ 	kout.flush();
+ 	
+ 	while(1){}
+ 	/* Hier muesst ihr selbst Code vervollstaendigen 
  	keyboard.plugin();
  	 while(1){
  	 	Secure secure;
@@ -35,5 +39,5 @@ void Application::action ()
  		kout.flush();
  		//cpu.enable_int();	
  		//secure.~Secure();
- 	 }
+ 	 }*/
  }
