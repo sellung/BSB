@@ -24,7 +24,7 @@ private:
       Scheduler (const Scheduler &copy); // Verhindere Kopieren
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
       Queue readylist;
-      Entrant* entrant;
+     // Entrant* entrant;
 public:
 	Scheduler():Dispatcher(){}
 

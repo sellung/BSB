@@ -23,9 +23,9 @@ class Dispatcher
  {
 private:
       Dispatcher(const Dispatcher &copy); // Verhindere Kopieren
-/* Hier muesst  ihr selbst Code vervollstaendigen */ 
-  public:
-  	Coroutine* lifeptr; 
+/* Hier muesst  ihr selbst Code vervollstaendigen */
+		Coroutine* lifeptr;  
+  public:	
   	Dispatcher() {
   		lifeptr = 0;
   	};

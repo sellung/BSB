@@ -13,10 +13,12 @@
 /*****************************************************************************/
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
- #include "thread/coroutine.h"
+#include "thread/coroutine.h"
+
+#include "device/cgastr.h"
 
 void kickoff(void* object){
+	kout << "kickoff" << endl;
 	((Coroutine*)object)->action();
-	//while(1){}
-
+	
 }

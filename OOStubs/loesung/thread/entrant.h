@@ -21,8 +21,16 @@ class Entrant: public Coroutine, public Chain
 private:
       Entrant (const Entrant &copy); // Verhindere Kopieren
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
+      char* name;
 public:
-	Entrant(void* tos): Coroutine(tos), Chain() {}        
+	Entrant(void* tos): Coroutine(tos), Chain() {} 
+	
+	char* getName(){
+		return name;
+	}
+	void setName(char* name){
+		this->name = name;
+	}
  };
 
 #endif

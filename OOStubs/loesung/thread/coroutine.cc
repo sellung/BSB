@@ -15,24 +15,25 @@
 /*****************************************************************************/
 
 #include "thread/coroutine.h"
+#include "device/cgastr.h"
+
 
 // Funktionen, die auf der Assembler-Ebene implementiert werden, muessen als
 // extern "C" deklariert werden, da sie nicht dem Name-Mangeling von C++ 
 // entsprechen.
-extern "C"
- {
-/* Hier muesst ihr selbst Code vervollstaendigen */   
-	void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* object); 
-	void toc_go(struct toc* regs);
-	void toc_switch(struct toc* regs_now, struct toc* regs_then);  
- }
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+extern "C" void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* object); 
+extern "C" void toc_go(struct toc* regs);
+extern "C" void toc_switch(struct toc* regs_now, struct toc* regs_then);  
 
 Coroutine::Coroutine(void* tos){
+	kout << "new coroutine : kickoff address : "  << (int)kickoff << endl;
 	toc_settle(&toc, tos, kickoff, this);
+	kout << "[toc.esp] " << toc.esp << " esp = " << *(int*)toc.esp <<endl;
 }
 void Coroutine::go(){
-	toc_go(&toc);
+	kout << "Coroutine::go" << endl;
+	kout << "[toc.esp] " << toc.esp << " esp = " << *(int*)toc.esp <<endl;
+	//toc_go(&toc);
 }
 
 void Coroutine::resume(Coroutine& next){

@@ -14,9 +14,14 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/dispatch.h"
+#include "device/cgastr.h"
+
 
 void Dispatcher::go (Coroutine& first){
-	*lifeptr = first;
+	kout << "Dispatcher::go" << endl;
+	//if(lifeptr == 0){
+		*lifeptr = first;
+	//}
 	first.go();
 }
 void Dispatcher::dispatch (Coroutine& next){

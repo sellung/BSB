@@ -13,17 +13,24 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/scheduler.h"
+#include "device/cgastr.h"
+
+Dispatcher dispatcher;
 
 void Scheduler::ready(Entrant& that) {
-	*entrant = that;
-	readylist.enqueue(entrant);
+	kout << "ready: " << that.getName() << endl;
+	//Entrant* entrant = that;
+	readylist.enqueue(&that);
 }
 
 void Scheduler::schedule() {
+	kout << "schedule" << endl;
 	Entrant* entrant  = (Entrant*)readylist.dequeue();
-
+	kout << "Scheduler::schedule " << entrant->getName() << endl;
 	//entrant->action();
-	go(*entrant);
+	//if(active() == 0){
+		go(*entrant);
+	//}
 }
 
 void Scheduler::exit() {
