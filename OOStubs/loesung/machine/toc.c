@@ -27,7 +27,7 @@ void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* obje
 	//regs->ebp = tos;
 	void **sp = (void**)tos; 
 	// decrement the Stack pointer of the size of the pointer in 32 bits architecture (32bits)
-	//sp--;
+	sp--;
 
 	*sp = object;
 	sp--;
@@ -37,7 +37,20 @@ void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* obje
 
 	*sp = kickoff; 
 	
+	//sp -= 11; 
+	
 	regs->esp = sp;
+	*sp--;
+	*sp = regs->esp;
+	sp -= 12;
+/*	*sp--;
+	*sp = regs->ebp;
+	*sp--;
+	*sp = regs->edi;
+	*sp--;
+	*sp = regs->esi;
+	*sp--;
+	*sp = regs->ebx;*/
 
-	//sp -= 12; 
+	//
 }

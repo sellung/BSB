@@ -5,12 +5,13 @@
 #include "thread/scheduler.h"
 #include "user/appl.h"
 #include "device/cgastr.h"
+#include "thread/dispatch.h"
 
 void* stack_1[1024];
 void* stack_2[1024];
 
 Scheduler scheduler;
-
+Dispatcher dispatcher;
 int main()
 {	
 
@@ -19,16 +20,17 @@ int main()
 	kout << " size of stack_1: " << sizeof(stack_1) << endl;
 
 	Application app1(stack_1);
-	Application app2(stack_2);
-
+	//Application app2(stack_2);
+	
 	app1.setName("my-app1");
+	dispatcher.go(app1);
 	//app2.setName("app2");
 	
-	scheduler.ready(app1);
+	//scheduler.ready(app1);
 	
 	//scheduler.ready(app2);
 	//while(3){
-	scheduler.schedule();
+	//scheduler.schedule();
 	//scheduler.exit();
 	//scheduler.exit();
 	//}

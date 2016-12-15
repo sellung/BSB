@@ -15,7 +15,7 @@
 #include "thread/scheduler.h"
 #include "device/cgastr.h"
 
-Dispatcher dispatcher;
+
 
 void Scheduler::ready(Entrant& that) {
 	kout << "ready: " << that.getName() << endl;

@@ -26,12 +26,12 @@
 ; C Prototyp: void toc_go (struct toc* regs);
 
 toc_go:
-    mov eax, [esp + 4]
-	mov ebx, [eax + ebx_offset] 
-    mov esi, [eax + esi_offset]
-    mov edi, [eax + edi_offset]
-    mov ebp, [eax + ebp_offset]  
-    mov esp, [eax + esp_offset]
+;    mov eax, [esp + 4]
+;	mov ebx, [eax + ebx_offset] 
+;    mov esi, [eax + esi_offset]
+;    mov edi, [eax + edi_offset]
+;    mov ebp, [eax + ebp_offset]  
+;    mov esp, [eax + esp_offset]
 
     iret
 
