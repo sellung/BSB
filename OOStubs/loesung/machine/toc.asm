@@ -26,11 +26,12 @@
 ; C Prototyp: void toc_go (struct toc* regs);
 
 toc_go:
-	mov ebx, [esp + 4 + ebx_offset] 
-    mov esi, [esp + 4 + esi_offset]
-    mov edi, [esp + 4 + edi_offset]
-    mov ebp, [esp + 4 + ebp_offset]  
-    mov esp, [ebp + 4 + esp_offset]
+    mov eax, [esp + 4]
+	mov ebx, [eax + ebx_offset] 
+    mov esi, [eax + esi_offset]
+    mov edi, [eax + edi_offset]
+    mov ebp, [eax + ebp_offset]  
+    mov esp, [eax + esp_offset]
 
     iret
 
@@ -53,7 +54,7 @@ toc_switch:
     mov [eax + esi_offset], esi
     mov [eax + edi_offset], edi
     mov [eax + ebp_offset], ebp 
-    mov [eax  + esp_offset], esp,
+    mov [eax + esp_offset], esp,
 	; now we set the processor register with the content of reg_then
 	; [esp + 8] give us the second parameter
 	mov eax, [esp + 8]

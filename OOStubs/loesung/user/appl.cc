@@ -12,7 +12,7 @@
 
 #include "user/appl.h"
 #include "device/cgastr.h"
-/* Hier muesst ihr selbst Code vervollstaendigen */         
+/* Hier muesst ihr selbst Code vervollstaendigen *         
 #include "device/keyboard.h"
 #include "machine/cpu.h"
 #include "guard/secure.h"
@@ -27,17 +27,7 @@ void Application::action ()
  {
  	kout << "Hello world";
  	kout.flush();
- 	
  	while(1){}
- 	/* Hier muesst ihr selbst Code vervollstaendigen 
- 	keyboard.plugin();
- 	 while(1){
- 	 	Secure secure;
- 	 	//cpu.disable_int();
- 	 	kout.setpos(20, 20);
- 		kout << "Hello world";
- 		kout.flush();
- 		//cpu.enable_int();	
- 		//secure.~Secure();
- 	 }*/
+
+ 	//while(1){}
  }
