@@ -25,6 +25,8 @@ private:
 public:
 	Entrant(void* tos): Coroutine(tos), Chain() {} 
 	
+	unsigned char color;
+	
 	char* getName(){
 		return name;
 	}

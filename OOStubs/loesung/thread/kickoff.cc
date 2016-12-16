@@ -15,10 +15,10 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/coroutine.h"
 
-#include "device/cgastr.h"
+//#include "device/cgastr.h"
 
 void kickoff(void* object){
-	kout << "kickoff" << endl;
+	//kout << "kickoff" << endl;
 	((Coroutine*)object)->action();
 	
 }

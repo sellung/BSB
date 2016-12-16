@@ -23,11 +23,8 @@
 //             Aufruf vor.
 void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* object)
 {	
-	// Initialize stack pointer with the Top of Stack (high memory)
-	//regs->ebp = tos;
 	void **sp = (void**)tos; 
-	// decrement the Stack pointer of the size of the pointer in 32 bits architecture (32bits)
-	//sp--;
+	sp--;
 
 	*sp = object;
 	sp--;
@@ -35,9 +32,7 @@ void toc_settle (struct toc* regs, void* tos, void (*kickoff)(void*), void* obje
 	*sp = 0;
 	sp--;
 
-	*sp = kickoff; 
+	*sp = kickoff;  
 	
 	regs->esp = sp;
-
-	//sp -= 12; 
 }

@@ -25,7 +25,7 @@ class Coroutine
  {
 private:
       Coroutine(const Coroutine &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
 	  struct toc toc;    
   public:
   	Coroutine(void* tos);

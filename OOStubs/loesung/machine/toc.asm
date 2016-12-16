@@ -33,7 +33,7 @@ toc_go:
     mov ebp, [eax + ebp_offset]  
     mov esp, [eax + esp_offset]
 
-    iret
+    ret
 
 ; Hier muesst ihr selbst Code vervollstaendigen         
 
@@ -64,4 +64,4 @@ toc_switch:
     mov ebp, [eax + ebp_offset]  
     mov esp, [eax + esp_offset]
 
-    iret
+    ret

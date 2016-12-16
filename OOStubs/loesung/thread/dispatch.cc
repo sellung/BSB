@@ -18,16 +18,17 @@
 
 
 void Dispatcher::go (Coroutine& first){
-	kout << "Dispatcher::go" << endl;
-	//if(lifeptr == 0){
-		*lifeptr = first;
-	//}
-	first.go();
+	if(lifeptr == 0){
+		lifeptr = &first;
+		first.go();
+	}
 }
 void Dispatcher::dispatch (Coroutine& next){
-	lifeptr->resume(next);
-	*lifeptr = next;
+	Coroutine* tmp = lifeptr;
+	lifeptr = &next;
+	tmp->resume(next);
 }
+
 Coroutine* Dispatcher::active(){
 	return lifeptr;
 }

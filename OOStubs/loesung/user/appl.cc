@@ -12,6 +12,8 @@
 
 #include "user/appl.h"
 #include "device/cgastr.h"
+#include "thread/scheduler.h"
+
 /* Hier muesst ihr selbst Code vervollstaendigen *         
 #include "device/keyboard.h"
 #include "machine/cpu.h"
@@ -23,11 +25,22 @@
 
 //CGA_Stream kout;
 
+//Scheduler scheduler;
+
 void Application::action ()
  {
- 	kout << "Hello world";
- 	kout.flush();
- 	while(1){}
+	
+ 	
+ 	int i = 0;
+ 	while(1){
+		kout.setcolor(color);
+		kout.setpos(col, row);
+		kout << "i=" << i;
+		kout.flush();
+		kout.resetcolor();
+		i++;
+		scheduler.resume();
+	}
 
  	//while(1){}
  }

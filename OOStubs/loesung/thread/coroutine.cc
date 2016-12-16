@@ -26,13 +26,9 @@ extern "C" void toc_go(struct toc* regs);
 extern "C" void toc_switch(struct toc* regs_now, struct toc* regs_then);  
 
 Coroutine::Coroutine(void* tos){
-	kout << "new coroutine : kickoff address : "  << (int)kickoff << endl;
 	toc_settle(&toc, tos, kickoff, this);
-	kout << "[toc.esp] " << toc.esp << " esp = " << *(int*)toc.esp <<endl;
 }
 void Coroutine::go(){
-	kout << "Coroutine::go" << endl;
-	kout << "[toc.esp] " << toc.esp << " esp = " << *(int*)toc.esp <<endl;
 	toc_go(&toc);
 }
 

@@ -20,9 +20,12 @@ private:
     Application (const Application &copy); // Verhindere Kopieren
 
 public:
+	int row;
+	int col;
 /* Hier muesst ihr selbst Code vervollstaendigen */                  
     Application(void* tos): Entrant(tos){} 
     void action ();
+    void setCoord(int c, int r){ col = c; row = r;}
  };
 
 #endif
