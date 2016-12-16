@@ -33,7 +33,7 @@ Coroutine::Coroutine(void* tos){
 void Coroutine::go(){
 	kout << "Coroutine::go" << endl;
 	kout << "[toc.esp] " << toc.esp << " esp = " << *(int*)toc.esp <<endl;
-	//toc_go(&toc);
+	toc_go(&toc);
 }
 
 void Coroutine::resume(Coroutine& next){
