@@ -2,30 +2,17 @@
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                         A P P L I C A T I O N                             */
+/*                                 L O O P                                   */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Die Klasse Application definiert die einzige Anwendung von OO-Stubs.      */
+/* Loop ist ein Thread, der nichts weiter tut als einen Zaehler hochzu-      */
+/* zaehlen und dies auf dem Bildschirm anzuzeigen. Zwischendurch gibt er     */
+/* den Prozessor ab.                                                         */
 /*****************************************************************************/
 
-#ifndef __application_include__
-#define __application_include__
+#ifndef __loop_include__
+#define __loop_include__
 
-#include "thread/entrant.h"
-
-class Application : public Entrant
+/* Hier muesst ihr selbst Code vervollstaendigen */ 
  
- {
-private:
-    Application (const Application &copy); // Verhindere Kopieren
-
-public:
-	int row;
-	int col;
-	                
-    Application(void* tos): Entrant(tos){} 
-    void action ();
-    void setCoord(int c, int r){ col = c; row = r;}
- };
-
 #endif

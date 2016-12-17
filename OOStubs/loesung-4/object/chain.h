@@ -1,31 +1,28 @@
+/* $Id: chain.h 956 2008-10-19 22:24:23Z hsc $ */
+
 /*****************************************************************************/
 /* Betriebssysteme                                                           */
 /*---------------------------------------------------------------------------*/
 /*                                                                           */
-/*                         A P P L I C A T I O N                             */
+/*                              C H A I N                                    */
 /*                                                                           */
 /*---------------------------------------------------------------------------*/
-/* Die Klasse Application definiert die einzige Anwendung von OO-Stubs.      */
+/* Verkettungszeiger zum Einfuegen eines Objektes in eine einfach verkettete */
+/* Liste.                                                                    */
 /*****************************************************************************/
 
-#ifndef __application_include__
-#define __application_include__
+#ifndef __chain_include__
+#define __chain_include__
 
-#include "thread/entrant.h"
-
-class Application : public Entrant
- 
+class Chain
  {
 private:
-    Application (const Application &copy); // Verhindere Kopieren
+      Chain(const Chain &copy); // Verhindere Kopieren
 
 public:
-	int row;
-	int col;
-	                
-    Application(void* tos): Entrant(tos){} 
-    void action ();
-    void setCoord(int c, int r){ col = c; row = r;}
+      Chain() {}
+      Chain* next;
  };
 
 #endif
+
