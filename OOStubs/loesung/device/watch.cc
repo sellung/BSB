@@ -9,19 +9,20 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "device/watch.h"
+#include "syscall/guarded_scheduler.h"
 
 //Plugbox plugbox;
 //PIC pic;
 
-void windup (){
+void Watch::windup (){
 	plugbox.assign(Plugbox::timer, *this);
 	pic.allow(PIC::timer);
 }
 
-bool prologue (){
-
+bool Watch::prologue (){
+	return fire_interrupt();
 }
 
-void epilogue (){
-
+void Watch::epilogue (){
+	scheduler.resume();
 }

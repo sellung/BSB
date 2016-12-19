@@ -11,6 +11,8 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "guard/secure.h"
 
+//Guarded_Scheduler scheduler;
+
 void Guarded_Scheduler::ready(Thread& that){
 	Secure secure;
 	ready(&that);
