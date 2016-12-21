@@ -15,6 +15,8 @@
 #include "thread/scheduler.h"
 #include "syscall/guarded_scheduler.h"
 
+#include "guard/secure.h"
+
 /* Hier muesst ihr selbst Code vervollstaendigen *         
 #include "device/keyboard.h"
 #include "machine/cpu.h"
@@ -23,16 +25,16 @@
 
 void Application::action ()
  {
-	
  	
  	int i = 0;
  	while(1){
+		Secure secure;
 		kout.setcolor(color);
 		kout.setpos(col, row);
 		kout << getName() << ".i = " << i;
 		kout.flush();
 		kout.resetcolor();
 		i++;
-		scheduler.resume();
+		//scheduler.resume();
 	}
  }

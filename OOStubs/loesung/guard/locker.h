@@ -15,6 +15,8 @@
 #ifndef __Locker_include__
 #define __Locker_include__
 
+#include "device/cgastr.h"
+
 class Locker
  {
 private:
@@ -26,10 +28,18 @@ public:
 	Locker(): free(true) {}
 
 	//Diese Methode muss aufgerufen werden, wenn der kritische Abschnitt betreten wird.
-	void enter (){ free = false; }
+	void enter (){ 
+		if(!free)
+			kout << "Mehrmals enter" << endl;
+		free = false; 		
+	}
 
 	//Mit dieser Methode wird der kritische Abschnitt wieder verlassen.
-	void retne (){ free = true; }
+	void retne (){ 
+		if(free)
+			kout << "Mehrmals verlassen" << endl;
+		free = true; 
+		}
 
 	//Diese Methode gibt an, ob der kritische Abschnitt frei ist.
 	bool avail (){ return free; }

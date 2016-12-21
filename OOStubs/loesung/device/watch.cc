@@ -9,6 +9,7 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "device/watch.h"
+#include "device/cgastr.h"
 #include "syscall/guarded_scheduler.h"
 #include "machine/plugbox.h"
 #include "machine/pic.h"
@@ -22,11 +23,12 @@ void Watch::windup (){
 }
 
 bool Watch::prologue (){
-	return fire_interrupt();
+	return true;
 }
 
 void Watch::epilogue (){
-	scheduler.resume();
+	//kout << "epilogue" <<endl;
+	scheduler.Scheduler::resume();
 }
 
 char* Watch::tostring(){

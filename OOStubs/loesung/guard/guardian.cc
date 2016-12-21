@@ -24,7 +24,8 @@ extern "C" void guardian (unsigned int slot);
 
 void guardian (unsigned int slot)
 {
-	//(plugbox.report(slot)).trigger();
+	//kout << "hi guardian" << endl;
+	(plugbox.report(slot)).prologue();
 	
 	Gate *g = &(plugbox.report(slot));
 	guard.relay(g);

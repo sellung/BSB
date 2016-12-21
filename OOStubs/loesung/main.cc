@@ -9,6 +9,8 @@
 #include "guard/secure.h"
 #include "syscall/guarded_scheduler.h"
 #include "device/watch.h"
+#include "machine/cpu.h"
+#include "guard/guard.h"
 
 void* stack_1[1024];
 void* stack_2[1024];
@@ -47,10 +49,10 @@ int main()
 	app3.color = 0x05;
 	app3.setCoord(col, row + 4);
 	
-
-	//scheduler.ready(app1);
-	//scheduler.ready(app2);
-	//scheduler.ready(app3);
-	/*
-	scheduler.schedule();*/
+	//cpu.enable
+	scheduler.Scheduler::ready(app1);
+	scheduler.Scheduler::ready(app2);
+	scheduler.Scheduler::ready(app3);
+	
+	scheduler.schedule();
 }

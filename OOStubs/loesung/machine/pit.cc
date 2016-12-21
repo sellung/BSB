@@ -15,7 +15,7 @@ void PIT::interval(int us){
 	frequency = us;
 	int x = TACT / us;
 
-	command.outb(0x32); // 0011 0010
+	command.outb(0x34); // 0011 0100
 	chanel0.outb(x & 0xff);
 	chanel0.outb((x >> 8) & 0xff); 
 }
