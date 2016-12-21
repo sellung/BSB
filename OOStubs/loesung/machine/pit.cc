@@ -29,7 +29,7 @@ bool  PIT::fire_interrupt(){
 	command.outb(0x22);
 	int x2 = chanel0.inb();
 
-	int x = (x1 << 8) | x2;
+	int x =  x2 | (x1 << 8) ;
 
 	if( x == 1){ return true;}
 

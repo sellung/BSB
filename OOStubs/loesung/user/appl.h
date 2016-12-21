@@ -12,8 +12,9 @@
 #define __application_include__
 
 #include "thread/entrant.h"
+#include "syscall/thread.h"
 
-class Application : public Entrant
+class Application : public Thread
  
  {
 private:
@@ -22,8 +23,9 @@ private:
 public:
 	int row;
 	int col;
-	                
-    Application(void* tos): Entrant(tos){} 
+	int i;
+
+    Application(void* tos): Thread(tos), i(0){} 
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
  };

@@ -32,6 +32,7 @@ void PIC::allow(int interrupt_device){
 	int c = ocw1.inb();
 	c &= ~(1<<interrupt_device);
 	ocw1.outb(c);
+	kout.setpos(59, 0);
 	kout <<"PIC STATUS: " << bin << c << endl;
 	cpu.enable_int();
 }

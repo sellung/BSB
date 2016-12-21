@@ -33,6 +33,12 @@ public:
 
     // EPILOGUE: Epilogue der Uhrenunterbrechung
     void epilogue ();
+
+    char* tostring();
+
+    void trigger ();
  };
+
+//extern Watch watch;
 
 #endif

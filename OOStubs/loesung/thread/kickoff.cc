@@ -14,11 +14,12 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/coroutine.h"
-
+#include "guard/guard.h"
 //#include "device/cgastr.h"
 
 void kickoff(void* object){
 	//kout << "kickoff" << endl;
-	((Coroutine*)object)->action();
+	guard.leave();
 	
+	((Coroutine*)object)->action();
 }

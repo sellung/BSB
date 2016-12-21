@@ -13,6 +13,7 @@
 #include "user/appl.h"
 #include "device/cgastr.h"
 #include "thread/scheduler.h"
+#include "syscall/guarded_scheduler.h"
 
 /* Hier muesst ihr selbst Code vervollstaendigen *         
 #include "device/keyboard.h"

@@ -6,17 +6,24 @@
 #include "user/appl.h"
 #include "device/cgastr.h"
 #include "thread/dispatch.h"
+#include "guard/secure.h"
+#include "syscall/guarded_scheduler.h"
+#include "device/watch.h"
 
 void* stack_1[1024];
 void* stack_2[1024];
 void* stack_3[1024];
 
-Scheduler scheduler;
+Guarded_Scheduler scheduler;
+Watch watch(100);
 
 int main()
 {	
+	Secure secure;
 
 	kout.clearscreen();
+
+	watch.windup();
 	
 	kout << "size of stack_1: " << sizeof(stack_1) << endl;
 	kout << "size of stack_2: " << sizeof(stack_2) << endl;
@@ -40,9 +47,10 @@ int main()
 	app3.color = 0x05;
 	app3.setCoord(col, row + 4);
 	
-	scheduler.ready(app1);
-	scheduler.ready(app2);
-	scheduler.ready(app3);
-	
-	scheduler.schedule();
+
+	//scheduler.ready(app1);
+	//scheduler.ready(app2);
+	//scheduler.ready(app3);
+	/*
+	scheduler.schedule();*/
 }

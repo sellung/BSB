@@ -10,6 +10,8 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "device/watch.h"
 #include "syscall/guarded_scheduler.h"
+#include "machine/plugbox.h"
+#include "machine/pic.h"
 
 //Plugbox plugbox;
 //PIC pic;
@@ -25,4 +27,12 @@ bool Watch::prologue (){
 
 void Watch::epilogue (){
 	scheduler.resume();
+}
+
+char* Watch::tostring(){
+	return "Ich bin Timer";
+}
+
+void Watch::trigger (){
+	
 }

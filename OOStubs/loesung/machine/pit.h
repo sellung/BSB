@@ -19,13 +19,13 @@ class PIT
 	private:
     	PIT(const PIT &copy); // Verhindere Kopieren
 	/* Hier muesst ihr selbst Code vervollstaendigen */ 
-    	const int TACT = 1193182;
+    	const int TACT;
     	int frequency;
     	const IO_Port chanel0; 
     	const IO_Port command; 
 	public:
     	PIT (int us) :
-    	 chanel0(0x40), command(0x43){
+    	 TACT(1193182), chanel0(0x40), command(0x43){
       		interval (us);
     	}
     	int interval () {
@@ -35,5 +35,7 @@ class PIT
 
     	bool fire_interrupt();
 };
+
+//extern PIT pit;
 
 #endif
