@@ -25,19 +25,13 @@ class Stringbuffer
 
 	/* Hier muesst ihr selbst Code vervollstaendigen */    
 	public:
-		//int MAX_SIZE = 100;
-		//int maxsize;
 		int currentindex;
 		char value[MAX_SIZE_BUFFER];
 
 		Stringbuffer() : currentindex(0){};
-		//Stringbuffer(int s) : currentindex(0), maxsize(s) {
-		//		value = char[maxsize];
-		//};
-		
-		//Stringbuffer add(char c);
+
 		void put(char c);
-		
+
 		virtual void flush()=0;
 
  };

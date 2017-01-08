@@ -146,16 +146,32 @@ void CGA_Screen::scrollup(int &col, int &row){
 }
 
 void CGA_Screen::startMsg(){
-	print("     _________\n", 15, 0x03);    
-	print("    /---------\\\n", 16, 0x03);    
+	int col = 16;
+	int row = 5;
+	setpos(col, row++);
+	print("     _________\n", 15, 0x03);
+	setpos(col, row++);    
+	print("    /---------\\\n", 16, 0x03);   
+	setpos(col, row++);  
 	print("___/", 4, 0x03);print("___",3,0x0a);print("  C  ",5,0x03);print("___",3,0x0a);print("\\__",3,0x03);print(" ___              ____  ___ \n", 29, 0x0a);                                     
+	setpos(col, row++); 
 	print(" \\\\",3,0x07);print("/",1,0x0a);print("---",3,0x07);print("\\   /",5,0x0a);print("---",3,0x07);print("\\",1,0x0a);print("//",2,0x07);print("|___  _|_  |   | |    )|___\n", 29, 0x0a);
+	setpos(col+1, row++); 
 	print(" |",2,0x0a);print("|",1,0x06);print(" O ",3,0x06);print("|",1,0x06);print("|",1,0x0a);print("-",1,0x07);print("|",1,0x0a);print("| O |",5,0x06);print("|   s \\  |   | u | |BBBB     \\\n", 33, 0x0a);                            
+	setpos(col+2, row++); 
 	print(" \\___/   \\___/   ___/  |__ |___| |____) ___/\n", 46, 0x0a);
-	print("    |    /\\   |\n", 16, 0x06);    
+	setpos(col, row++); 
+	print("    |    /\\   |\n", 16, 0x06);
+	setpos(col, row++);    
 	print("   #############\n", 17, 0x07);    
-	print("    #### ",9,0x07);print("<>",2,0x06);print(" ####\n", 7, 0x07);    
-	print("     \\_",7,0x06);print("#####",5,0x07);print("_/\n", 5, 0x06);    
-	print("        ###\n ", 13, 0x07);    
+	setpos(col, row++);
+	print("    #### ",9,0x07);print("<>",2,0x06);print(" ####\n", 7, 0x07);
+	setpos(col, row++);    
+	print("     \\_",7,0x06);print("#####",5,0x07);print("_/\n", 5, 0x06);   
+	setpos(col, row++); 
+	print("        ###\n ", 13, 0x07);
+	setpos(col, row++); 
+	setpos(35, 15); 
+	print("WILLKOMMEN IN OOStuB", 20, 0x07);  
 }
 /* Hier muesst ihr selbst Code vervollstaendigen */ 

@@ -25,12 +25,19 @@ int main()
 
 	kout.clearscreen();
 
+	kout.startMsg();
+
 	watch.windup();
 	
-	kout << "size of stack_1: " << sizeof(stack_1) << endl;
-	kout << "size of stack_2: " << sizeof(stack_2) << endl;
-	kout << "size of stack_3: " << sizeof(stack_3) << endl;
+	watch.sleep(6);
 
+	kout.clearscreen();
+
+
+	// kout << "size of stack_1: " << sizeof(stack_1) << endl;
+	// kout << "size of stack_2: " << sizeof(stack_2) << endl;
+	// kout << "size of stack_3: " << sizeof(stack_3) << endl;
+ 
 	Application app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
 	Application app3(&stack_3[1024]);
@@ -53,6 +60,6 @@ int main()
 	scheduler.Scheduler::ready(app1);
 	scheduler.Scheduler::ready(app2);
 	scheduler.Scheduler::ready(app3);
-	
+
 	scheduler.schedule();
 }

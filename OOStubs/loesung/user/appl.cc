@@ -16,6 +16,8 @@
 #include "syscall/guarded_scheduler.h"
 
 #include "guard/secure.h"
+#include "device/watch.h"
+//#include "guard/guard.h"
 
 /* Hier muesst ihr selbst Code vervollstaendigen *         
 #include "device/keyboard.h"

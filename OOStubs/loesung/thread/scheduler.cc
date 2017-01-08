@@ -17,7 +17,7 @@
 #include "machine/cpu.h"
 
 void Scheduler::ready(Entrant& that) {
-	kout << "ready: " << that.getName() << endl;
+	//kout << "ready: " << that.getName() << endl;
 	//cpu.disable_int();
 	readylist.enqueue(&that);
 	//cpu.enable_int();
@@ -35,6 +35,7 @@ void Scheduler::exit() {
 void Scheduler::kill(Entrant& that) {
 	//cpu.disable_int();
 	readylist.remove(&that);
+	//kout << "kill" << endl;
 	//cpu.enable_int();
 	//schedule();
 }

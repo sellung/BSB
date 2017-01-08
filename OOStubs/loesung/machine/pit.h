@@ -32,8 +32,6 @@ class PIT
 			return frequency;
     	}
     	void interval (int us);
-
-    	bool fire_interrupt();
 };
 
 //extern PIT pit;

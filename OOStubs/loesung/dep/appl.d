@@ -3,4 +3,4 @@ build/appl.o: user/appl.cc user/appl.h thread/entrant.h object/chain.h \
  object/o_stream.h object/strbuf.h machine/cgascr.h machine/io_port.h \
  thread/scheduler.h thread/dispatch.h object/queue.h \
  syscall/guarded_scheduler.h guard/secure.h guard/guard.h guard/locker.h \
- guard/gate.h
+ guard/gate.h device/watch.h machine/pit.h

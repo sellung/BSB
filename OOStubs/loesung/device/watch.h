@@ -37,8 +37,14 @@ public:
     char* tostring();
 
     void trigger ();
+
+    void sleep(int t);
+
+    void show_digit(int to_show, int col, int row);
  };
 
-//extern Watch watch;
+extern Watch watch;
+extern int count_interrupt;
+extern bool wait_guardiant_PIT;
 
 #endif
