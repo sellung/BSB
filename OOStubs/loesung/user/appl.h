@@ -24,6 +24,7 @@ public:
 	int row;
 	int col;
 	int i;
+	int id;
 
     Application(void* tos): Thread(tos), i(0){} 
     void action ();

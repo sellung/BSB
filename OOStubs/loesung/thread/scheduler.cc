@@ -29,8 +29,8 @@ void Scheduler::schedule() {
 }
 
 void Scheduler::exit() {
-	//readylist.remove(entrant);
-	resume();
+	Entrant* entrant = (Entrant*)readylist.dequeue();
+	dispatch(*entrant);
 }
 void Scheduler::kill(Entrant& that) {
 	//cpu.disable_int();

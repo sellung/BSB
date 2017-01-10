@@ -1,0 +1,492 @@
+00000000000i[     ] Bochs x86 Emulator 2.3.5
+00000000000i[     ]   Build from CVS snapshot, on September 16, 2007
+00000000000i[     ] System configuration
+00000000000i[     ]   processors: 1 (cores=1, HT threads=1)
+00000000000i[     ]   A20 line support: yes
+00000000000i[     ]   APIC support: no
+00000000000i[     ] CPU configuration
+00000000000i[     ]   level: 5
+00000000000i[     ]   TLB enabled: yes
+00000000000i[     ]   SMP support: no
+00000000000i[     ]   FPU support: yes
+00000000000i[     ]   MMX support: yes
+00000000000i[     ]   SSE support: no
+00000000000i[     ]   CLFLUSH support: no
+00000000000i[     ]   v8086 mode support: yes
+00000000000i[     ]   VME support: yes
+00000000000i[     ]   3dnow! support: no
+00000000000i[     ]   PAE support: no
+00000000000i[     ]   PGE support: no
+00000000000i[     ]   PSE support: yes
+00000000000i[     ]   x86-64 support: no
+00000000000i[     ]   SEP support: no
+00000000000i[     ] Optimization configuration
+00000000000i[     ]   Guest2HostTLB support: no
+00000000000i[     ]   RepeatSpeedups support: no
+00000000000i[     ]   Icache support: no
+00000000000i[     ]   Host Asm support: yes
+00000000000i[     ]   Fast function calls: no
+00000000000i[     ] Devices configuration
+00000000000i[     ]   NE2000 support: no
+00000000000i[     ]   PCI support: no
+00000000000i[     ]   SB16 support: no
+00000000000i[     ]   USB support: no
+00000000000i[     ]   VGA extension support: vbe 
+00000000000i[MEM0 ] allocated memory at 0xf6c0c008. after alignment, vector=0xf6c0d000
+00000000000i[MEM0 ] 4,00MB
+00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/home/bsb/bochs/bios/BIOS-bochs-latest')
+00000000000i[MEM0 ] rom at 0xc0000/32768 ('/home/bsb/bochs/bios/VGABIOS-elpin-2.40')
+00000000000i[VTIME] using 'realtime pit' synchronization method
+00000000000i[CMOS ] Using local time for initial clock
+00000000000i[CMOS ] Setting initial clock to: Tue Jan 10 16:06:44 2017 (time0=1484060804)
+00000000000i[DMA  ] channel 4 used by cascade
+00000000000i[DMA  ] channel 2 used by Floppy Drive
+00000000000i[FDD  ] fd0: './build/bootdisk.img' ro=0, h=2,t=80,spt=18
+00000000000i[MEM0 ] Register memory access handlers: 000a0000-000bffff
+00000000000i[XGUI ] test_alloc_colors: 16 colors available out of 16 colors tried
+00000000000i[XGUI ] font 8 wide x 16 high, display depth = 24
+00000000000i[VGA  ] interval=300000
+00000000000i[MEM0 ] Register memory access handlers: e0000000-e07fffff
+00000000000i[VGA  ] VBE Bochs Display Extension Enabled
+00000000000i[     ] init_mem of 'harddrv' plugin device by virtual method
+00000000000i[     ] init_mem of 'keyboard' plugin device by virtual method
+00000000000i[     ] init_mem of 'serial' plugin device by virtual method
+00000000000i[     ] init_mem of 'parallel' plugin device by virtual method
+00000000000i[     ] init_mem of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] init_mem of 'speaker' plugin device by virtual method
+00000000000i[     ] init_dev of 'harddrv' plugin device by virtual method
+00000000000i[HD   ] Using boot sequence floppy, none, none
+00000000000i[HD   ] Floppy boot signature check is enabled
+00000000000i[     ] init_dev of 'keyboard' plugin device by virtual method
+00000000000i[KBD  ] will paste characters every 1000 keyboard ticks
+00000000000i[     ] init_dev of 'serial' plugin device by virtual method
+00000000000i[SER  ] com1 at 0x03f8 irq 4
+00000000000i[     ] init_dev of 'parallel' plugin device by virtual method
+00000000000i[PAR  ] parallel port 1 at 0x0378 irq 7
+00000000000i[     ] init_dev of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] init_dev of 'speaker' plugin device by virtual method
+00000000000i[SPEAK] Failed to open /dev/console: Die Ressource ist zur Zeit nicht verfügbar
+00000000000i[SPEAK] Deactivating beep on console
+00000000000i[     ] register state of 'harddrv' plugin device by virtual method
+00000000000i[     ] register state of 'keyboard' plugin device by virtual method
+00000000000i[     ] register state of 'serial' plugin device by virtual method
+00000000000i[     ] register state of 'parallel' plugin device by virtual method
+00000000000i[     ] register state of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] register state of 'speaker' plugin device by virtual method
+00000000000i[SYS  ] bx_pc_system_c::Reset(HARDWARE) called
+00000000000i[     ] reset of 'harddrv' plugin device by virtual method
+00000000000i[     ] reset of 'keyboard' plugin device by virtual method
+00000000000i[     ] reset of 'serial' plugin device by virtual method
+00000000000i[     ] reset of 'parallel' plugin device by virtual method
+00000000000i[     ] reset of 'extfpuirq' plugin device by virtual method
+00000000000i[     ] reset of 'speaker' plugin device by virtual method
+00000000000i[XGUI ] [x] Mouse off
+00000003442i[BIOS ] $Revision: 1.183 $ $Date: 2007/09/10 20:00:29 $
+00000084000e[VGA  ] character height = 1, skipping text update
+00000168000e[VGA  ] character height = 1, skipping text update
+00000252000e[VGA  ] character height = 1, skipping text update
+00000316999i[KBD  ] reset-disable command received
+00000334475i[BIOS ] Starting rombios32
+00000335281i[BIOS ] ram_size=0x00300000
+00000335890i[BIOS ] Found 1 cpu(s)
+00000336000e[VGA  ] character height = 1, skipping text update
+00000420000e[VGA  ] character height = 1, skipping text update
+00000504000e[VGA  ] character height = 1, skipping text update
+00000588000i[XGUI ] charmap update. Font Height is 16
+00001725124i[BIOS ] Booting from 0000:7C00
+00001921460i[FDD  ] partial read() on floppy image returns 236/512
+00002004662i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004700i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004738i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004776i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004814i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004852i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004890i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004928i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002004966i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005004i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005042i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005080i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005118i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005156i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005194i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005232i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005270i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005308i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005346i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005384i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005422i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005460i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005498i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005536i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005574i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005612i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005650i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005688i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005726i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005764i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005802i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005840i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005878i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005916i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005954i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002005992i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006030i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006068i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006106i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006144i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006182i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006220i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006258i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006296i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006334i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006372i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006410i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006448i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006486i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006524i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006562i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006600i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006638i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006676i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006714i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006752i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006790i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006828i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006866i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006904i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006942i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002006980i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007018i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007056i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007094i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007132i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007170i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007208i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007246i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007284i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007322i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007360i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007398i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007436i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007474i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007512i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007550i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007588i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007626i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007664i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007702i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007740i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007778i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007816i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007854i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007892i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007930i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002007968i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008006i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008044i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008082i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008120i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008158i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008196i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008234i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008272i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008310i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008348i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008386i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008424i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008462i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008500i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008538i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008576i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008614i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008652i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008690i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008728i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008766i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008804i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008842i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008880i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008918i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008956i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002008994i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009032i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009070i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009108i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009146i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009184i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009222i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009260i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009298i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009336i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009374i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009412i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009450i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009488i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009526i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009564i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009602i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009640i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009678i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009716i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009754i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009792i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009830i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009868i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009906i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009944i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002009982i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010020i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010058i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010096i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010134i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010172i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010210i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010248i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010286i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010324i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010362i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010400i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010438i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010476i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010514i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010552i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010590i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010628i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010666i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010704i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010742i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010780i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010818i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010856i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010894i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010932i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002010970i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011008i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011046i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011084i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011122i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011160i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011198i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011236i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011274i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011312i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011350i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011388i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011426i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011464i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011502i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011540i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011578i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011616i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011654i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011692i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011730i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011768i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011806i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011844i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011882i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011920i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011958i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002011996i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012034i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012072i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012110i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012148i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012186i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012224i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012262i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012300i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012338i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012376i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012414i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012452i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012490i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012528i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012566i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012604i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012642i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012680i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012718i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012756i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012794i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012832i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012870i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012908i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012946i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002012984i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013022i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013060i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013098i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013136i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013174i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013212i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013250i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013288i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013326i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013364i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013402i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013440i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013478i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013516i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013554i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013592i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013630i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013668i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013706i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013744i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013782i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013820i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013858i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013896i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013934i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002013972i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014010i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014048i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014086i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014124i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014162i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014200i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014238i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014276i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014314i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014352i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014390i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014428i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014466i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014504i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014542i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014580i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014618i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014656i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014694i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014732i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014770i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014808i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014846i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014884i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014922i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014960i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002014998i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015036i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015074i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015112i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015150i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015188i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015226i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015264i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015302i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015340i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015378i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015416i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015454i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015492i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015530i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015568i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015606i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015644i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015682i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015720i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015758i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015796i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015834i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015872i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015910i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015948i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002015986i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016024i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016062i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016100i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016138i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016176i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016214i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016252i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016290i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016328i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016366i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016404i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016442i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016480i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016518i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016556i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016594i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016632i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016670i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016708i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016746i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016784i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016822i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016860i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016898i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016936i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002016974i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017012i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017050i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017088i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017126i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017164i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017202i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017240i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017278i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017316i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017354i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017392i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017430i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017468i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017506i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017544i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017582i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017620i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017658i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017696i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017734i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017772i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017810i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017848i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017886i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017924i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002017962i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018000i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018038i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018076i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018114i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018152i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018190i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018228i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018266i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018304i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018342i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018380i[CPU  ] LOCK prefix unallowed (op1=0x53, attr=0x0, mod=0x0, nnn=0)
+00002018402i[CPU  ] BxError: instruction with opcode=0xff
+00002018402i[CPU  ] mod was c0, nnn was 7, rm was 7
+00002018402i[CPU  ] WARNING: Encountered an unknown instruction (signalling illegal instruction)
+00002018415e[CPU  ] check_cs: conforming code seg descriptor dpl > cpl
+00002018433e[CPU  ] fetch_raw_descriptor: GDT: index (680f)d01 > limit (18)
+00002018451e[CPU  ] fetch_raw_descriptor: GDT: index (206f)40d > limit (18)
+00002018469e[CPU  ] fetch_raw_descriptor: GDT: index (ec87)1d90 > limit (18)
+00002018487e[CPU  ] iret: return CS selector null
+00002018505e[CPU  ] iret: return CS selector null
+00002018526e[CPU  ] allow_io(): TR doesn't point to a valid 32bit TSS
+00002018526p[CPU  ] >>PANIC<< get_SS_ESP_from_TSS: TR is bogus type (3)
+00002018526i[CPU  ] v8086 mode
+00002018526i[CPU  ] CS.d_b = 16 bit
+00002018526i[CPU  ] SS.d_b = 16 bit
+00002018526i[CPU  ] | EAX=00060000  EBX=00000010  ECX=08520010  EDX=69ac0000
+00002018526i[CPU  ] | ESP=00030010  EBP=001009c8  ESI=00016800  EDI=00107614
+00002018526i[CPU  ] | IOPL=0 id VIP VIF ac VM RF nt of df if tf sf ZF af PF cf
+00002018526i[CPU  ] | SEG selector     base    limit G D
+00002018526i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00002018526i[CPU  ] |  CS:f000( 0001| 0|  3) 000f0000 0000ffff 0 0
+00002018526i[CPU  ] |  DS:0001( 0002| 0|  3) 00000010 0000ffff 0 0
+00002018526i[CPU  ] |  SS:0000( 0002| 0|  3) 00000000 0000ffff 0 0
+00002018526i[CPU  ] |  ES:0000( 0002| 0|  3) 00000000 0000ffff 0 0
+00002018526i[CPU  ] |  FS:0000( 0002| 0|  3) 00000000 0000ffff 0 0
+00002018526i[CPU  ] |  GS:0000( 0002| 0|  3) 00000000 0000ffff 0 0
+00002018526i[CPU  ] | EIP=0000e05d (0000e05d)
+00002018526i[CPU  ] | CR0=0x00000011 CR1=0 CR2=0x00000000
+00002018526i[CPU  ] | CR3=0x00000000 CR4=0x00000000
+00002018526i[CPU  ] >> out 0x0d, al : E60D
+00002018526i[CMOS ] Last time is 1484060811 (Tue Jan 10 16:06:51 2017)
+00002018526i[XGUI ] Exit.
+00002018526i[     ] restoring default signal behavior
+00002018526i[CTRL ] quit_sim called with exit code 1

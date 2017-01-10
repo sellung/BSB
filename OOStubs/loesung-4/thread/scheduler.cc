@@ -27,8 +27,7 @@ void Scheduler::schedule() {
 }
 
 void Scheduler::exit() {
-	//readylist.remove(entrant);
-	resume();
+	dispatch((Entrant*)readylist.dequeue());
 }
 void Scheduler::kill(Entrant& that) {
 	readylist.remove(&that);

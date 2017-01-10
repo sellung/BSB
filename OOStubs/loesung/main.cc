@@ -29,7 +29,7 @@ int main()
 
 	watch.windup();
 	
-	watch.sleep(6);
+	watch.sleep(5);
 
 	kout.clearscreen();
 
@@ -47,14 +47,17 @@ int main()
 	app1.setName("App1");
 	app1.color = 0x03;
 	app1.setCoord(col, row);
+	app1.id = 1;
 	
 	app2.setName("App2");
 	app2.color = 0x04;
 	app2.setCoord(col, row + 2);
+	app2.id = 2;
 	
 	app3.setName("App3");
 	app3.color = 0x05;
 	app3.setCoord(col, row + 4);
+	app3.id = 3;
 	
 	//cpu.enable
 	scheduler.Scheduler::ready(app1);

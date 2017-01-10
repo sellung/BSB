@@ -32,13 +32,13 @@
 00000000000i[     ]   SB16 support: no
 00000000000i[     ]   USB support: no
 00000000000i[     ]   VGA extension support: vbe 
-00000000000i[MEM0 ] allocated memory at 0xf6c20008. after alignment, vector=0xf6c21000
+00000000000i[MEM0 ] allocated memory at 0xf6bea008. after alignment, vector=0xf6beb000
 00000000000i[MEM0 ] 4,00MB
 00000000000i[MEM0 ] rom at 0xfffe0000/131072 ('/home/bsb/bochs/bios/BIOS-bochs-latest')
 00000000000i[MEM0 ] rom at 0xc0000/32768 ('/home/bsb/bochs/bios/VGABIOS-elpin-2.40')
 00000000000i[VTIME] using 'realtime pit' synchronization method
 00000000000i[CMOS ] Using local time for initial clock
-00000000000i[CMOS ] Setting initial clock to: Wed Dec 21 17:47:44 2016 (time0=1482338864)
+00000000000i[CMOS ] Setting initial clock to: Tue Jan 10 17:38:14 2017 (time0=1484066294)
 00000000000i[DMA  ] channel 4 used by cascade
 00000000000i[DMA  ] channel 2 used by Floppy Drive
 00000000000i[FDD  ] fd0: './build/bootdisk.img' ro=0, h=2,t=80,spt=18
@@ -93,28 +93,28 @@
 00000420000e[VGA  ] character height = 1, skipping text update
 00000504000e[VGA  ] character height = 1, skipping text update
 00000588000i[XGUI ] charmap update. Font Height is 16
-00001725124i[BIOS ] Booting from 0000:7C00
-00001917813i[FDD  ] partial read() on floppy image returns 124/512
-00298481680p[XGUI ] >>PANIC<< POWER button turned off.
-00298481680i[CPU  ] protected mode
-00298481680i[CPU  ] CS.d_b = 32 bit
-00298481680i[CPU  ] SS.d_b = 32 bit
-00298481680i[CPU  ] | EAX=00107580  EBX=00000000  ECX=00000070  EDX=00000070
-00298481680i[CPU  ] | ESP=001085c4  EBP=001085e4  ESI=0010a688  EDI=0000002e
-00298481680i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
-00298481680i[CPU  ] | SEG selector     base    limit G D
-00298481680i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00298481680i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
-00298481680i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00298481680i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00298481680i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00298481680i[CPU  ] |  FS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00298481680i[CPU  ] |  GS:0010( 0002| 0|  0) 00000000 000fffff 1 1
-00298481680i[CPU  ] | EIP=00100e77 (00100e77)
-00298481680i[CPU  ] | CR0=0x00000011 CR1=0 CR2=0x00000000
-00298481680i[CPU  ] | CR3=0x00000000 CR4=0x00000000
-00298481680i[CPU  ] >> push edx : 52
-00298481680i[CMOS ] Last time is 1482339930 (Wed Dec 21 18:05:30 2016)
-00298481680i[XGUI ] Exit.
-00298481680i[     ] restoring default signal behavior
-00298481680i[CTRL ] quit_sim called with exit code 1
+00001725126i[BIOS ] Booting from 0000:7C00
+00001921462i[FDD  ] partial read() on floppy image returns 364/512
+00253485960p[XGUI ] >>PANIC<< POWER button turned off.
+00253485960i[CPU  ] protected mode
+00253485960i[CPU  ] CS.d_b = 32 bit
+00253485960i[CPU  ] SS.d_b = 32 bit
+00253485960i[CPU  ] | EAX=0000000c  EBX=00000005  ECX=00000036  EDX=0000002a
+00253485960i[CPU  ] | ESP=0010a890  EBP=0010a8c4  ESI=00000000  EDI=00000000
+00253485960i[CPU  ] | IOPL=0 id vip vif ac vm rf nt of df IF tf sf zf af pf cf
+00253485960i[CPU  ] | SEG selector     base    limit G D
+00253485960i[CPU  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00253485960i[CPU  ] |  CS:0008( 0001| 0|  0) 00000000 000fffff 1 1
+00253485960i[CPU  ] |  DS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00253485960i[CPU  ] |  SS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00253485960i[CPU  ] |  ES:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00253485960i[CPU  ] |  FS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00253485960i[CPU  ] |  GS:0010( 0002| 0|  0) 00000000 000fffff 1 1
+00253485960i[CPU  ] | EIP=00102607 (00102607)
+00253485960i[CPU  ] | CR0=0x00000011 CR1=0 CR2=0x00000000
+00253485960i[CPU  ] | CR3=0x00000000 CR4=0x00000000
+00253485960i[CPU  ] >> push dword ptr ss:[ebp+0x8] : FF7508
+00253485960i[CMOS ] Last time is 1484067199 (Tue Jan 10 17:53:19 2017)
+00253485960i[XGUI ] Exit.
+00253485960i[     ] restoring default signal behavior
+00253485960i[CTRL ] quit_sim called with exit code 1

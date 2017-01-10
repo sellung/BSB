@@ -36,6 +36,9 @@ void Application::action ()
 		kout << getName() << ".i = " << i;
 		kout.flush();
 		kout.resetcolor();
+		if(i==10000 && id ==1 ){
+			scheduler.Scheduler::exit();
+		};
 		i++;
 		//scheduler.resume();
 	}
