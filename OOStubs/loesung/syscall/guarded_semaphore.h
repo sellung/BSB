@@ -11,14 +11,21 @@
 #ifndef __Guarded_Semaphore_include__
 #define __Guarded_Semaphore_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "thread/organizer.h"
+#include "thread/thread.h"
         
 class Guarded_Semaphore 
-/* Hier muesst ihr selbst Code vervollstaendigen */         
+	: Organizer
  {
 private:
     Guarded_Semaphore (const Guarded_Semaphore &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */          
+public:
+	Guarded_Semaphore () : Organizer() {}
+	
+	void ready (Thread& that);
+	void exit ();
+	void kill (Thread& that);
+	void resume ();
  };
 
 #endif

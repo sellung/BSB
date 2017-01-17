@@ -12,14 +12,21 @@
 #ifndef __organizer_include__
 #define __organizer_include__
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
-class Organizer
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+
+#include "thread/scheduler.h"
+#include "thread/customer.h"
+
+class Organizer 
+	: Scheduler
 {
 private:
     Organizer(const Organizer &copy); // Verhindere Kopieren
 public:
-    Organizer() {}
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+    Organizer() : Scheduler() {}
+	void block (Customer& customer, Waitingroom& waitingroom);
+	void wakeup (Customer& customer);
+	void kill (Customer& that);
+
 };
 
 #endif

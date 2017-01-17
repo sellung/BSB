@@ -17,6 +17,8 @@
 #include "device/cgastr.h" // only for test
 #include "machine/cgascr.h"
 #include "machine/pic.h"
+#include "syscall/guarded_semaphore.h"
+
 // #include "machine/keyctrl.h"
 // #include "machine/pic.h"
 // #include "machine/plugbox.h"
@@ -31,6 +33,7 @@ private:
 //CGA_Screen cgaScreen;
     int count;
     Key key;
+    Guarded_Semaphore semaphore(1);
 public:
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
  	Keyboard() :Keyboard_Controller(), count(0) {}
@@ -44,6 +47,8 @@ public:
 
    	bool prologue();
    	void epilogue();
+   	
+   	Key getkey();
  };
 
  extern Keyboard keyboard;

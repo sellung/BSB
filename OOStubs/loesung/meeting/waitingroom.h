@@ -21,9 +21,12 @@ class Waitingroom
 {
 private:
     Waitingroom(const Waitingroom &copy); // Verhindere Kopieren
+    Customer* lifecustomer;
 public:
-    Waitingroom() {}
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+    Waitingroom() : Queue() {}
+	
+	virtual ~Waitingroom();
+	virtual void remove (Customer* customer);
 };
 
 #endif
