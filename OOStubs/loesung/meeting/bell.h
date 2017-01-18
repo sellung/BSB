@@ -21,13 +21,14 @@ class Bell
  {
 private:
     Bell(const Bell &copy); // Verhindere Kopieren
+    int timetowait;
 public:
     Bell() : Chain {}
 
-    void wait (int value);
-    int wait ();
-    void tick ();
-    bool run_down ();
+    void wait (int value) { timetowait = value;}
+    int wait () { return timetowait; };
+    void tick () { timetowait--; };
+    bool run_down () {return timetowait <= 0; };
     virtual void ring () = 0;
 };
 

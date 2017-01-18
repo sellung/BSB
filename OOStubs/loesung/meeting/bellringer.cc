@@ -13,7 +13,12 @@
 #include "meeting/bellringer.h"
 
 void Bellringer::check (){
-
+	Bell* bell = (Bell*)first();
+	while(bell){
+		if(bell->wait()){
+			
+		}
+	}
 }
 
 void Bellringer::job (Bell *bell, int ticks){
