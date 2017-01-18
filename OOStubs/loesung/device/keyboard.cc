@@ -58,10 +58,19 @@ void Keyboard::hello(){
 bool Keyboard::prologue(){
 	//kout << "prologue keyboard" << endl;
 	key = key_hit();
+
+	unsigned char a = key.scancode();
+	if(a == 0x53 && (key.ctrl_left() && key.alt_left())){
+    	reboot();
+    }	
+
 	return key.valid();
 }
 
 void Keyboard::epilogue(){
+	semaphore.wait();
+
+	/*
 	kout.setpos(40, 9);
 	kout << "Keyboard hit " << count;
 	kout.flush();
@@ -76,5 +85,9 @@ void Keyboard::epilogue(){
     unsigned char a = key.scancode();
     if(a == 0x53 && (key.ctrl_left() && key.alt_left())){
     	reboot();
-    }	
+    }	*/
+}
+
+Key Keyboard::getkey(){
+	
 }

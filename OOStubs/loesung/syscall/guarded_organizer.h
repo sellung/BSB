@@ -24,4 +24,6 @@ public:
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
  };
 
+ extern Guarded_Organizer scheduler;
+
 #endif

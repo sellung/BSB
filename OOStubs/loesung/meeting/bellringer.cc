@@ -10,5 +10,16 @@
 /* Glocken befinden sich in einer Queue, die der Gloeckner verwaltet.        */
 /*****************************************************************************/
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "meeting/bellringer.h"
 
+void Bellringer::check (){
+
+}
+
+void Bellringer::job (Bell *bell, int ticks){
+
+}
+
+void Bellringer::cancel (Bell *bell){
+	
+}
