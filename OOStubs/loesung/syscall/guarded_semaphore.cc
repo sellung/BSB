@@ -12,22 +12,22 @@
 #include "syscall/guarded_semaphore.h"
 #include "guard/secure.h"
 
-void Guarded_Semaphore::ready (Thread& that){
+void Guarded_Semaphore::p (Thread& that){
 	Secure secure;
-	ready(that);
+	p();
 }
 
-void Guarded_Semaphore::exit (){
+void Guarded_Semaphore::v (){
 	Secure secure;
-	exit();
+	v();
 }
 
-void Guarded_Semaphore::kill (Thread& that){
+void Guarded_Semaphore::wait (Thread& that){
 	Secure secure;
-	kill(that);
+	wait();
 }
 
-void Guarded_Semaphore::resume (){
+void Guarded_Semaphore::signal (){
 	Secure secure;
-	resume();
+	signal();
 }

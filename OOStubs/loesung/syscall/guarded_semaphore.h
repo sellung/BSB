@@ -11,7 +11,7 @@
 #ifndef __Guarded_Semaphore_include__
 #define __Guarded_Semaphore_include__
 
-#include "thread/organizer.h"
+#include "meeting/semaphore.h"
 #include "thread/thread.h"
         
 class Guarded_Semaphore 
@@ -20,12 +20,12 @@ class Guarded_Semaphore
 private:
     Guarded_Semaphore (const Guarded_Semaphore &copy); // Verhindere Kopieren
 public:
-	Guarded_Semaphore () : Organizer() {}
+	Guarded_Semaphore (int c) : Semaphore(c) {}
 	
-	void ready (Thread& that);
-	void exit ();
-	void kill (Thread& that);
-	void resume ();
+	void p ();
+	void v();
+	void wait ();
+	void signal ();
  };
 
 #endif

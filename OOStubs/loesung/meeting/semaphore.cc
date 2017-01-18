@@ -33,3 +33,11 @@ void Semaphore::v() {
 	}
 	guard.leave();
 }
+
+void Semaphore::wait(){
+	p();
+}
+
+void Semaphore::signal(){
+	v();
+}
