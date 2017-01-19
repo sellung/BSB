@@ -10,13 +10,24 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "meeting/waitingroom.h"
+#include "syscall/guarded_organizer.h"
+#include "thread/entrant.h"
+#include "object/chain.h"
 
 Waitingroom::~Waitingroom(){
-
+	Chain* chain = dequeue();
+	while(chain){
+		Entrant* entrant = (Entrant*)chain;
+		Customer* customer = (Customer*)entrant;
+		scheduler.wakeup(*(customer));
+		chain = dequeue();
+	}
 }
 
 void Waitingroom::remove (Customer* customer) {
-	//Queue::remove(customer);
+	Entrant* entrant = (Entrant*)customer;
+	Chain* chain = (Chain*)entrant;
+	Queue::remove(chain);
 }
 
 

@@ -14,25 +14,27 @@
 #include "guard/secure.h"
 #include "thread/entrant.h"
 #include "thread/coroutine.h"
-#include "syscall/guarded_scheduler.h"
+#include "syscall/guarded_organizer.h"
+#include "thread/organizer.h"
 
-void Semaphore::p() {
+inline void Semaphore::p() {
 	if(counter > 0){
 		counter--;
 	}else{
-		Coroutine* lifeptr = scheduler.active();
-		//Customer* lifeCustomer = (Entrant*)lifeptr;
-		
-		//((Customer*)(Entrant*)lifeptr)->bloc();
+		Customer* lifeCustomer = scheduler.Organizer::active();
+		scheduler.Organizer::block(*(lifeCustomer), *this);
 	}
 }
 
-void Semaphore::v() {
-	Customer* customer;//= dequeue();
-	if(customer != 0){
-		
+inline void Semaphore::v() {
+	Entrant* entrant = (Entrant*)dequeue();
+	if(entrant != 0){
+		Customer* customer = (Customer*)entrant;
+		scheduler.wakeup(*(customer));
 	}else{
 		counter ++;
 	}
 }
+
+//Semaphore::~Semaphore(){}
 

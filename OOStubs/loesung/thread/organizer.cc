@@ -14,21 +14,27 @@
 #include "thread/entrant.h"
 
 void Organizer::block (Customer& customer, Waitingroom& waitingroom){
-	Customer* c = (Customer*)((Entrant*)active());
-	c->waitin_in(&waitingroom);
-	customer.waiting_in(waitingroom);	
-	//resume();
+	customer.waiting_in(&waitingroom);
+	resume();
 }
 
 void Organizer::wakeup (Customer& customer){
 	customer.waiting_in(0);
-	ready(customer)
+	Entrant* entrant  = (Entrant*)&customer;
+	ready(*(entrant));
 }
 
 void Organizer::kill (Customer& that){
-	if(that.wainting){
-		kill(that);
+	if(that.waiting_in()){
+		Entrant* entrant  = (Entrant*)&that;
+		Scheduler::kill(*(entrant));
 	}else{
 		that.waiting_in(0);
 	}
+}
+
+Customer* Organizer::active(){
+	Entrant* entrant  = (Entrant*)Scheduler::active();
+	Customer* customer = (Customer*)entrant;
+	return customer;
 }

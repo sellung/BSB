@@ -19,7 +19,7 @@
 
 Keyboard keyboard;
 
- Guarded_Semaphore semaphore(1);
+//Guarded_Semaphore semaphore(1);
 
 void Keyboard::trigger(){
 	kout.setpos(40, 9);

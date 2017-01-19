@@ -20,7 +20,6 @@ class Semaphore
 private:
     Semaphore (const Semaphore &copy); // Verhindere Kopieren
 	int counter;
-	//Customer* lifeCustomer;
 public:
 	Semaphore (int c): Waitingroom(), counter(c){}
 	inline void p ();

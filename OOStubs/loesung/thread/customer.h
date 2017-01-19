@@ -13,17 +13,15 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/entrant.h"
-#include "meeting/waitingroom.h"
+//#include "meeting/waitingroom.h"
   
 class Waitingroom;
 
 class Customer 
-	: Entrant
-/* Hier muesst ihr selbst Code vervollstaendigen */         
+	: Entrant       
  {
 private:
-    Customer (const Customer &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */   
+    Customer (const Customer &copy); // Verhindere Kopieren  
 	Waitingroom *waitingroom;
 public:
 	Customer(void* tos): Entrant(tos) {} 

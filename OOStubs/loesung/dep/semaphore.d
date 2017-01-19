@@ -3,5 +3,5 @@ build/semaphore.o: meeting/semaphore.cc meeting/semaphore.h \
  thread/entrant.h thread/coroutine.h machine/toc.h guard/guard.h \
  guard/locker.h device/cgastr.h object/o_stream.h object/strbuf.h \
  machine/cgascr.h machine/io_port.h guard/gate.h guard/secure.h \
- syscall/guarded_scheduler.h thread/scheduler.h thread/dispatch.h \
- syscall/thread.h
+ syscall/guarded_organizer.h syscall/thread.h thread/organizer.h \
+ thread/scheduler.h thread/dispatch.h

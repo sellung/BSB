@@ -24,22 +24,20 @@
 // #include "machine/plugbox.h"
 
 class Keyboard 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
 :public Gate , public Keyboard_Controller      
 {        
 private:
-    Keyboard (const Keyboard &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */                 
+    Keyboard (const Keyboard &copy); // Verhindere Kopieren              
 //CGA_Screen cgaScreen;
     int count;
     Key key;
+    Guarded_Semaphore semaphore;
 public:
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
- 	Keyboard() :Keyboard_Controller(), count(0) {}
+
+ 	Keyboard() :Keyboard_Controller(), count(0), semaphore(1) {}
     // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
     void plugin ();
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
    	void trigger ();
    	char* tostring();
    	void hello();

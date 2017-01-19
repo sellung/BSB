@@ -26,7 +26,7 @@ public:
 	void block (Customer& customer, Waitingroom& waitingroom);
 	void wakeup (Customer& customer);
 	void kill (Customer& that);
-
+	Customer* active();
 };
 
 #endif
