@@ -20,8 +20,16 @@ class Guarded_Organizer
 private:
       Guarded_Organizer (const Guarded_Organizer &copy); // Verhindere Kopieren
 public:
-      Guarded_Organizer () {}
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+      Guarded_Organizer () : Organizer() {}
+
+	void block (Customer& customer, Waitingroom& waitingroom);
+	void wakeup (Customer& customer);
+	void kill (Customer& that);
+
+	void ready(Thread& that);
+	void exit();
+	void kill(Thread& that);
+	void resume();
  };
 
  extern Guarded_Organizer scheduler;

@@ -23,7 +23,7 @@ private:
     Bell(const Bell &copy); // Verhindere Kopieren
     int timetowait;
 public:
-    Bell() : Chain {}
+    Bell() : Chain() {}
 
     void wait (int value) { timetowait = value;}
     int wait () { return timetowait; };

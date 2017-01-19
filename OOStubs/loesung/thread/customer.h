@@ -14,7 +14,9 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/entrant.h"
 #include "meeting/waitingroom.h"
-        
+  
+class Waitingroom;
+
 class Customer 
 	: Entrant
 /* Hier muesst ihr selbst Code vervollstaendigen */         

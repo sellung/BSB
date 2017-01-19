@@ -13,22 +13,35 @@
 #include "guard/secure.h"
 
 
-void Guarded_Semaphore::ready (Thread& that){
+void Guarded_Organizer::ready (Thread& that){
 	Secure secure;
 	ready(that);
 }
 
-void Guarded_Semaphore::exit (){
+void Guarded_Organizer::exit (){
 	Secure secure;
 	exit();
 }
 
-void Guarded_Semaphore::kill (Thread& that){
+void Guarded_Organizer::kill (Thread& that){
 	Secure secure;
 	kill(that);
 }
 
-void Guarded_Semaphore::resume (){
+void Guarded_Organizer::resume (){
 	Secure secure;
 	resume();
+}
+
+void Guarded_Organizer::block (Customer& customer, Waitingroom& waitingroom){
+	Secure secure;
+	Organizer::block(customer, waitingroom);
+}
+void Guarded_Organizer::wakeup (Customer& customer){
+	Secure secure;
+	Organizer::wakeup(customer);
+}
+void Guarded_Organizer::kill (Customer& that){
+	Secure secure;
+	Organizer::kill(that);
 }

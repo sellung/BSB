@@ -11,13 +11,13 @@
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/organizer.h"
-#include "thread/entrant"
+#include "thread/entrant.h"
 
 void Organizer::block (Customer& customer, Waitingroom& waitingroom){
-	//Customer* c = (Customer*)((Entrant*)active());
-	//c->waitin_in(&waitingroom);
+	Customer* c = (Customer*)((Entrant*)active());
+	c->waitin_in(&waitingroom);
 	customer.waiting_in(waitingroom);	
-	resume();
+	//resume();
 }
 
 void Organizer::wakeup (Customer& customer){

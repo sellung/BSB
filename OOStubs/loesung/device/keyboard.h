@@ -33,7 +33,6 @@ private:
 //CGA_Screen cgaScreen;
     int count;
     Key key;
-    Guarded_Semaphore semaphore(1);
 public:
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
  	Keyboard() :Keyboard_Controller(), count(0) {}

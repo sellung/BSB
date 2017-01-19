@@ -9,35 +9,30 @@
 /*****************************************************************************/
 
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
-#include "meeting/Semaphore.h"
+#include "meeting/semaphore.h"
 #include "guard/guard.h"
 #include "guard/secure.h"
+#include "thread/entrant.h"
+#include "thread/coroutine.h"
+#include "syscall/guarded_scheduler.h"
 
 void Semaphore::p() {
-	guard.enter();
-	if(c > 0){
-		c--;
+	if(counter > 0){
+		counter--;
 	}else{
-		enqueue(lifeCustomer);
+		Coroutine* lifeptr = scheduler.active();
+		//Customer* lifeCustomer = (Entrant*)lifeptr;
+		
+		//((Customer*)(Entrant*)lifeptr)->bloc();
 	}
-	guard.leave();
 }
 
 void Semaphore::v() {
-	guard.enter();
-	Customer* customer = dequeue();
+	Customer* customer;//= dequeue();
 	if(customer != 0){
 		
 	}else{
 		counter ++;
 	}
-	guard.leave();
 }
 
-void Semaphore::wait(){
-	p();
-}
-
-void Semaphore::signal(){
-	v();
-}

@@ -20,7 +20,7 @@ class Semaphore
 private:
     Semaphore (const Semaphore &copy); // Verhindere Kopieren
 	int counter;
-	Customer* lifeCustomer;
+	//Customer* lifeCustomer;
 public:
 	Semaphore (int c): Waitingroom(), counter(c){}
 	inline void p ();
@@ -28,6 +28,8 @@ public:
 	
 	void wait (){ p(); }
 	void signal() { v(); }
+
+	virtual ~Semaphore ();
  };
 
 #endif

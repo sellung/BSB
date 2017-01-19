@@ -12,10 +12,9 @@
 #define __Guarded_Semaphore_include__
 
 #include "meeting/semaphore.h"
-#include "thread/thread.h"
         
 class Guarded_Semaphore 
-	: Organizer
+	: Semaphore
  {
 private:
     Guarded_Semaphore (const Guarded_Semaphore &copy); // Verhindere Kopieren

@@ -11,10 +11,12 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "meeting/waitingroom.h"
 
-Waitingroom::~Waitingroom(){}
+Waitingroom::~Waitingroom(){
+
+}
 
 void Waitingroom::remove (Customer* customer) {
-
+	//Queue::remove(customer);
 }
 
 

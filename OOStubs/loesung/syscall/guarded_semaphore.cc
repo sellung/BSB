@@ -12,7 +12,7 @@
 #include "syscall/guarded_semaphore.h"
 #include "guard/secure.h"
 
-void Guarded_Semaphore::p (Thread& that){
+void Guarded_Semaphore::p (){
 	Secure secure;
 	p();
 }
@@ -22,7 +22,7 @@ void Guarded_Semaphore::v (){
 	v();
 }
 
-void Guarded_Semaphore::wait (Thread& that){
+void Guarded_Semaphore::wait (){
 	Secure secure;
 	wait();
 }

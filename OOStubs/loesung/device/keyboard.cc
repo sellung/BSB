@@ -19,6 +19,8 @@
 
 Keyboard keyboard;
 
+ Guarded_Semaphore semaphore(1);
+
 void Keyboard::trigger(){
 	kout.setpos(40, 9);
 	kout << "Keyboard hit " << count;
@@ -89,5 +91,6 @@ void Keyboard::epilogue(){
 }
 
 Key Keyboard::getkey(){
-	
+
+return key;
 }
