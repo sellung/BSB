@@ -17,7 +17,7 @@
 #include "thread/customer.h"
 
 class Organizer 
-	: Scheduler
+	: public Scheduler
 {
 private:
     Organizer(const Organizer &copy); // Verhindere Kopieren

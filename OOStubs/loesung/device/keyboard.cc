@@ -70,7 +70,7 @@ bool Keyboard::prologue(){
 }
 
 void Keyboard::epilogue(){
-	semaphore.wait();
+	//semaphore.wait();
 
 	/*
 	kout.setpos(40, 9);

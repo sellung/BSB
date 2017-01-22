@@ -17,7 +17,7 @@
 #include "syscall/guarded_organizer.h"
 #include "thread/organizer.h"
 
-inline void Semaphore::p() {
+void Semaphore::p() {
 	if(counter > 0){
 		counter--;
 	}else{
@@ -26,7 +26,7 @@ inline void Semaphore::p() {
 	}
 }
 
-inline void Semaphore::v() {
+void Semaphore::v() {
 	Entrant* entrant = (Entrant*)dequeue();
 	if(entrant != 0){
 		Customer* customer = (Customer*)entrant;
@@ -36,5 +36,5 @@ inline void Semaphore::v() {
 	}
 }
 
-//Semaphore::~Semaphore(){}
+Semaphore::~Semaphore(){}
 

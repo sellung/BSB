@@ -12,14 +12,20 @@
 #ifndef __Buzzer_include__
 #define __Buzzer_include__
 
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+#include "meeting/bell.h"
+#include "meeting/waitingroom.h"
 
 class Buzzer
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+	: public Bell, public Waitingroom
 {
 private:
     Buzzer(const Buzzer &copy); // Verhindere Kopieren
-/* Hier muesst ihr selbst Code vervollstaendigen */ 
+public:
+	Buzzer () Bell(), Waitingroom() {}
+	virtual ~Buzzer ();
+	virtual void ring ();
+	void set (int ms);
+	void sleep ();
 };
 
 #endif

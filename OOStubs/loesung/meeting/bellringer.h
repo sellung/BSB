@@ -17,7 +17,7 @@
 #include "meeting/bell.h"
 
 class Bellringer
-	: List
+	: public List
 {
 private:
    Bellringer(const Bellringer &copy); // Verhindere Kopieren
@@ -28,5 +28,7 @@ public:
    void job (Bell *bell, int ticks);
    void cancel (Bell *bell);
 };
+
+extern Bellringer bellringer;
 
 #endif

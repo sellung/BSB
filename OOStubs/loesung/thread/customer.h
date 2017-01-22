@@ -18,7 +18,7 @@
 class Waitingroom;
 
 class Customer 
-	: Entrant       
+	: public Entrant       
  {
 private:
     Customer (const Customer &copy); // Verhindere Kopieren  

@@ -11,20 +11,29 @@
 /*****************************************************************************/
 
 #include "meeting/bellringer.h"
+#include "syscall/guarded_organizer.h"
+#include "object/chain.h"
+
+Bellringer bellringer;
 
 void Bellringer::check (){
-	Bell* bell = (Bell*)first();
-	while(bell){
-		if(bell->wait()){
-			
+	//Bell* bell = (Bell*)first();
+	Chain* chain = first();
+	while(chain){
+		Bell* bell = (Bell*) chain;
+		if(bell->run_down()){
+			bell->ring();
+		}else{
+			cancel(bell);
 		}
+		chain = chain->next;
 	}
 }
 
 void Bellringer::job (Bell *bell, int ticks){
-
+	bell->wait(ticks);
 }
 
 void Bellringer::cancel (Bell *bell){
-	
+	bell->tick();
 }

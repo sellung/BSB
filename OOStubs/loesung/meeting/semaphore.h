@@ -14,7 +14,7 @@
 #include "meeting/waitingroom.h"
 
 class Semaphore 
-	: Waitingroom
+	: public Waitingroom
 /* Hier muesst ihr selbst Code vervollstaendigen */         
  {
 private:
@@ -22,8 +22,11 @@ private:
 	int counter;
 public:
 	Semaphore (int c): Waitingroom(), counter(c){}
-	inline void p ();
-	inline void v ();
+	//inline void p ();
+	//inline void v ();
+
+	 void p ();
+	 void v ();
 	
 	void wait (){ p(); }
 	void signal() { v(); }
