@@ -23,8 +23,9 @@ void Bellringer::check (){
 		Bell* bell = (Bell*) chain;
 		if(bell->run_down()){
 			bell->ring();
+			remove(chain);
 		}else{
-			cancel(bell);
+			bell->tick();
 		}
 		chain = chain->next;
 	}
@@ -32,8 +33,9 @@ void Bellringer::check (){
 
 void Bellringer::job (Bell *bell, int ticks){
 	bell->wait(ticks);
+	insert_first((Chain*)bell);
 }
 
 void Bellringer::cancel (Bell *bell){
-	bell->tick();
+	remove((Chain*)bell);
 }

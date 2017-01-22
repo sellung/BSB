@@ -21,7 +21,7 @@ class Buzzer
 private:
     Buzzer(const Buzzer &copy); // Verhindere Kopieren
 public:
-	Buzzer () Bell(), Waitingroom() {}
+	Buzzer (): Bell(), Waitingroom() {}
 	virtual ~Buzzer ();
 	virtual void ring ();
 	void set (int ms);
