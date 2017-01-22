@@ -15,6 +15,7 @@
 #include "device/watch.h"
 #include "guard/guard.h"
 #include "machine/plugbox.h"
+#include "meeting/bellringe.h"
 
 /* FUNKTIONEN */
                
@@ -31,6 +32,17 @@ bool wait = true;
 
 void guardian (unsigned int slot)
 {
+	if(slot == plugbox.timer){
+		(plugbox.report(slot)).prologue();
+		bellringe.check();
+	}
+	if(slot == plugbox.keyboard){
+
+	}
+	Gate *g = &(plugbox.report(slot));
+	guard.relay(g);
+
+	/*
 	count_interrupt ++;
 	if(wait_guardiant_PIT && slot == plugbox.timer){
 		return;
@@ -39,6 +51,6 @@ void guardian (unsigned int slot)
 	(plugbox.report(slot)).prologue();
 	
 	Gate *g = &(plugbox.report(slot));
-	guard.relay(g);
+	guard.relay(g);*/
 }
 
