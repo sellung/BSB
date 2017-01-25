@@ -42,6 +42,7 @@ void Application::action ()
 		};
 		i++;
 		//scheduler.resume();
+		//scheduler.Scheduler::resume();
 	}
  }
  
@@ -49,13 +50,14 @@ void Application::action ()
  {
  	
  	count_interrupt = 0;
- 	int col = 1; int row = 23;
+ 	int col = 1; int row = 24;
 	kout.setpos(col, row);
-	kout << "AUFGABE STARTET IN " ;
+	kout << "TIME: " ;
 	kout.flush();
  	while(1){
 		unsigned long int val;
 		val = count_interrupt/watch.interval();
-		watch.show_digit(val, col+19, row);
+		watch.show_digit(val, col+6, row);
+		//scheduler.Scheduler::resume();
 	}
  }

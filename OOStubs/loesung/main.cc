@@ -33,7 +33,7 @@ int main()
 	//watch.time();
 	
 	kout.clearscreen();
-	watch.time();
+	//watch.time();
 
 	// kout << "size of stack_1: " << sizeof(stack_1) << endl;
 	// kout << "size of stack_2: " << sizeof(stack_2) << endl;

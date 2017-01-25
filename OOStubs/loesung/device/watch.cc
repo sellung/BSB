@@ -33,10 +33,10 @@ bool Watch::prologue (){
 
 void Watch::epilogue (){
 	//kout << "epilogue" <<endl;
-	//scheduler.Scheduler::resume();
+	scheduler.Scheduler::resume();
 	
-	count_interrupt++;
-	bellringer.check();
+	//count_interrupt++;
+	//bellringer.check();
 }
 
 char* Watch::tostring(){
