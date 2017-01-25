@@ -41,6 +41,7 @@ public:
     void sleep(int t);
 
     void show_digit(int to_show, int col, int row);
+    void time();
  };
 
 extern Watch watch;

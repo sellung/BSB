@@ -3,5 +3,6 @@ build/main.o: main.cc thread/scheduler.h thread/dispatch.h machine/toc.h \
  user/appl.h syscall/thread.h device/cgastr.h object/o_stream.h \
  object/strbuf.h machine/cgascr.h machine/io_port.h thread/dispatch.h \
  guard/secure.h guard/guard.h guard/locker.h device/cgastr.h guard/gate.h \
- syscall/guarded_scheduler.h thread/scheduler.h device/watch.h \
- machine/pit.h machine/cpu.h guard/guard.h
+ syscall/guarded_organizer.h thread/organizer.h thread/scheduler.h \
+ thread/customer.h device/watch.h machine/pit.h machine/cpu.h \
+ guard/guard.h

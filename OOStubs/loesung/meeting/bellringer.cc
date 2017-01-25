@@ -17,15 +17,13 @@
 Bellringer bellringer;
 
 void Bellringer::check (){
-	//Bell* bell = (Bell*)first();
 	Chain* chain = first();
 	while(chain){
 		Bell* bell = (Bell*) chain;
+		bell->tick();
 		if(bell->run_down()){
 			bell->ring();
 			remove(chain);
-		}else{
-			bell->tick();
 		}
 		chain = chain->next;
 	}

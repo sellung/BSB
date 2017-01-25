@@ -30,5 +30,22 @@ public:
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
  };
+ 
+ class EmptyApp : public Thread
+ 
+ {
+private:
+    EmptyApp (const EmptyApp &copy); // Verhindere Kopieren
+
+public:
+	int row;
+	int col;
+	int i;
+	int id;
+
+    EmptyApp(void* tos): Thread(tos), i(0){} 
+    void action ();
+    void setCoord(int c, int r){ col = c; row = r;}
+ };
 
 #endif

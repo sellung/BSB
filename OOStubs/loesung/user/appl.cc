@@ -13,7 +13,8 @@
 #include "user/appl.h"
 #include "device/cgastr.h"
 #include "thread/scheduler.h"
-#include "syscall/guarded_scheduler.h"
+//#include "syscall/guarded_scheduler.h"
+#include "syscall/guarded_organizer.h"
 
 #include "guard/secure.h"
 #include "device/watch.h"
@@ -41,5 +42,20 @@ void Application::action ()
 		};
 		i++;
 		//scheduler.resume();
+	}
+ }
+ 
+ void EmptyApp::action ()
+ {
+ 	
+ 	count_interrupt = 0;
+ 	int col = 1; int row = 23;
+	kout.setpos(col, row);
+	kout << "AUFGABE STARTET IN " ;
+	kout.flush();
+ 	while(1){
+		unsigned long int val;
+		val = count_interrupt/watch.interval();
+		watch.show_digit(val, col+19, row);
 	}
  }

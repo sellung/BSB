@@ -7,7 +7,8 @@
 #include "device/cgastr.h"
 #include "thread/dispatch.h"
 #include "guard/secure.h"
-#include "syscall/guarded_scheduler.h"
+//#include "syscall/guarded_scheduler.h"
+#include "syscall/guarded_organizer.h"
 #include "device/watch.h"
 #include "machine/cpu.h"
 #include "guard/guard.h"
@@ -16,7 +17,6 @@ void* stack_1[1024];
 void* stack_2[1024];
 void* stack_3[1024];
 
-Guarded_Scheduler scheduler;
 Watch watch(100);
 
 int main()
@@ -29,16 +29,17 @@ int main()
 
 	watch.windup();
 	
-	watch.sleep(5);
-
+	//watch.sleep(5);
+	//watch.time();
+	
 	kout.clearscreen();
-
+	watch.time();
 
 	// kout << "size of stack_1: " << sizeof(stack_1) << endl;
 	// kout << "size of stack_2: " << sizeof(stack_2) << endl;
 	// kout << "size of stack_3: " << sizeof(stack_3) << endl;
  
-	Application app1(&stack_1[1024]);
+	EmptyApp app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
 	Application app3(&stack_3[1024]);
 	

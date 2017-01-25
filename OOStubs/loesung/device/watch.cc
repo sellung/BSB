@@ -10,13 +10,16 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "device/watch.h"
 #include "device/cgastr.h"
-#include "syscall/guarded_scheduler.h"
+//#include "syscall/guarded_scheduler.h"
 #include "machine/plugbox.h"
 #include "machine/pic.h"
+#include "syscall/guarded_organizer.h"
+#include "meeting/bellringer.h"
 
 //Plugbox plugbox;
 //PIC pic;
 
+int count_interrupt = 0;
 bool wait_guardiant_PIT = false;
 
 void Watch::windup (){
@@ -30,7 +33,10 @@ bool Watch::prologue (){
 
 void Watch::epilogue (){
 	//kout << "epilogue" <<endl;
-	scheduler.Scheduler::resume();
+	//scheduler.Scheduler::resume();
+	
+	count_interrupt++;
+	bellringer.check();
 }
 
 char* Watch::tostring(){
@@ -57,6 +63,20 @@ void Watch::sleep(int delay){
 	}
 	count_interrupt = 0;
 	wait_guardiant_PIT = false;
+}
+
+void Watch::time(){
+	count_interrupt = 0;
+	int col = 1; int row = 23;
+	kout.setpos(col, row);
+	kout << "AUFGABE STARTET IN " ;
+	kout.flush();
+	unsigned long int val;
+	while(1){
+		val = count_interrupt/interval();
+		show_digit(val, col+19, row);
+	}
+	count_interrupt = 0;
 }
 
 void Watch::show_digit(int to_show, int col, int row){

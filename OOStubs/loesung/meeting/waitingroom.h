@@ -21,7 +21,6 @@ class Waitingroom
 {
 private:
     Waitingroom(const Waitingroom &copy); // Verhindere Kopieren
-    //Customer* lifecustomer;
 public:
     Waitingroom() : Queue() {}
 	

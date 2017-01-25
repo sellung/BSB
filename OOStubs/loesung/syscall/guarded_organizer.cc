@@ -12,7 +12,7 @@
 #include "syscall/guarded_organizer.h"
 #include "guard/secure.h"
 
-//Guarded_Organizer scheduler;
+Guarded_Organizer scheduler;
 
 void Guarded_Organizer::ready (Thread& that){
 	Secure secure;

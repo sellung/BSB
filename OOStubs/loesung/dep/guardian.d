@@ -5,4 +5,5 @@ build/guardian.o: guard/guardian.cc device/cgastr.h object/o_stream.h \
  meeting/semaphore.h meeting/waitingroom.h object/queue.h \
  thread/customer.h thread/entrant.h thread/coroutine.h machine/toc.h \
  device/watch.h machine/pit.h guard/guard.h guard/locker.h \
- machine/plugbox.h device/panic.h machine/cpu.h
+ machine/plugbox.h device/panic.h machine/cpu.h meeting/bellringer.h \
+ object/list.h meeting/bell.h

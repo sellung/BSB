@@ -14,27 +14,25 @@
 #include "meeting/buzzer.h"
 #include "meeting/bellringer.h"
 #include "thread/customer.h"
-#include "object/chain.h"
+#include "syscall/guarded_organizer.h"
 
 Buzzer::~Buzzer (){
 	bellringer.cancel(this);
-	Waittingroom::~Waittingroom();
 }
 
 void Buzzer::ring (){
-	Chain* chain = dequeue();
-	while(chain){
-		Entrant* entrant = (Entrant*)chain;
-		Customer* customer = (Customer*)entrant;
+	Customer* customer = (Customer*)Waitingroom::dequeue();
+	while(customer){
 		scheduler.wakeup(*(customer));
-		chain = dequeue();
+		customer = (Customer*) dequeue();
 	}
 }
 
 void Buzzer::set (int ms){
-	bellringer.job(this, ms)
+	bellringer.job(this, ms);
 }
 
 void Buzzer::sleep (){
-	tick();
+	bellringer.cancel(this);
+	
 }
