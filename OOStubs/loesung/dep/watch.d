@@ -3,5 +3,6 @@ build/watch.o: device/watch.cc device/watch.h guard/gate.h object/chain.h \
  object/strbuf.h machine/cgascr.h machine/plugbox.h device/panic.h \
  machine/cpu.h machine/pic.h machine/cpu.h syscall/guarded_organizer.h \
  syscall/thread.h thread/entrant.h thread/coroutine.h machine/toc.h \
- thread/organizer.h thread/scheduler.h thread/dispatch.h object/queue.h \
- thread/customer.h meeting/bellringer.h object/list.h meeting/bell.h
+ thread/customer.h thread/organizer.h thread/scheduler.h \
+ thread/dispatch.h object/queue.h meeting/bellringer.h object/list.h \
+ meeting/bell.h

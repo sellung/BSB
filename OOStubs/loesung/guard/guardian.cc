@@ -32,18 +32,19 @@ bool wait = true;
 
 void guardian (unsigned int slot)
 {
-	/*if(slot == plugbox.timer){
-		//(plugbox.report(slot)).prologue();
-		//bellringe.check();
+	if(slot == plugbox.timer){
+		count_interrupt ++;
+		//kout << "guardian" << endl;
 	}
-	if(slot == plugbox.keyboard){
+	//kout << "guardian2" << endl;
+	//if(slot == plugbox.keyboard){
 
-	}
-	Gate *g = &(plugbox.report(slot));
-	guard.relay(g);
-		*/
+	//}
+	//Gate *g = &(plugbox.report(slot));
+	//guard.relay(g);
+		
 	
-	count_interrupt ++;
+	
 	//if(wait_guardiant_PIT && slot == plugbox.timer){
 	//	return;
 	//}

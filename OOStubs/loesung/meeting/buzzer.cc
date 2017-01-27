@@ -16,6 +16,8 @@
 #include "thread/customer.h"
 #include "syscall/guarded_organizer.h"
 
+#include "device/cgastr.h"
+
 Buzzer::~Buzzer (){
 	bellringer.cancel(this);
 }
@@ -23,7 +25,8 @@ Buzzer::~Buzzer (){
 void Buzzer::ring (){
 	Customer* customer = (Customer*)Waitingroom::dequeue();
 	while(customer){
-		scheduler.wakeup(*(customer));
+		//kout << "wakeup" << endl;
+		scheduler.Organizer::wakeup(*(customer));
 		customer = (Customer*) dequeue();
 	}
 }

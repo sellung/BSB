@@ -14,6 +14,8 @@
 #include "syscall/guarded_organizer.h"
 #include "object/chain.h"
 
+#include "device/cgastr.h"
+
 Bellringer bellringer;
 
 void Bellringer::check (){
@@ -21,7 +23,9 @@ void Bellringer::check (){
 	while(chain){
 		Bell* bell = (Bell*) chain;
 		bell->tick();
+		//kout << " bell " << bell->wait() << " s" << endl;
 		if(bell->run_down()){
+			//kout << " context wechsel " << endl;
 			bell->ring();
 			remove(chain);
 		}

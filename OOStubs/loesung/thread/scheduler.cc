@@ -24,7 +24,9 @@ void Scheduler::ready(Entrant& that) {
 }
 
 void Scheduler::schedule() {
+	kout << "Scheduler" << endl;
 	Entrant* entrant  = (Entrant*)readylist.dequeue();
+	kout << "Scheduler2" << endl;
 	Dispatcher::go(*entrant);	
 }
 

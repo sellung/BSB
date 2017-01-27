@@ -34,7 +34,7 @@ void PIC::allow(int interrupt_device){
 	ocw1.outb(c);
 	kout.setpos(59, 0);
 	kout <<"PIC STATUS: " << bin << c << endl;
-	cpu.enable_int();
+	//cpu.enable_int();
 }
 		
 /**
@@ -42,10 +42,10 @@ void PIC::allow(int interrupt_device){
 * an der Prozessor weiterleitet.
 */
 void PIC::forbid(int interrupt_device){
-	kout << "forbid" << endl;
+	//kout << "forbid" << endl;
 	int c = ocw1.inb();
 	c |= (1<<interrupt_device);
 	ocw1.outb(c);
-	kout << c <<" " << bin << c << endl;
-	cpu.disable_int();
+	//kout << c <<" " << bin << c << endl;
+	//cpu.disable_int();
 }
