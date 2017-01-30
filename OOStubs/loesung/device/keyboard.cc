@@ -90,7 +90,7 @@ void Keyboard::epilogue(){
     if(a == 0x53 && (key.ctrl_left() && key.alt_left())){
     	reboot();
     }	*/
-	//getkey();
+	getkey();
 }
 
 Key Keyboard::getkey(){
@@ -100,7 +100,7 @@ Key Keyboard::getkey(){
 	//kout.setpos(40, 9);
 	//kout << "Keyboard hit " << count;
 	//kout.flush();
-	count ++;
+	//count ++;
 
 	kout.setcolor(0x03);
 	kout.setpos(10, 10);

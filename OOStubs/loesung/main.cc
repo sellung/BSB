@@ -58,6 +58,7 @@ int main()
 	EmptyApp app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
 	Application app3(&stack_3[1024]);
+	Keyboard_App app4(&stack_4[1024]);
 	
 	int col = 30;
 	int row = 8;
@@ -75,20 +76,26 @@ int main()
 	app3.color = 0x05;
 	app3.setCoord(col, row + 4);
 	app3.id = 3;
+
+	app4.setName("App4");
+	app4.color = 0x06;
+	app4.setCoord(col, row + 6);
+	app4.id = 3;
 	
 	//cpu.enable
 	scheduler.Organizer::ready(app1);
-	//scheduler.Scheduler::ready(app2);
+	//scheduler.Scheduler::ready(app4);
+	//scheduler.Scheduler::ready(app2);		
 	//scheduler.Scheduler::ready(app3);		
 
 	buzzer1.enqueue((Chain*)&app2);
 	buzzer2.enqueue((Chain*)&app3);
 
-	bellringer.job(&buzzer1, 5);
-	bellringer.job(&buzzer2, 10);
+	//bellringer.job(&buzzer1, 5);
+	//bellringer.job(&buzzer2, 10);
 
 	scheduler.schedule();
 
-	Guarded_Keyboard guarded_keyboard;
-	guarded_keyboard.getkey();
+	//Guarded_Keyboard guarded_keyboard;
+	//guarded_keyboard.getkey();
 }
