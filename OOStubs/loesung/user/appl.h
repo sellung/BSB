@@ -15,6 +15,7 @@
 #include "syscall/thread.h"
 #include "machine/key.h"
 #include "syscall/guarded_keyboard.h"
+#include "syscall/guarded_buzzer.h"
 
 class Application : public Thread
  
@@ -23,12 +24,15 @@ private:
     Application (const Application &copy); // Verhindere Kopieren
 
 public:
+	Guarded_Buzzer buzzer;
 	int row;
 	int col;
 	int i;
 	int id;
 
-    Application(void* tos): Thread(tos), i(0){} 
+    Application(void* tos): Thread(tos), i(0){
+		buzzer.set(10);
+	} 
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
  };
@@ -43,13 +47,16 @@ private:
     Guarded_Keyboard guarded_keyboard;
     Key key;
 public:
+	Guarded_Buzzer buzzer;
 	int row;
 	int col;
 	int i;
 	int id;
 	int count;
 
-    Keyboard_App(void* tos): Thread(tos), i(0), count(0){} 
+    Keyboard_App(void* tos): Thread(tos), i(0), count(0){
+		//buzzer.set(10);
+	} 
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
  };

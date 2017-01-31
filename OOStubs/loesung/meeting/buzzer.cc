@@ -36,6 +36,9 @@ void Buzzer::set (int ms){
 }
 
 void Buzzer::sleep (){
-	bellringer.cancel(this);
-	
+	//bellringer.cancel(this);
+	Customer* lifeCustomer = scheduler.Organizer::active();
+	Waitingroom* w = this;
+	lifeCustomer->waiting_in(this); 
+	scheduler.Organizer::exit();
 }

@@ -23,7 +23,7 @@
 //#include "guard/guard.h"
 
 /* Hier muesst ihr selbst Code vervollstaendigen *         
-#include "device/keyboard.h"
+
 #include "machine/cpu.h"
 #include "guard/secure.h"
 /* GLOBALE VARIABLEN */
@@ -69,18 +69,25 @@ void Application::action ()
  void Keyboard_App::action ()
  {
  	while(1){
+		Secure secure;
+		
+			key = guarded_keyboard.Keyboard::getkey();
+		
+			//guarded_keyboard.Scheduler::resume();	
+		
  		//kout << "keyboard app" << endl;
- 		key = guarded_keyboard.getkey();
+ 		
 		/*count ++;
 		kout.setpos(40, 9);
 		kout << "Keyboard hit " << count;
 		kout.flush();
-		count ++;
+		count ++;*/
 
 		kout.setcolor(0x03);
 		kout.setpos(10, 10);
 	    kout << key.ascii() ;
 	    kout.flush();
-	    kout.resetcolor();*/
+	    kout.resetcolor();
+	    
  	}
  }

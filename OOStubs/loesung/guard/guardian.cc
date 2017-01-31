@@ -35,7 +35,15 @@ void guardian (unsigned int slot)
 	if(slot == plugbox.timer){
 		count_interrupt ++;
 		//kout << "guardian" << endl;
+		//kout << "guardian_timer" << endl;
+		Gate *g = &(plugbox.report(slot));
+		guard.relay(g);
+	}else if(slot == plugbox.keyboard){
+		//kout << "guardian_keyboard" << endl;
+		Gate *g = &(plugbox.report(slot));
+		guard.relay(g);
 	}
+	//kout << "guardian" << endl;
 	//kout << "guardian2" << endl;
 	//if(slot == plugbox.keyboard){
 
@@ -52,7 +60,6 @@ void guardian (unsigned int slot)
 	//(plugbox.report(slot)).prologue();
 	
 	//kout << "interrupt" << endl;
-	Gate *g = &(plugbox.report(slot));
-	guard.relay(g);
+	
 }
 

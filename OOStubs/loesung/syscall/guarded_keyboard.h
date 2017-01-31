@@ -15,7 +15,7 @@
 #include "machine/key.h"
         
 class Guarded_Keyboard 
-	: Keyboard
+	: public Keyboard
  {
 private:
       Guarded_Keyboard (const Guarded_Keyboard &copy); // Verhindere Kopieren

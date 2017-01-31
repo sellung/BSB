@@ -34,11 +34,10 @@ int main()
 
 	//kout.startMsg();
 
-	keyboard.plugin();
-
-	watch.windup();
-
 	//keyboard.plugin();
+	keyboard.plugin();
+	
+	watch.windup();
 
 	kout << "salut pantos2" << endl;
 	//watch.sleep(5);
@@ -84,15 +83,15 @@ int main()
 	
 	//cpu.enable
 	scheduler.Organizer::ready(app1);
-	//scheduler.Scheduler::ready(app4);
+	scheduler.Scheduler::ready(app4);
 	//scheduler.Scheduler::ready(app2);		
 	//scheduler.Scheduler::ready(app3);		
 
-	buzzer1.enqueue((Chain*)&app2);
-	buzzer2.enqueue((Chain*)&app3);
+	//buzzer1.enqueue((Chain*)&app2);
+	//buzzer2.enqueue((Chain*)&app3);
 
-	//bellringer.job(&buzzer1, 5);
-	//bellringer.job(&buzzer2, 10);
+	bellringer.job(&buzzer1, 5);
+	bellringer.job(&buzzer2, 10);
 
 	scheduler.schedule();
 

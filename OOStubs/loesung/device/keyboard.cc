@@ -95,18 +95,19 @@ void Keyboard::epilogue(){
 
 Key Keyboard::getkey(){
 
-	keyboard_sem.Semaphore::p();
 	
 	//kout.setpos(40, 9);
 	//kout << "Keyboard hit " << count;
 	//kout.flush();
 	//count ++;
 
-	kout.setcolor(0x03);
+	/*kout.setcolor(0x03);
 	kout.setpos(10, 10);
     kout << key.ascii() ;
     kout.flush();
-    kout.resetcolor();
-
+    kout.resetcolor();*/
+	
+	keyboard_sem.Semaphore::p();
+	
 	return key;
 }

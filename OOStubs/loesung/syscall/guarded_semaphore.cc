@@ -12,7 +12,7 @@
 #include "syscall/guarded_semaphore.h"
 #include "guard/secure.h"
 
-Guarded_Semaphore keyboard_sem(1);
+//Guarded_Semaphore keyboard_sem(1);
 
 void Guarded_Semaphore::p (){
 	Secure secure;

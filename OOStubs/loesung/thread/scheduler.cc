@@ -24,9 +24,8 @@ void Scheduler::ready(Entrant& that) {
 }
 
 void Scheduler::schedule() {
-	kout << "Scheduler" << endl;
 	Entrant* entrant  = (Entrant*)readylist.dequeue();
-	kout << "Scheduler2" << endl;
+	//kout << "Schedule()" << endl;
 	Dispatcher::go(*entrant);	
 }
 
@@ -42,6 +41,7 @@ void Scheduler::kill(Entrant& that) {
 	//schedule();
 }
 void Scheduler::resume(){
+	//kout << "resume()" << endl;
 	Entrant* entrant  = (Entrant*) active();
 	//cpu.disable_int();
 	readylist.enqueue(entrant);
