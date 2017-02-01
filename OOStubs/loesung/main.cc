@@ -34,26 +34,12 @@ int main()
 
 	//kout.startMsg();
 
-	//keyboard.plugin();
 	keyboard.plugin();
 	
 	watch.windup();
 
 	kout << "salut pantos2" << endl;
-	//watch.sleep(5);
-	//watch.time();
 	
-	//kout.clearscreen();
-	//watch.time();
-
-	// kout << "size of stack_1: " << sizeof(stack_1) << endl;
-	// kout << "size of stack_2: " << sizeof(stack_2) << endl;
-	// kout << "size of stack_3: " << sizeof(stack_3) << endl;
- 
-	Guarded_Buzzer buzzer1;
-	Guarded_Buzzer buzzer2;
-	//Guarded_Buzzer buzzer3;
-
 	EmptyApp app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
 	Application app3(&stack_3[1024]);
@@ -80,21 +66,11 @@ int main()
 	app4.color = 0x06;
 	app4.setCoord(col, row + 6);
 	app4.id = 3;
-	
-	//cpu.enable
+
 	scheduler.Organizer::ready(app1);
-	scheduler.Scheduler::ready(app4);
-	//scheduler.Scheduler::ready(app2);		
+	//scheduler.Scheduler::ready(app4);
+	scheduler.Scheduler::ready(app2);		
 	//scheduler.Scheduler::ready(app3);		
-
-	//buzzer1.enqueue((Chain*)&app2);
-	//buzzer2.enqueue((Chain*)&app3);
-
-	bellringer.job(&buzzer1, 5);
-	bellringer.job(&buzzer2, 10);
-
+	
 	scheduler.schedule();
-
-	//Guarded_Keyboard guarded_keyboard;
-	//guarded_keyboard.getkey();
 }

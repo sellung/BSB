@@ -32,8 +32,8 @@ private:
     int count;
     Key key;
 public:
-	Guarded_Semaphore keyboard_sem;
- 	Keyboard() :Keyboard_Controller(), count(0) ,keyboard_sem(1){}
+	
+ 	Keyboard() :Keyboard_Controller(), count(0) {}
     // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
     void plugin ();
 
@@ -47,6 +47,6 @@ public:
    	Key getkey();
  };
 
- extern Keyboard keyboard;
+ //extern Keyboard keyboard;
 
 #endif

@@ -16,6 +16,7 @@
 #include "machine/key.h"
 #include "syscall/guarded_keyboard.h"
 #include "syscall/guarded_buzzer.h"
+#include "meeting/bellringer.h"
 
 class Application : public Thread
  
@@ -30,9 +31,7 @@ public:
 	int i;
 	int id;
 
-    Application(void* tos): Thread(tos), i(0){
-		buzzer.set(10);
-	} 
+    Application(void* tos): Thread(tos), i(0){} 
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
  };

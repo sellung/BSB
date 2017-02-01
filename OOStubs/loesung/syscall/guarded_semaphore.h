@@ -27,6 +27,7 @@ public:
 	void signal ();
  };
 
-//extern Guarded_Semaphore keyboard_sem;
+extern Guarded_Semaphore keyboard_sem;
+extern Guarded_Semaphore semaphore;
 
 #endif

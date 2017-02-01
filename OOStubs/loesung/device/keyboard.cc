@@ -17,9 +17,10 @@
 #include "machine/plugbox.h"
 #include "device/cgastr.h"
 
-Keyboard keyboard;
+//Keyboard keyboard;
 
-//Guarded_Semaphore semaphore(1);
+Guarded_Semaphore keyboard_sem(1);
+//Guarded_Semaphore keyboard_sem(1);
 
 void Keyboard::trigger(){
 	kout.setpos(40, 9);

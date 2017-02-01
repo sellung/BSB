@@ -24,4 +24,6 @@ public:
 	  Key getkey();
  };
 
+Guarded_Keyboard  keyboard;
+
 #endif

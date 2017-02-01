@@ -32,21 +32,24 @@
 
 void Application::action ()
  {
- 	
+	//Secure secure;
+ 	buzzer.set(5);
+	buzzer.sleep();
+	
  	int i = 0;
+ 	
+		
  	while(1){
-		Secure secure;
+		//Secure secure;
 		kout.setcolor(color);
 		kout.setpos(col, row);
 		kout << getName() << ".i = " << i;
 		kout.flush();
 		kout.resetcolor();
 		if(i==10000 && id ==1 ){
-			scheduler.Scheduler::exit();
+			scheduler.exit();
 		};
 		i++;
-		//scheduler.resume();
-		//scheduler.Scheduler::resume();
 	}
  }
  
@@ -59,6 +62,8 @@ void Application::action ()
 	kout << "TIME: " ;
 	kout.flush();
  	while(1){
+		Secure secure;
+		
 		unsigned long int val;
 		val = count_interrupt/watch.interval();
 		watch.show_digit(val, col+6, row);
