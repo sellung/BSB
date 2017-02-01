@@ -19,7 +19,7 @@
 
 //Keyboard keyboard;
 
-Guarded_Semaphore keyboard_sem(1);
+//Guarded_Semaphore keyboard_sem(1);
 //Guarded_Semaphore keyboard_sem(1);
 
 void Keyboard::trigger(){

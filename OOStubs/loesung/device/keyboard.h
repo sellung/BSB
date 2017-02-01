@@ -31,9 +31,10 @@ private:
 //CGA_Screen cgaScreen;
     int count;
     Key key;
+    Guarded_Semaphore keyboard_sem;
 public:
 	
- 	Keyboard() :Keyboard_Controller(), count(0) {}
+ 	Keyboard() :Keyboard_Controller(), count(0),keyboard_sem(1){}
     // PLUGIN: 'Anstoepseln' der Tastatur. Ab sofort werden Tasten erkannt.
     void plugin ();
 

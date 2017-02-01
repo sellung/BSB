@@ -16,22 +16,22 @@ Guarded_Organizer scheduler;
 
 void Guarded_Organizer::ready (Thread& that){
 	Secure secure;
-	ready(that);
+	Organizer::ready(that);
 }
 
 void Guarded_Organizer::exit (){
 	Secure secure;
-	exit();
+	Organizer::exit();
 }
 
 void Guarded_Organizer::kill (Thread& that){
 	Secure secure;
-	kill(that);
+	Organizer::kill(that);
 }
 
 void Guarded_Organizer::resume (){
 	Secure secure;
-	resume();
+	Organizer::resume();
 }
 
 void Guarded_Organizer::block (Customer& customer, Waitingroom& waitingroom){

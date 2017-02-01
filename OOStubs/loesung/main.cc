@@ -42,6 +42,7 @@ int main()
 	
 	EmptyApp app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
+	
 	Application app3(&stack_3[1024]);
 	Keyboard_App app4(&stack_4[1024]);
 	
@@ -68,7 +69,7 @@ int main()
 	app4.id = 3;
 
 	scheduler.Organizer::ready(app1);
-	//scheduler.Scheduler::ready(app4);
+	scheduler.Scheduler::ready(app4);
 	scheduler.Scheduler::ready(app2);		
 	//scheduler.Scheduler::ready(app3);		
 	

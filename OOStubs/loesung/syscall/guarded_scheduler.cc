@@ -16,20 +16,20 @@
 
 void Guarded_Scheduler::ready(Thread& that){
 	Secure secure;
-	ready(that);
+	Scheduler::ready(that);
 }
 
 void Guarded_Scheduler::exit(){
 	Secure secure;
-	exit();
+	Scheduler::exit();
 }
 
 void Guarded_Scheduler::kill(Thread& that){
 	Secure secure;
-	kill(that);
+	Scheduler::kill(that);
 }
 
 void Guarded_Scheduler::resume(){
 	Secure secure;
-	resume();
+	Scheduler::resume();
 }

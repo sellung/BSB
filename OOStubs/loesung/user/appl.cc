@@ -19,6 +19,7 @@
 #include "device/watch.h"
 
 #include "guard/gate.h"
+#include "syscall/guarded_semaphore.h"
 
 //#include "guard/guard.h"
 
@@ -41,15 +42,17 @@ void Application::action ()
 		
  	while(1){
 		//Secure secure;
+		semaphore.wait();
 		kout.setcolor(color);
 		kout.setpos(col, row);
 		kout << getName() << ".i = " << i;
 		kout.flush();
 		kout.resetcolor();
-		if(i==10000 && id ==1 ){
+		if(i==10000 && id ==2 ){
 			scheduler.exit();
 		};
 		i++;
+		semaphore.signal();
 	}
  }
  
@@ -73,10 +76,11 @@ void Application::action ()
 
  void Keyboard_App::action ()
  {
- 	while(1){
-		Secure secure;
+	// semaphore.wait();
+ 	//while(1){
+	//	Secure secure;
 		
-			key = guarded_keyboard.Keyboard::getkey();
+			key = keyboard.Keyboard::getkey();
 		
 			//guarded_keyboard.Scheduler::resume();	
 		
@@ -87,12 +91,12 @@ void Application::action ()
 		kout << "Keyboard hit " << count;
 		kout.flush();
 		count ++;*/
-
+		semaphore.wait();
 		kout.setcolor(0x03);
 		kout.setpos(10, 10);
 	    kout << key.ascii() ;
 	    kout.flush();
 	    kout.resetcolor();
-	    
- 	}
+	    semaphore.signal();
+ 	//}
  }

@@ -37,7 +37,7 @@ void Semaphore::v() {
 	if(entrant != 0){
 		//kout << "v() counter=" <<  counter << endl;
 		Customer* customer = (Customer*)entrant;
-		scheduler.wakeup(*(customer));
+		scheduler.Organizer::wakeup(*(customer));
 	}else{
 		//kout << "v() counter=" <<  counter << endl;
 		counter ++;

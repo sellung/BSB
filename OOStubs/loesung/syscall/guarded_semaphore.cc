@@ -12,24 +12,25 @@
 #include "syscall/guarded_semaphore.h"
 #include "guard/secure.h"
 
-Guarded_Semaphore keyboard_sem(1);
+//Guarded_Semaphore keyboard_sem(1);
+Guarded_Semaphore semaphore(1);
 
 void Guarded_Semaphore::p (){
 	Secure secure;
-	p();
+	Semaphore::p();
 }
 
 void Guarded_Semaphore::v (){
 	Secure secure;
-	v();
+	Semaphore::v();
 }
 
 void Guarded_Semaphore::wait (){
 	Secure secure;
-	wait();
+	Semaphore::wait();
 }
 
 void Guarded_Semaphore::signal (){
 	Secure secure;
-	signal();
+	Semaphore::signal();
 }

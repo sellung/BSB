@@ -24,6 +24,6 @@ public:
 	  Key getkey();
  };
 
-Guarded_Keyboard  keyboard;
+extern Guarded_Keyboard  keyboard;
 
 #endif

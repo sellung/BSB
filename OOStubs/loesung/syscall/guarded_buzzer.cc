@@ -23,6 +23,6 @@ void Guarded_Buzzer::set (int ms){
 }
 void Guarded_Buzzer::sleep (){
 	Secure secure;
-	Guarded_Buzzer::sleep();
+	Buzzer::sleep();
 }
  
