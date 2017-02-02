@@ -14,7 +14,6 @@
 #include "thread/entrant.h"
 #include "syscall/thread.h"
 #include "machine/key.h"
-#include "syscall/guarded_keyboard.h"
 #include "syscall/guarded_buzzer.h"
 #include "meeting/bellringer.h"
 
@@ -23,9 +22,8 @@ class Application : public Thread
  {
 private:
     Application (const Application &copy); // Verhindere Kopieren
-
-public:
 	Guarded_Buzzer buzzer;
+public:
 	int row;
 	int col;
 	int i;
@@ -43,10 +41,9 @@ public:
  {
 private:
     Keyboard_App (const Keyboard_App &copy); // Verhindere Kopieren
-    Guarded_Keyboard guarded_keyboard;
+    //Guarded_Keyboard guarded_keyboard;
     Key key;
 public:
-	Guarded_Buzzer buzzer;
 	int row;
 	int col;
 	int i;

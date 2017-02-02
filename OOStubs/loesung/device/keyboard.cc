@@ -73,40 +73,9 @@ bool Keyboard::prologue(){
 
 void Keyboard::epilogue(){
 	keyboard_sem.Semaphore::v();
-	//semaphore.wait();
-
-	/*
-	kout.setpos(40, 9);
-	kout << "Keyboard hit " << count;
-	kout.flush();
-	count ++;
-
-	kout.setcolor(0x03);
-	kout.setpos(10, 10);
-    kout << key.ascii() ;
-    kout.flush();
-    kout.resetcolor();
-
-    unsigned char a = key.scancode();
-    if(a == 0x53 && (key.ctrl_left() && key.alt_left())){
-    	reboot();
-    }	*/
-	getkey();
 }
 
 Key Keyboard::getkey(){
-
-	
-	//kout.setpos(40, 9);
-	//kout << "Keyboard hit " << count;
-	//kout.flush();
-	//count ++;
-
-	/*kout.setcolor(0x03);
-	kout.setpos(10, 10);
-    kout << key.ascii() ;
-    kout.flush();
-    kout.resetcolor();*/
 	
 	keyboard_sem.Semaphore::p();
 	

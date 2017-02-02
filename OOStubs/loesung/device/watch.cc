@@ -35,7 +35,7 @@ void Watch::epilogue (){
 	//kout << "epilogue" <<endl;
 	scheduler.Scheduler::resume();
 	
-	if(count_interrupt % interval()== 0){
+	if(count_interrupt % interval() == 0){
 		bellringer.check();
 		//kout << "epilogue" <<endl;
 	}

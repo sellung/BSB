@@ -19,21 +19,11 @@
 
 #include "device/keyboard.h"
 
-#include "usergame/bird.h"
-#include "usergame/actor.h"
-#include "usergame/road.h"
-#include "usergame/keylistener.h"
-#include "usergame/cactus.h"
 
 void* stack_1[1024];
 void* stack_2[1024];
-
-void* stack_cactus[1024];
-void* stack_keylistener[1024];
-
-void* stack_5[1024];
-void* stack_actor[1024];
-void* stack_road[1024];
+void* stack_3[1024];
+void* stack_4[1024];
 
 Watch watch(1);
 
@@ -54,14 +44,8 @@ int main()
 	EmptyApp app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
 	
-	Cactus cactus(&stack_cactus[1024]);
-
-
-	Keylistener keylistener(&stack_keylistener[1024]);
-	
-	Bird bird(&stack_5[1024]);
-	Actor actor(&stack_actor[1024]);
-	Road road(&stack_road[1024]);
+	Application app3(&stack_3[1024]);
+	Keyboard_App app4(&stack_4[1024]);
 
 	int col = 30;
 	int row = 8;
@@ -74,14 +58,20 @@ int main()
 	app2.color = 0x04;
 	app2.setCoord(col, row + 2);
 	app2.id = 2;
+	
+	app3.setName("App3");
+	app3.color = 0x05;
+	app3.setCoord(col, row + 4);
+	app3.id = 3;
+
+	app4.setName("App4");
+	app4.color = 0x06;
+	app4.setCoord(col, row + 6);
+	app4.id = 3;
 
 	scheduler.Organizer::ready(app1);
-	scheduler.Scheduler::ready(keylistener);
-	scheduler.Scheduler::ready(app2);		
-	scheduler.Scheduler::ready(bird);		
-	scheduler.Scheduler::ready(actor);
-	//scheduler.Scheduler::ready(cactus);
-	scheduler.Scheduler::ready(road);
-
+	scheduler.Scheduler::ready(app4);
+	scheduler.Scheduler::ready(app2);				
+	
 	scheduler.schedule();
 }

@@ -30,7 +30,7 @@
 /* GLOBALE VARIABLEN */
 
 #include "syscall/guarded_keyboard.h"
-
+#include "usergame/game.h"
 void Application::action ()
  {
 	//Secure secure;
@@ -48,9 +48,12 @@ void Application::action ()
 		kout << getName() << ".i = " << i;
 		kout.flush();
 		kout.resetcolor();
-		if(i==10000 && id ==2 ){
-			scheduler.exit();
-		};
+		//if(i%10000==0 && id ==2 ){
+		//	semaphore.signal();
+			//scheduler.exit();
+		//	buzzer.set(3);
+		//	buzzer.sleep();
+		//};
 		i++;
 		semaphore.signal();
 	}
@@ -65,38 +68,37 @@ void Application::action ()
 	kout << "TIME: " ;
 	kout.flush();
  	while(1){
-		Secure secure;
 		
+		//semaphore.wait();
 		unsigned long int val;
-		val = count_interrupt/watch.interval();
+		val = count_interrupt/(watch.interval());
 		watch.show_digit(val, col+6, row);
 		//scheduler.Scheduler::resume();
+		//semaphore.signal();
 	}
  }
 
  void Keyboard_App::action ()
  {
 	// semaphore.wait();
- 	//while(1){
-	//	Secure secure;
-		
-			key = keyboard.Keyboard::getkey();
-		
-			//guarded_keyboard.Scheduler::resume();	
-		
- 		//kout << "keyboard app" << endl;
- 		
-		/*count ++;
-		kout.setpos(40, 9);
+ 	while(1){
+		key = keyboard.getkey();
+		//semaphore.wait();
+		if(key.ascii() == 32) { game.setjump(true);}
+		//semaphore.signal();
+
+		semaphore.wait();
+		count ++;
+		kout.setpos(40, 5);
 		kout << "Keyboard hit " << count;
 		kout.flush();
-		count ++;*/
-		semaphore.wait();
+		//count ++;
+		
 		kout.setcolor(0x03);
 		kout.setpos(10, 10);
 	    kout << key.ascii() ;
 	    kout.flush();
 	    kout.resetcolor();
 	    semaphore.signal();
- 	//}
+ 	}
  }
