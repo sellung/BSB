@@ -4,6 +4,8 @@
 #include "device/watch.h"
 #include "syscall/guarded_semaphore.h"
 
+#include "usergame/game.h"
+
 void fly(int direction, int x, int y){
 	//flyup(x,y);
 
@@ -43,20 +45,38 @@ void Bird::clear_flydown(int x, int y){
  	buzzer.set(1);
  	buzzer.sleep();
 
-	int x = 62; int y = 17;
+	int x = 79; int y = 17;
 	int oldx = x;
 	//advance = 2;
  	while(1){
-
+		
+		
+		
  		buzzer.set(rate);
  		buzzer.sleep();
 
  		semaphore.wait();
  		clear_flydown(oldx, y);
 		flyup(x, y, 0x3);
+		semaphore.signal();
+		
+		if((x >= game.actor_posx && x <= game.actor_posx + 8)
+			//|| (x < game.actor_posx && x + width+advance > game.actor_posx)
+			)
+		{
+			semaphore.wait();
+			kout.setpos(60, 24);
+			kout << "x = "<< x << " game x = " << game.actor_posx +8 ;
+			kout.flush();
+			semaphore.signal();
+			// Prüfe die Y Position
+			game.color = game.color_red;
+			buzzer.set(500);
+			buzzer.sleep();
+		}
+		
 		oldx =x;
 		x = x-advance;
-		semaphore.signal();
 		
 
 		buzzer.set(rate);
@@ -65,12 +85,28 @@ void Bird::clear_flydown(int x, int y){
  		semaphore.wait();
 		clear_flyup(oldx, y);
 		flydown(x, y, 0x3);
+		semaphore.signal();
+		
+		if((x >= game.actor_posx && x <= game.actor_posx + 8)
+			//|| (x < game.actor_posx && x + width+advance > game.actor_posx)
+			)
+		{
+			semaphore.wait();
+			kout.setpos(60, 24);
+			kout << "x = "<< x << " game x = " << game.actor_posx +8 ;
+			kout.flush();
+			semaphore.signal();
+			// Prüfe die Y Position
+			game.color = game.color_red;
+			buzzer.set(500);
+			buzzer.sleep();
+		}
 		oldx =x;
 		x = x - advance;
-		semaphore.signal();
+		//semaphore.signal();
 
 		if(x < -15) {
-			x = 62;
+			x = 79;
 			semaphore.wait();
 			clear_flydown(oldx, y);
 			semaphore.signal();

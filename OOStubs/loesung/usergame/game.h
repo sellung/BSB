@@ -8,22 +8,33 @@ private:
     int rate;
     int width;
     int height;
-    int posx;
-    int posy;
+   
     int frequency;
     int advance;
-    char color_black;
+    
+    
     bool jump;
+    
+    int timer;
+    
 public:
 	Game() {}
-	//enum {back=0, front=1};
-
-    //Game(),rate(10), width(9), frequency(500),advance(1),color_black(0x0){} 
+	const char color_black = 0x0;
+	const char color_cyan = 0x3;
+	const char color_red = 0x5;
+	
+	char color;
+	int actor_posx;
+    int actor_posy;
     
-    void speed(int s){ rate = s;}
+    void speed(int s){ 
+		Secure secure;
+		timer = s;
+	}
+	
     int speed(){ 
-    	
-    	return rate;
+		Secure secure;
+    	return timer;
      }
 
     int step() { return advance; }

@@ -18,15 +18,12 @@ private:
     int width;
     int height;
     //char color;
-    int posx;
-    int posy;
     int frequency;
     int advance;
-    char color_black;
 public:
 	enum {back=0, front=1};
 
-    Actor(void* tos): Thread(tos),rate(10), width(9), frequency(100),advance(1),color_black(0x0){} 
+    Actor(void* tos): Thread(tos),rate(10), width(9), frequency(100),advance(1){} 
     
     void speed(int s){ rate = s;}
     int speed(){ return rate; }
@@ -36,9 +33,9 @@ public:
 
     void fly(int x, int y);
 
-    void move_1(int x, int y, char color);
-    void move_2(int x, int y, char color);
-    void jump(int x, int y, char color);
+    void move_1(int x, int y);
+    void move_2(int x, int y);
+    void jump(int x, int y);
 
     void clear_move_1(int x, int y);
     void clear_move_2(int x, int y);

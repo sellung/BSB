@@ -26,7 +26,7 @@ private:
 public:
 	enum {back=0, front=1};
 
-    Bird(void* tos): Thread(tos),rate(6), width(15), frequency(200),advance(4){} 
+    Bird(void* tos): Thread(tos),rate(5), width(15), frequency(200),advance(5){} 
     
     void speed(int s){ rate = s;}
     int speed(){ return rate; }
