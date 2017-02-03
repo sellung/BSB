@@ -40,16 +40,14 @@ void Cactus::clear_cactus4(int x, int y){
 
 void Cactus::action ()
  {
- 	buzzer.set(1);
- 	buzzer.sleep();
+ 	sleep(1);
 
 	int x = 62; int y = 17;
 	int oldx = x;
 	//advance = 2;
  	while(1){
  		
- 		buzzer.set(rate);
- 		buzzer.sleep();
+ 		sleep(rate);
 
  		semaphore.wait();
  		//clear_cactus1(oldx, y);
@@ -58,10 +56,7 @@ void Cactus::action ()
 		x = x-advance;
 		semaphore.signal();
 		
-		
-
-		buzzer.set(rate);
- 		buzzer.sleep();
+		sleep(rate);
 
  		semaphore.wait();
 		clear_cactus1(oldx, y);

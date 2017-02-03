@@ -17,8 +17,7 @@ void Road::clear_road(int x, int y){
 
  void Road::action ()
  {
- 	buzzer.set(1);
- 	buzzer.sleep();
+ 	sleep(1);
 
 	int x = 0; int y = 20;
 	int x2 = 7;
@@ -26,8 +25,7 @@ void Road::clear_road(int x, int y){
 	//advance = 2;
  	while(1){
 
- 		buzzer.set(rate);
- 		buzzer.sleep();
+ 		sleep(rate);
 
  		semaphore.wait();
  		//clear_road(oldx, y);

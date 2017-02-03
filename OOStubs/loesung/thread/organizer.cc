@@ -12,6 +12,7 @@
 /* Hier muesst ihr selbst Code vervollstaendigen */ 
 #include "thread/organizer.h"
 #include "thread/entrant.h"
+#include "meeting/waitingroom.h"
 
 void Organizer::block (Customer& customer, Waitingroom& waitingroom){
 	customer.waiting_in(&waitingroom);
@@ -25,11 +26,12 @@ void Organizer::wakeup (Customer& customer){
 }
 
 void Organizer::kill (Customer& that){
-	if(that.waiting_in()){
+	Waitingroom* w = that.waiting_in();
+	if(w){
+		w->remove(&that);
+	}else{
 		Entrant* entrant  = (Entrant*)&that;
 		Scheduler::kill(*(entrant));
-	}else{
-		that.waiting_in(0);
 	}
 }
 

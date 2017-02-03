@@ -1,4 +1,4 @@
-build/actor.o: usergame/actor.cc usergame/actor.h thread/entrant.h \
+build/logic.o: usergame/logic.cc usergame/logic.h thread/entrant.h \
  object/chain.h thread/coroutine.h machine/toc.h syscall/thread.h \
  thread/customer.h machine/key.h syscall/guarded_keyboard.h \
  device/keyboard.h machine/keyctrl.h machine/io_port.h guard/gate.h \
@@ -6,5 +6,8 @@ build/actor.o: usergame/actor.cc usergame/actor.h thread/entrant.h \
  machine/pic.h machine/cpu.h syscall/guarded_semaphore.h \
  meeting/semaphore.h meeting/waitingroom.h object/queue.h \
  syscall/guarded_buzzer.h meeting/buzzer.h meeting/bell.h \
- meeting/bellringer.h object/list.h usergame/game_object.h \
- usergame/game.h guard/secure.h guard/guard.h guard/locker.h
+ meeting/bellringer.h object/list.h usergame/actor.h \
+ usergame/game_object.h usergame/bird.h usergame/game.h guard/secure.h \
+ guard/guard.h guard/locker.h usergame/cactus.h usergame/road.h \
+ syscall/guarded_organizer.h thread/organizer.h thread/scheduler.h \
+ thread/dispatch.h

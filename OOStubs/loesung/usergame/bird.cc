@@ -4,8 +4,6 @@
 #include "device/watch.h"
 #include "syscall/guarded_semaphore.h"
 
-#include "usergame/game.h"
-
 void fly(int direction, int x, int y){
 	//flyup(x,y);
 
@@ -42,78 +40,37 @@ void Bird::clear_flydown(int x, int y){
 
  void Bird::action ()
  {
- 	buzzer.set(1);
- 	buzzer.sleep();
+ 	sleep(1);
 
-	int x = 79; int y = 17;
-	int oldx = x;
+	game.bird_posx = 62; game.bird_posy = 17;
+	int oldx = game.bird_posx;
 	//advance = 2;
  	while(1){
-		
-		
-		
- 		buzzer.set(rate);
- 		buzzer.sleep();
+ 		sleep(rate);
 
  		semaphore.wait();
- 		clear_flydown(oldx, y);
-		flyup(x, y, 0x3);
+ 		clear_flydown(oldx, game.bird_posy);
+		flyup(game.bird_posx, game.bird_posy, 0x3);
+		oldx = game.bird_posx;
+		game.bird_posx = game.bird_posx-advance;
 		semaphore.signal();
 		
-		if((x >= game.actor_posx && x <= game.actor_posx + 8)
-			//|| (x < game.actor_posx && x + width+advance > game.actor_posx)
-			)
-		{
-			semaphore.wait();
-			kout.setpos(60, 24);
-			kout << "x = "<< x << " game x = " << game.actor_posx +8 ;
-			kout.flush();
-			semaphore.signal();
-			// Prüfe die Y Position
-			game.color = game.color_red;
-			buzzer.set(500);
-			buzzer.sleep();
-		}
+		sleep(rate);
 		
-		oldx =x;
-		x = x-advance;
-		
-
-		buzzer.set(rate);
- 		buzzer.sleep();
-
  		semaphore.wait();
-		clear_flyup(oldx, y);
-		flydown(x, y, 0x3);
+		clear_flyup(oldx, game.bird_posy);
+		flydown(game.bird_posx, game.bird_posy, 0x3);
+		oldx = game.bird_posx;
+		game.bird_posx -=  advance;
 		semaphore.signal();
-		
-		if((x >= game.actor_posx && x <= game.actor_posx + 8)
-			//|| (x < game.actor_posx && x + width+advance > game.actor_posx)
-			)
-		{
-			semaphore.wait();
-			kout.setpos(60, 24);
-			kout << "x = "<< x << " game x = " << game.actor_posx +8 ;
-			kout.flush();
-			semaphore.signal();
-			// Prüfe die Y Position
-			game.color = game.color_red;
-			buzzer.set(500);
-			buzzer.sleep();
-		}
-		oldx =x;
-		x = x - advance;
-		//semaphore.signal();
 
-		if(x < -15) {
-			x = 79;
+		if(game.bird_posx < -15) {
+			game.bird_posx = 62;
 			semaphore.wait();
-			clear_flydown(oldx, y);
+			clear_flydown(oldx, game.bird_posy);
 			semaphore.signal();
 
-			buzzer.set(frequency);
- 			buzzer.sleep();
+ 			sleep(frequency);
 		}
-		
 	}
  }

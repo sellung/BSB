@@ -11,5 +11,7 @@ build/main.o: main.cc thread/scheduler.h thread/dispatch.h machine/toc.h \
  syscall/guarded_keyboard.h device/keyboard.h machine/keyctrl.h \
  machine/pic.h machine/cpu.h syscall/guarded_semaphore.h \
  meeting/semaphore.h meeting/bellringer.h device/keyboard.h \
- usergame/bird.h syscall/guarded_keyboard.h usergame/actor.h \
- usergame/road.h usergame/keylistener.h usergame/cactus.h
+ usergame/bird.h syscall/guarded_keyboard.h usergame/game_object.h \
+ usergame/actor.h usergame/road.h usergame/keylistener.h \
+ usergame/cactus.h usergame/logic.h usergame/actor.h usergame/bird.h \
+ usergame/cactus.h usergame/road.h

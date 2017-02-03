@@ -24,6 +24,7 @@
 #include "usergame/road.h"
 #include "usergame/keylistener.h"
 #include "usergame/cactus.h"
+#include "usergame/logic.h"
 
 void* stack_1[1024];
 void* stack_2[1024];
@@ -34,6 +35,8 @@ void* stack_keylistener[1024];
 void* stack_5[1024];
 void* stack_actor[1024];
 void* stack_road[1024];
+
+void* stack_logic[1024];
 
 Watch watch(1);
 
@@ -54,14 +57,15 @@ int main()
 	EmptyApp app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
 	
-	Cactus cactus(&stack_cactus[1024]);
-
-
 	Keylistener keylistener(&stack_keylistener[1024]);
 	
 	Bird bird(&stack_5[1024]);
 	Actor actor(&stack_actor[1024]);
 	Road road(&stack_road[1024]);
+	Cactus cactus(&stack_cactus[1024]);
+
+	//Logic(void* tos, Actor* a, Bird* b, Cactus* c,Road* r): 
+	Logic logic(&stack_logic[1024], &actor, &bird, &cactus, &road);
 
 	int col = 30;
 	int row = 8;
@@ -82,6 +86,7 @@ int main()
 	scheduler.Scheduler::ready(actor);
 	//scheduler.Scheduler::ready(cactus);
 	scheduler.Scheduler::ready(road);
+	scheduler.Scheduler::ready(logic);
 
 	scheduler.schedule();
 }

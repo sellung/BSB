@@ -8,12 +8,14 @@
 #include "syscall/guarded_buzzer.h"
 #include "meeting/bellringer.h"
 
-class Road : public Thread
+#include "usergame/game_object.h"
+
+class Road : public Game_Object
  
  {
 private:
     Road (const Road &copy); // Verhindere Kopieren
-    Guarded_Buzzer buzzer;
+   // Guarded_Buzzer buzzer;
     int rate;
     int width;
     int height;
@@ -26,7 +28,7 @@ private:
 public:
 	enum {back=0, front=1};
 
-    Road(void* tos): Thread(tos),rate(5), width(15), frequency(500),advance(2){} 
+    Road(void* tos): Game_Object(tos),rate(5), width(15), frequency(500),advance(2){} 
     
     void speed(int s){ rate = s;}
     int speed(){ return rate; }

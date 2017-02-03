@@ -8,12 +8,14 @@
 #include "syscall/guarded_buzzer.h"
 #include "meeting/bellringer.h"
 
-class Cactus : public Thread
+#include "usergame/game_object.h"
+
+class Cactus : public Game_Object
  
  {
 private:
     Cactus (const Cactus &copy); // Verhindere Kopieren
-    Guarded_Buzzer buzzer;
+    
     int rate;
     int width;
     int height;
@@ -26,7 +28,7 @@ private:
 public:
 	enum {back=0, front=1};
 
-    Cactus(void* tos): Thread(tos),rate(20), width(12), frequency(200),advance(1){} 
+    Cactus(void* tos): Game_Object(tos),rate(20), width(12), frequency(200),advance(1){} 
     
     void speed(int s){ rate = s;}
     int speed(){ return rate; }

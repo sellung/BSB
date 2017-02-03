@@ -4,57 +4,58 @@
 
 #include "usergame/game.h"
 
-void Actor::move_1(int x, int y){
+void Actor::move_1(int x, int y, char color){
 	kout.setpos(x,y);
-	kout.print("  //     ", width, game.color); kout.setpos(x,y+1);	  
-	kout.print("  \\\\_  ", width, game.color); kout.setpos(x,y+2);	  
-	kout.print("  ( o_>  ", width, game.color); kout.setpos(x,y+3);	  
-	kout.print("  /:\\__ ", width, game.color); kout.setpos(x,y+4);	  
-	kout.print(" /:_/`\"`", width, game.color); kout.setpos(x,y+5); 	             
-	kout.print("@\\/\\)  ", width, game.color); kout.setpos(x,y+6);	     
-	kout.print("  \" \"  ", width, game.color);	  
+	kout.print("  //     ", width, color); kout.setpos(x,y+1);	  
+	kout.print("  \\\\_  ", width, color); kout.setpos(x,y+2);	  
+	kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);	  
+	kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);	  
+	kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5); 	             
+	kout.print("@\\/\\)  ", width, color); kout.setpos(x,y+6);	     
+	kout.print("  \" \"  ", width, color);	  
  }
 
 void Actor::clear_move_1(int x, int y){
-	move_1(x, y);
+	move_1(x, y, color_black);
  } 
       
-void Actor::move_2(int x, int y){      
+void Actor::move_2(int x, int y, char color){      
 	kout.setpos(x,y);
-	kout.print("  //     ", width, game.color); kout.setpos(x,y+1);	  	  
-	kout.print("  \\\\_    ", width, game.color); kout.setpos(x,y+2);	  
-	kout.print("  ( o_>  ", width, game.color); kout.setpos(x,y+3);	  
-	kout.print("  /:\\__ ", width, game.color); kout.setpos(x,y+4);	  
-	kout.print(" /:_/`\"`", width, game.color); kout.setpos(x,y+5);	             
-	kout.print("@\\)     ", width, game.color); kout.setpos(x,y+6);	  
-	kout.print(" \"      ", width, game.color);	                 
+	kout.print("  //     ", width, color); kout.setpos(x,y+1);	  	  
+	kout.print("  \\\\_    ", width, color); kout.setpos(x,y+2);	  
+	kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);	  
+	kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);	  
+	kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5);	             
+	kout.print("@\\)     ", width, color); kout.setpos(x,y+6);	  
+	kout.print(" \"      ", width, color);	                 
 }
 
 void Actor::clear_move_2(int x, int y){      
-	move_2(x, y);
+	move_2(x, y, color_black);
 }
       
 
-void Actor::jump(int x, int y){      
+void Actor::jump(int x, int y, char color){      
 	kout.setpos(x,y);      
-	kout.print(" \\\\    ", width, game.color); kout.setpos(x,y+1);
-	kout.print("  \\\\_  ", width, game.color); kout.setpos(x,y+2);
-	kout.print("  ( o_>  ", width, game.color); kout.setpos(x,y+3);
-	kout.print("  /:\\__ ", width, game.color); kout.setpos(x,y+4);
-	kout.print(" /:_/`\"`", width, game.color); kout.setpos(x,y+5);
-	kout.print("@\\/\\)  ", width, game.color); kout.setpos(x,y+6);	     
-	kout.print("  \" \"  ", width, game.color);	     
+	kout.print(" \\\\    ", width, color); kout.setpos(x,y+1);
+	kout.print("  \\\\_  ", width, color); kout.setpos(x,y+2);
+	kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);
+	kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);
+	kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5);
+	kout.print("@\\/\\)  ", width, color); kout.setpos(x,y+6);	     
+	kout.print("  \" \"  ", width, color);	     
 }
 
 void Actor::clear_jump(int x, int y){      
-	 jump(x, y);
+	 jump(x, y, color_black);
 }
 
 void Actor::action ()
  {
- 	buzzer.set(1);
- 	buzzer.sleep();
+ 	//buzzer.set(1);
+ 	//buzzer.sleep();
 
+ 	sleep(1);
 	game.actor_posx = 5; 
 	game.actor_posy = 16;
 	
@@ -64,46 +65,50 @@ void Actor::action ()
  		
  		if(game.getjump()){
  			semaphore.wait();
- 			if(!game.color == game.color_red)
- 			game.color = game.color_black;
+ 			//if(!game.color == game.color_red)
+ 			//game.color = game.color_black;
  			clear_move_2(oldx, game.actor_posy);
  			clear_move_1(oldx, game.actor_posy);
  			newy = 5;
- 			if(!game.color == game.color_red)
- 			game.color = game.color_cyan;
- 			jump(game.actor_posx, newy);
+ 			//if(!game.color == game.color_red)
+ 			//game.color = game.color_cyan;
+ 			jump(game.actor_posx, newy, 0x03);
  			semaphore.signal();
- 			buzzer.set(25);
- 			buzzer.sleep();
+ 			//buzzer.set(25);
+ 			//buzzer.sleep();
+ 			sleep(25);
  			game.setjump(false);
  		}
 
- 		buzzer.set(rate);
- 		buzzer.sleep();
+ 		//buzzer.set(rate);
+ 		//buzzer.sleep();
+ 		sleep(rate);
 
  		semaphore.wait();
- 		if(!game.color == game.color_red)
- 		game.color = game.color_black;
+ 		//if(!game.color == game.color_red)
+ 		//game.color = game.color_black;
  		clear_jump(game.actor_posx, newy);
  		clear_move_2(oldx, game.actor_posy);
- 		if(!game.color == game.color_red)
-		game.color = game.color_cyan;
-		move_1(game.actor_posx, game.actor_posy);
+ 		//if(!game.color == game.color_red)
+		//game.color = game.color_cyan;
+		move_1(game.actor_posx, game.actor_posy, 0x03);
 		//oldx =x;
 		//x = x + advance;
 		semaphore.signal();
 		
 
-		buzzer.set(rate);
- 		buzzer.sleep();
+		//buzzer.set(rate);
+ 		//buzzer.sleep();
+
+		sleep(rate);
 
  		semaphore.wait();
- 		if(!game.color == game.color_red)
- 		game.color = game.color_black;
+ 		//if(!game.color == game.color_red)
+ 		//game.color = game.color_black;
 		clear_move_1(oldx, game.actor_posy);
-		if(!game.color == game.color_red)
-		game.color = game.color_cyan;
-		move_2(game.actor_posx, game.actor_posy);
+		//if(!game.color == game.color_red)
+		//game.color = game.color_cyan;
+		move_2(game.actor_posx, game.actor_posy, 0x03);
 		//oldx =x;
 		//x = x + advance;
 		semaphore.signal();
