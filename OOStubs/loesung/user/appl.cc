@@ -62,18 +62,18 @@ void Application::action ()
  void EmptyApp::action ()
  {
  	
- 	count_interrupt = 0;
+ 	/*count_interrupt = 0;
  	int col = 1; int row = 24;
 	kout.setpos(col, row);
 	kout << "TIME: " ;
-	kout.flush();
+	kout.flush();*/
  	while(1){
 		
 		//semaphore.wait();
-		unsigned long int val;
-		val = count_interrupt/(watch.interval());
-		watch.show_digit(val, col+6, row);
-		//scheduler.Scheduler::resume();
+		//unsigned long int val;
+		//val = count_interrupt/(watch.interval());
+		//watch.show_digit(val, col+6, row);
+		scheduler.resume();
 		//semaphore.signal();
 	}
  }

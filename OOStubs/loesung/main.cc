@@ -47,6 +47,7 @@ int main()
 	kout.clearscreen();
 
 	//kout.startMsg();
+	game.day();
 
 	keyboard.plugin();
 	
@@ -81,12 +82,12 @@ int main()
 
 	scheduler.Organizer::ready(app1);
 	scheduler.Scheduler::ready(keylistener);
-	scheduler.Scheduler::ready(app2);		
-	scheduler.Scheduler::ready(bird);		
+	//scheduler.Scheduler::ready(app2);		
+	//scheduler.Scheduler::ready(bird);		
 	scheduler.Scheduler::ready(actor);
-	//scheduler.Scheduler::ready(cactus);
-	scheduler.Scheduler::ready(road);
-	scheduler.Scheduler::ready(logic);
+	scheduler.Scheduler::ready(cactus);
+	//scheduler.Scheduler::ready(road);
+	//scheduler.Scheduler::ready(logic);
 
 	scheduler.schedule();
 }

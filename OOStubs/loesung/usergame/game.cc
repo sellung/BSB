@@ -18,3 +18,13 @@ bool Game::collision(int x, int y, int width, int height){
 	}
 	//return false;
 }
+
+void Game::day(){
+	clearscreen(0x70);
+}
+
+void Game::night(){
+	clearscreen(0x0);
+}
+
+	

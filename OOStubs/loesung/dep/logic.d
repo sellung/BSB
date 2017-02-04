@@ -7,7 +7,7 @@ build/logic.o: usergame/logic.cc usergame/logic.h thread/entrant.h \
  meeting/semaphore.h meeting/waitingroom.h object/queue.h \
  syscall/guarded_buzzer.h meeting/buzzer.h meeting/bell.h \
  meeting/bellringer.h object/list.h usergame/actor.h \
- usergame/game_object.h usergame/bird.h usergame/game.h guard/secure.h \
- guard/guard.h guard/locker.h usergame/cactus.h usergame/road.h \
+ usergame/game_object.h usergame/game.h guard/secure.h guard/guard.h \
+ guard/locker.h usergame/bird.h usergame/cactus.h usergame/road.h \
  syscall/guarded_organizer.h thread/organizer.h thread/scheduler.h \
  thread/dispatch.h

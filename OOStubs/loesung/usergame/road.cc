@@ -7,9 +7,11 @@ void Road::draw_road(int x, int y, char color){
 	//kout.print("________________________________________________________________________________", width, color);
 	//kout.print("______________0_________________1______________________2________________________", 79, color);
 	//kout.print("______________-_______________________~~,_________________/\\ __________________", 79, color); kout.setpos(x, y+2); 
-	kout.setpos(x, y+2); 
-	kout.print(".   -   '   .   -   _   .   -   '   .   -   '   -   .   '   -   .   -   '   .  '", 79, color); kout.setpos(x, y+3); 
-	kout.print("___________________________________________________________________________/\\__", 79, color); //kout.setpos(x, y+2); 
+	kout.setpos(x, y+4); 
+	kout.print(".   -     '   .      -        _             .          -   '   .   -   '       '", 79, color);
+	 //kout.setpos(x, y+3); 
+	//kout.print("--------------------------------------------------------------------------------", 79, color); kout.setpos(x, y+4); 
+	//kout.print("                                                                               ", 79, color); //kout.setpos(x, y+2); 
 }
 void Road::clear_road(int x, int y){
 	draw_road(x, y, 0x0);
@@ -19,7 +21,7 @@ void Road::clear_road(int x, int y){
  {
  	sleep(1);
 
-	int x = 0; int y = 20;
+	int x = 0; int y = 19;
 	int x2 = 7;
 	int oldx = x;
 	//advance = 2;

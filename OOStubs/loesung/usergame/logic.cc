@@ -14,8 +14,8 @@ void Logic::action ()
  		if(game.collision(game.bird_posx, game.bird_posy, game.width_bird, game.height_bird-2)){
  			//bird->sleep(200);
  			//scheduler.kill(*bird);
- 			scheduler.kill(*actor);
- 			scheduler.kill(*road);
+ 			//scheduler.kill(*actor);
+ 			//scheduler.kill(*road);
  		}
  		//semaphore.signal();
 	}

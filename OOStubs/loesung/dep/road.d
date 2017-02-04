@@ -6,4 +6,5 @@ build/road.o: usergame/road.cc usergame/road.h thread/entrant.h \
  machine/pic.h machine/cpu.h syscall/guarded_semaphore.h \
  meeting/semaphore.h meeting/waitingroom.h object/queue.h \
  syscall/guarded_buzzer.h meeting/buzzer.h meeting/bell.h \
- meeting/bellringer.h object/list.h usergame/game_object.h
+ meeting/bellringer.h object/list.h usergame/game_object.h \
+ usergame/game.h guard/secure.h guard/guard.h guard/locker.h
