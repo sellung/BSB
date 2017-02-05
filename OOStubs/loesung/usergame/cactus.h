@@ -38,7 +38,7 @@ private:
 public:
 	enum {back=0, front=1};
 
-    Cactus(void* tos): Game_Object(tos),rate(5), width(11), frequency(200),advance(1), distance(40), flyhigh(false),
+    Cactus(void* tos): Game_Object(tos),rate(4), width(11), frequency(200),advance(2), distance(40), flyhigh(false),
         cactus1_h(5), cactus1_w(11),
         cactus2_h(5), cactus2_w(14), 
         cactus3_h(5), cactus3_w(9), 
@@ -78,11 +78,14 @@ public:
     void clear_cloud1(int x, int y);
     void clear_cloud2(int x, int y);
 
-    void tooglefly(){ flyhigh = flyhigh? false: true;}
+    void tooglefly(){ flyhigh = flyhigh? true: true;}
 
     //void collision(int x,int y, int width, int height);
 
     void action ();
+
+    void draw(void (*fkt)(int x, int y, char color));
+    //(O_Stream& (*fkt) (O_Stream&));
  };
 
 

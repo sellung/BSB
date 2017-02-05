@@ -23,11 +23,11 @@ public:
 	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5};
 	enum {width_actor=9, width_bird=15, width_cactus=12};
     enum {height_actor=6, height_bird=9, height_cactus=12};
-   // enum {game_object_color=0x70, game_object_clear_color=0x77};
-
+   
     char game_object_color;
     char game_object_clear_color;
-    Game() : game_object_color(0x70), game_object_clear_color(0x77){}
+    int collision_count;
+    Game() : game_object_color(0x70), game_object_clear_color(0x77), collision_count(0){}
 	char color;
 	int actor_posx;
     int actor_posy;

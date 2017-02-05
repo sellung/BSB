@@ -5,6 +5,7 @@
 #include "syscall/guarded_semaphore.h"
 #include "usergame/game.h"
 
+
 void Cactus::cactus1(int x, int y, char color){
 	kout.setpos(x,y);	
 	kout.print("  _  _    ", width, color); kout.setpos(x,y+1);	  
@@ -14,7 +15,10 @@ void Cactus::cactus1(int x, int y, char color){
 	kout.print("   |  _/  ", width, color); kout.setpos(x,y+5);	  
 	kout.print("---| |----", width, color); kout.setpos(x,y+6);	  
 	kout.print("  `\"\"\"`-   ", width, color); 
+
+	collision_with_actor(x, y, cactus1_w, cactus1_h);
 }
+
 void Cactus::cactus2(int x, int y, char color){
 	//int yy = y;
 	//x = x - 20;
@@ -28,6 +32,8 @@ void Cactus::cactus2(int x, int y, char color){
 	kout.print("---||--`\"\"`-||-----", width, color); kout.setpos(x,y+6);	          
 	kout.print("..`\"\"`.`. ` ||     ", width, color); kout.setpos(x,y+7);	          
 	kout.print("''.   -  . `\"\"`    ", width, color);     
+
+	collision_with_actor(x, y, cactus2_w, cactus2_h);
 }
 void Cactus::cactus3(int x, int y, char color){
 	//x = x - 30;
@@ -39,7 +45,9 @@ void Cactus::cactus3(int x, int y, char color){
 	kout.print("`--,,--` ", width, color); kout.setpos(x,y+3);	  
 	kout.print("   ||    ", width, color); kout.setpos(x,y+4);	  
 	kout.print("   ||    ", width, color); kout.setpos(x,y+5);	  
-	kout.print("--`\"\"`-----", width, color); 	  
+	kout.print("--`\"\"`-----", width, color); 
+
+	collision_with_actor(x, y, cactus3_w, cactus3_h);	  
 }
 void Cactus::cactus4(int x, int y, char color){
 	//x = x - 40;
@@ -53,6 +61,8 @@ void Cactus::cactus4(int x, int y, char color){
 	kout.print("--\\____  |-----", width, color); kout.setpos(x,y+6);	  
 	kout.print("   |   | |-    ", width, color); kout.setpos(x,y+7);	  
 	kout.print("      -\"\"\"     ", width, color);
+
+	collision_with_actor(x, y, cactus4_w, cactus4_h);
 }
 
 void Cactus::flyup(int x, int y, char color){
@@ -69,6 +79,7 @@ void Cactus::flyup(int x, int y, char color){
 	kout.print("----------------", width, game.game_object_color);
 	kout.setpos(70,21);
 
+	collision_with_actor(x, y, bird_w, bird_h);
 }
 void Cactus::flydown(int x, int y, char color){
 	//if(x < 0 || x > 79){ x = 0; }
@@ -86,6 +97,8 @@ void Cactus::flydown(int x, int y, char color){
 	kout.setpos(x,21);
 	kout.print("-----------------", width, game.game_object_color);
 	kout.setpos(70,21);
+
+	collision_with_actor(x, y, bird_w, bird_h);
 }
 
 void Cactus::sun(int x, int y, char color){
@@ -161,8 +174,15 @@ void Cactus::action ()
 	sun(sunx, suny, 0x7e);
 	semaphore.signal();
 	
-	int cloud_bird_distance = 10;
+	int cloud_bird_distance = 6;
 	int day = 1;
+
+	int d1 = 60;
+	int d2 = 60;
+	int d3 = 60;
+
+	int cactus_time = x;
+	int bird_time =x;
 
  	while(1){
  		
@@ -176,43 +196,67 @@ void Cactus::action ()
 		//kout.setpos(11,y+5);
 		//kout.print("--------------------------------------------------------------------", 68, 0x3);
 
+		//#### CACTUS 1 ####
+		clear_cactus1(oldx,y);
 		cactus1(x, y, game.game_object_color);
-		collision(x,y, cactus1_w, cactus1_h);
+		//collision(x,y, cactus1_w, cactus1_h);
 
-		if(x+20 + 12 < 80){
-			cloud1(x+20,cloudy, 0x78);
-		}
-		if(x+40 + 16 < 80){
-			cactus2(x+40, y, game.game_object_color);
-			collision(x+40, y, cactus2_w, cactus2_h);
+		//#### CLOUD 1 ####
+		if(x + (d1/2) + 12 < 80){
+			clear_cloud1(oldx + (d1/2),cloudy);
+			cloud1(x + (d1/2),cloudy, 0x78);
 		}
 
-		if(x+60 + 12 < 80){
-			cloud2(x+60,cloudy, 0x78);
+		//#### CACTUS 2 ####
+		if(x + d1 + 16 < 80){
+			clear_cactus2(oldx+d1,y);
+			cactus2(x+d1, y, game.game_object_color);
+			//collision(x+40, y, cactus2_w, cactus2_h);
 		}
 
-		if(x+40+50 + 9 < 80){
-			cactus3(x+40+50, y, game.game_object_color);
-			collision(x+40+50, y,cactus3_w, cactus3_h);
+		//#### CLOUD 2 ####
+		if(x + (d1/2) + d1 + 12 < 80){
+			clear_cloud2(oldx + (d1/2) + d1,cloudy);
+			cloud2(x + (d1/2) + d1,cloudy, 0x78);
 		}
 
-		if(x+40+50+20 + 12 < 80){
-			cloud1(x+40+50+20,cloudy, 0x78);
+		//#### CACTUS 3 ####
+		if(x + d1 + d2 + 9 < 80){
+			clear_cactus3(oldx + d1+ d2,y);
+			cactus3(x + d1+ d2, y, game.game_object_color);
+			//collision(x+40+50, y,cactus3_w, cactus3_h);
 		}
-		if(x+40+50 + 50 + 16 < 80){
-			//clear_cactus4(oldx+40+50 + 50, y);
-			cactus4(x+40+50 + 50, y, game.game_object_color);
-			//cloud2(x+40+50 + 50-25, cloudy, 0x8);
-			collision(x+40+50+50, y, cactus4_w, cactus4_h);
+
+		//#### CLOUD 1 ####
+		if(x + (d1/2) + d1 + d1 + 12 < 80){
+			clear_cloud1(oldx + + (d1/2) + d1 + d1,cloudy);
+			cloud1(x + (d1/2) + d1 + d1,cloudy, 0x78);
 		}
+
+		//#### CACTUS 4 ####
+		if(x + d1 + d2 + d3 + 16 < 80){
+			clear_cactus4(oldx + d1 + d2 + d3,y);
+			cactus4(x + d1 + d2 + d3, y, game.game_object_color);
+		}
+
 
 		oldx =x;
 		x = x-advance;
+		cactus_time = cactus_time - advance;
+		bird_time = bird_time -advance;
 
 		semaphore.signal();
-		
-		if(x <= -154){
+		if(cactus_time > -2*(d1 + d2 + d3 +15) && cactus_time <= -(d1 + d2 + d3 +16) 
+			&&
+					bird_time > -2*(d1 + d2 + d3 +15) && bird_time <= -(d1 + d2 + d3 +16) ){
+			x = 69;
+			//birdx = 62;
+			cloudx = 67;
+			cactus_time = x;
+		} 
+		else if(bird_time <= -2*(d1 + d2 + d3 +14)-74){
 			//birdy = flyhigh? 10 : birdy;
+			//sleep(400);
 			if(flyhigh){
 				birdy = 10;
 				sun(sunx, suny, 0x7e);
@@ -226,7 +270,7 @@ void Cactus::action ()
 			if(cloud_bird_distance <= 0){
 				clear_flydown(birdoldx, birdy);
 				flyup(birdx, birdy, game.game_object_color);
-				collision(birdx, birdy, bird_w, bird_h);
+				//collision(birdx, birdy, bird_w, bird_h);
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
 				//cloudoldx = birdoldx;
@@ -240,7 +284,7 @@ void Cactus::action ()
 
 			semaphore.signal();
 
-			sleep(rate*2);
+			sleep(10);
 
 			semaphore.wait();
 
@@ -250,7 +294,7 @@ void Cactus::action ()
 			if(cloud_bird_distance <= 0){
 				clear_flyup(birdoldx, birdy);
 				flydown(birdx, birdy, game.game_object_color);
-				collision(birdx, birdy, bird_w, bird_h);
+				//collision(birdx, birdy, bird_w, bird_h);
 
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
@@ -266,7 +310,7 @@ void Cactus::action ()
 
 			semaphore.signal();
 
-			sleep(rate*2);
+			sleep(10);
 		}
 		
 		if(birdx <= -30){
@@ -274,7 +318,9 @@ void Cactus::action ()
 			x = 69;
 			birdx = 62;
 			cloudx = 67;
-			cloud_bird_distance = 10;
+			cloud_bird_distance = 6;
+			cactus_time = x;
+			bird_time = x;
 		}
 		
 		

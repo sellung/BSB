@@ -36,7 +36,7 @@ void Actor::clear_move_2(int x, int y){
       
 
 void Actor::jump(int x, int y, char color){    
-	x = x +4;  
+	//x = x +4;  
 	kout.setpos(x,y);      
 	kout.print(" \\\\      ", width, color); kout.setpos(x,y+1);
 	kout.print("  \\\\_    ", width, color); kout.setpos(x,y+2);
@@ -64,26 +64,61 @@ void Actor::action ()
 	
 	int oldx = game.actor_posx; int newy=game.actor_posy;
 	//advance = 2;
+
+	//int dec_jump = 1;
+
  	while(1){
  		
  		if(game.getjump()){
  			semaphore.wait();
- 			//if(!game.color == game.color_red)
- 			//game.color = game.color_black;
  			clear_move_2(oldx, game.actor_posy);
  			clear_move_1(oldx, game.actor_posy);
- 			newy = 5;
- 			int oldy = game.actor_posy;
- 			game.actor_posy = newy;
- 			//if(!game.color == game.color_red)
- 			//game.color = game.color_cyan;
- 			jump(game.actor_posx, newy, game.game_object_color);
+ 			
  			semaphore.signal();
- 			//buzzer.set(25);
- 			//buzzer.sleep();
- 			sleep(95);
+
+ 			while(newy > 4){
+ 				newy--;
+ 				game.actor_posy = newy;
+ 				if(oldx < game.actor_posx+4){ oldx++; }
+ 				semaphore.wait();
+ 				clear_jump(oldx-1, newy+1);
+ 				jump(oldx, newy, game.game_object_color);
+ 				semaphore.signal();
+
+ 				//sleep(dec_jump);
+ 			}
+ 			//newy = 5;
+ 			//oldx = game.actor_posx + 4;
+ 			int oldy = newy;
+ 			//game.actor_posy = newy;
+ 			//jump(game.actor_posx, newy, game.game_object_color);
+
+ 			
+ 			
+ 			//sleep(95);
+ 			sleep(45);
+
+ 			while(newy < 16){
+ 				newy++;
+ 				game.actor_posy = newy;
+
+ 				if(oldx > game.actor_posx) { oldx--; }
+ 				semaphore.wait();
+ 				clear_jump(oldx-1, newy-1);
+ 				jump(oldx, newy, game.game_object_color);
+
+ 				semaphore.signal();
+ 				
+ 				//sleep(0);
+ 				if(game.isclash()){
+ 					//sleep(200);
+ 					//game.clash(false);
+ 				}
+ 			}
+
  			game.setjump(false);
- 			game.actor_posy = oldy;
+ 			game.actor_posx = 5;
+ 			game.actor_posy = 16;
  		}
 
  		//buzzer.set(rate);
