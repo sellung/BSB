@@ -187,7 +187,12 @@ void Cactus::action ()
 	int cactus_time = x;
 	int bird_time =x;
 
+	int distance_to_godown = 1;
  	while(1){
+		 if(game.isjump() && distance_to_godown%25 == 0){
+			 game.godown();
+			 distance_to_godown = 0;
+		 }
  		//sleep(rate);
 		semaphore.wait();
 		kout.setpos(0,y+5);
@@ -247,6 +252,9 @@ void Cactus::action ()
 		x = x-advance;
 		cactus_time = cactus_time - advance;
 		bird_time = bird_time -advance;
+		if(game.isjump()){
+			distance_to_godown += advance;
+		}
 
 		semaphore.signal();
 		if(cactus_time > -2*(d1 + d2 + d3 +15) && cactus_time <= -(d1 + d2 + d3 +16) 
@@ -276,6 +284,9 @@ void Cactus::action ()
 				//collision(birdx, birdy, bird_w, bird_h);
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
+				if(game.isjump()){
+					//distance_to_godown += advance;
+				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
 			} else{
@@ -301,6 +312,9 @@ void Cactus::action ()
 
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
+				if(game.isjump()){
+					//distance_to_godown += advance;
+				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
 			}else{
@@ -324,6 +338,7 @@ void Cactus::action ()
 			cloud_bird_distance = 6;
 			cactus_time = x;
 			bird_time = x;
+			//distance_to_godown = 0;
 		}
 		
 		sleep(rate);

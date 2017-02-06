@@ -3,6 +3,7 @@
 
 #include "guard/secure.h"
 #include "device/cgastr.h"
+#include "syscall/guarded_semaphore.h"
 
 class Game {
 private:
@@ -19,6 +20,7 @@ private:
 
     int timer;
     
+    Guarded_Semaphore jump_sem;
 public:
 	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5};
 	enum {width_actor=9, width_bird=15, width_cactus=12};
@@ -32,14 +34,24 @@ public:
     int high_score;
     int live;
 
-    Game() : game_object_color(0x70), game_object_clear_color(0x77), collision_count(0){}
+    Game() : jump_sem(1), game_object_color(0x70), game_object_clear_color(0x77), collision_count(0){}
 	char color;
 	int actor_posx;
     int actor_posy;
 
     void set_actor_posy(int y){
-        Secure secure;
+       // Secure secure;
         actor_posy = y;
+    }
+
+    void wan_to_godown(){
+        //Secure secure;
+        jump_sem.wait();
+    }
+
+    void godown(){
+       // Secure secure;
+        jump_sem.signal();
     }
 
     bool isclash(){ return hit; }
@@ -69,7 +81,7 @@ public:
     	Secure secure;
     	jump = j;
     }
-    bool getjump() {
+    bool isjump() {
      	Secure secure;
      	return jump; 
     }

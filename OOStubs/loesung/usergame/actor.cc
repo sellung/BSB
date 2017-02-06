@@ -96,7 +96,7 @@ void Actor::action ()
 	//score();
  	while(1){
  		//score();
- 		if(game.getjump()){
+ 		if(game.isjump()){
  			semaphore.wait();
  			clear_move_2(oldx, game.actor_posy);
  			clear_move_1(oldx, game.actor_posy);
@@ -118,8 +118,10 @@ void Actor::action ()
  			
  			int oldy = newy;
  			//semaphore.wait();
- 			sleep(45);
-
+ 			//sleep(45);
+			 game.wan_to_godown();
+			 //sleep(45);
+			 //game.godown();
  			while(newy < 16){
  				stop();
  				newy++;

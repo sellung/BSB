@@ -35,7 +35,7 @@ private:
 
     int bird_h; int bird_w;
 
-     Guarded_Semaphore jump_sem;
+    //Guarded_Semaphore jump_sem;
 
 public:
 	enum {back=0, front=1};
@@ -45,8 +45,8 @@ public:
         cactus2_h(5), cactus2_w(14), 
         cactus3_h(5), cactus3_w(9), 
         cactus4_h(5), cactus4_w(14),
-        bird_h(3), bird_w(16),
-        jump_sem(1)
+        bird_h(3), bird_w(16)
+        //jump_sem(1)
         {} 
     
     void speed(int s){ rate = s;}
