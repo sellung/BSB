@@ -287,7 +287,7 @@ void Cactus::action ()
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
 				if(game.is_actor_up()){
-					distance_to_godown += advance;
+					distance_to_godown += advance*2;
 				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
@@ -315,7 +315,7 @@ void Cactus::action ()
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
 				if(game.is_actor_up()){
-					distance_to_godown += advance;
+					distance_to_godown += advance*2;
 				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
