@@ -53,22 +53,49 @@ void Actor::clear_jump(int x, int y){
 	 jump(x, y, game.game_object_clear_color);
 }
 
+void Actor::stop(){
+	/*if(game.isclash()) { 
+		semaphore.wait(); 
+		sleep(100);
+		semaphore.signal();	
+	}else { 
+		//game.clash(false);
+	}*/
+}
+
+void Actor::score(){
+	semaphore.wait();
+	kout.setpos(70, 2);
+	kout << game.score ;
+	kout.flush();
+	semaphore.signal();
+}
+void Actor::high_score(){
+	semaphore.wait();
+	semaphore.signal();
+}
+void Actor::live(){
+	semaphore.wait();
+	semaphore.signal();
+}
+
 void Actor::action ()
  {
- 	//buzzer.set(1);
- 	//buzzer.sleep();
-
+ 	/*semaphore.wait();
+ 	kout.setpos(60, 2);
+	kout << "00000" ;
+	kout.flush();
+	semaphore.signal();*/
+ 	
  	sleep(1);
+ 	game.score = 0;
 	game.actor_posx = 5; 
 	game.actor_posy = 16;
 	
 	int oldx = game.actor_posx; int newy=game.actor_posy;
-	//advance = 2;
-
-	//int dec_jump = 1;
-
+	//score();
  	while(1){
- 		
+ 		//score();
  		if(game.getjump()){
  			semaphore.wait();
  			clear_move_2(oldx, game.actor_posy);
@@ -84,21 +111,17 @@ void Actor::action ()
  				clear_jump(oldx-1, newy+1);
  				jump(oldx, newy, game.game_object_color);
  				semaphore.signal();
-
  				//sleep(dec_jump);
+ 				stop();
  			}
- 			//newy = 5;
- 			//oldx = game.actor_posx + 4;
+ 			
+ 			
  			int oldy = newy;
- 			//game.actor_posy = newy;
- 			//jump(game.actor_posx, newy, game.game_object_color);
-
- 			
- 			
- 			//sleep(95);
+ 			//semaphore.wait();
  			sleep(45);
 
  			while(newy < 16){
+ 				stop();
  				newy++;
  				game.actor_posy = newy;
 
@@ -108,61 +131,31 @@ void Actor::action ()
  				jump(oldx, newy, game.game_object_color);
 
  				semaphore.signal();
- 				
+ 			
  				//sleep(0);
- 				if(game.isclash()){
- 					//sleep(200);
- 					//game.clash(false);
- 				}
  			}
+ 			
 
  			game.setjump(false);
  			game.actor_posx = 5;
  			game.actor_posy = 16;
  		}
 
- 		//buzzer.set(rate);
- 		//buzzer.sleep();
  		sleep(rate);
 
  		semaphore.wait();
- 		//if(!game.color == game.color_red)
- 		//game.color = game.color_black;
  		clear_jump(game.actor_posx, newy);
  		clear_move_2(oldx, game.actor_posy);
- 		//if(!game.color == game.color_red)
-		//game.color = game.color_cyan;
+ 		
 		move_1(game.actor_posx, game.actor_posy, game.game_object_color);
-		//oldx =x;
-		//x = x + advance;
+	
 		semaphore.signal();
 		
-
-		//buzzer.set(rate);
- 		//buzzer.sleep();
-
 		sleep(rate);
 
  		semaphore.wait();
- 		//if(!game.color == game.color_red)
- 		//game.color = game.color_black;
 		clear_move_1(oldx, game.actor_posy);
-		//if(!game.color == game.color_red)
-		//game.color = game.color_cyan;
 		move_2(game.actor_posx, game.actor_posy, game.game_object_color);
-		//oldx =x;
-		//x = x + advance;
 		semaphore.signal();
-
-		/*if(x < -15) {
-			x = 62;
-			semaphore.wait();
-			clear_flydown(oldx, y);
-			semaphore.signal();
-
-			buzzer.set(frequency);
- 			buzzer.sleep();
-		}*/
-		
 	}
  }

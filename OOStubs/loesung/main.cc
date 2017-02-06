@@ -26,17 +26,17 @@
 #include "usergame/cactus.h"
 #include "usergame/logic.h"
 
-void* stack_1[1024];
+void* stack_1[2048];
 void* stack_2[1024];
 
 void* stack_cactus[1024];
 void* stack_keylistener[1024];
 
-void* stack_5[1024];
+//void* stack_bird[1024];
 void* stack_actor[1024];
-void* stack_road[1024];
+//void* stack_road[1024];
 
-void* stack_logic[1024];
+//void* stack_logic[1024];
 
 Watch watch(1);
 
@@ -53,20 +53,20 @@ int main()
 	
 	watch.windup();
 
-	kout << "salut pantos2" << endl;
+	//kout << "salut pantos2" << endl;
 	
 	EmptyApp app1(&stack_1[1024]);
 	Application app2(&stack_2[1024]);
 	
 	Keylistener keylistener(&stack_keylistener[1024]);
 	
-	Bird bird(&stack_5[1024]);
+	//Bird bird(&stack_bird[1024]);
 	Actor actor(&stack_actor[1024]);
-	Road road(&stack_road[1024]);
+	//Road road(&stack_road[1024]);
 	Cactus cactus(&stack_cactus[1024]);
 
 	//Logic(void* tos, Actor* a, Bird* b, Cactus* c,Road* r): 
-	Logic logic(&stack_logic[1024], &actor, &bird, &cactus, &road);
+	//Logic logic(&stack_logic[1024], &actor, &bird, &cactus, &road);
 
 	int col = 30;
 	int row = 8;

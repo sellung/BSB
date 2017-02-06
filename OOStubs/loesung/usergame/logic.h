@@ -31,6 +31,9 @@ public:
     Logic(void* tos, Actor* a, Bird* b, Cactus* c,Road* r): 
         Thread(tos), actor(a), bird(b), cactus(c), road(r){} 
   
+
+    void show_digit(int to_show, int col, int row);
+
     void action ();
  };
 

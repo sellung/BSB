@@ -5,6 +5,10 @@
 #include "syscall/guarded_semaphore.h"
 #include "usergame/game.h"
 
+void Cactus::ground(int x, int y){
+	kout.setpos(x, 22);
+	kout.print(".   -   `     .     '      -      ,", 34, game.game_object_color);
+}
 
 void Cactus::cactus1(int x, int y, char color){
 	kout.setpos(x,y);	
@@ -16,12 +20,11 @@ void Cactus::cactus1(int x, int y, char color){
 	kout.print("---| |----", width, color); kout.setpos(x,y+6);	  
 	kout.print("  `\"\"\"`-   ", width, color); 
 
+	ground(x, y);
 	collision_with_actor(x, y, cactus1_w, cactus1_h);
 }
 
 void Cactus::cactus2(int x, int y, char color){
-	//int yy = y;
-	//x = x - 20;
 	int width = 18;
 	kout.setpos(x,y);
 	kout.print("       ,/\\ ,        ", width, color); kout.setpos(x,y+1);	              
@@ -31,13 +34,12 @@ void Cactus::cactus2(int x, int y, char color){
 	kout.print("   ||   |`--,,--`    ", width, color); kout.setpos(x,y+5);	          
 	kout.print("---||--`\"\"`-||-----", width, color); kout.setpos(x,y+6);	          
 	kout.print("..`\"\"`.`. ` ||     ", width, color); kout.setpos(x,y+7);	          
-	kout.print("''.   -  . `\"\"`    ", width, color);     
+	kout.print("''.   -  . `\"\"`    ", width, color);
 
+	ground(x, y);     
 	collision_with_actor(x, y, cactus2_w, cactus2_h);
 }
 void Cactus::cactus3(int x, int y, char color){
-	//x = x - 30;
-	//y = y-1;
 	int width = 9;
 	kout.setpos(x,y);
 	kout.print(" , /\\ , ", width, color); kout.setpos(x,y+1);	  
@@ -47,10 +49,10 @@ void Cactus::cactus3(int x, int y, char color){
 	kout.print("   ||    ", width, color); kout.setpos(x,y+5);	  
 	kout.print("--`\"\"`-----", width, color); 
 
+	ground(x, y);
 	collision_with_actor(x, y, cactus3_w, cactus3_h);	  
 }
 void Cactus::cactus4(int x, int y, char color){
-	//x = x - 40;
 	int width = 16;
 	kout.setpos(x,y);
 	kout.print("        _   _  ", width, color); kout.setpos(x,y+1);	  
@@ -62,12 +64,11 @@ void Cactus::cactus4(int x, int y, char color){
 	kout.print("   |   | |-    ", width, color); kout.setpos(x,y+7);	  
 	kout.print("      -\"\"\"     ", width, color);
 
+	ground(x, y);
 	collision_with_actor(x, y, cactus4_w, cactus4_h);
 }
 
 void Cactus::flyup(int x, int y, char color){
-	//if(x < 0 || x > 79){ x = 0; }
-	//if(y < 0 || y > 24){ y = 0;}
 	int width = 16;
 	kout.setpos(x, y-2);
 	kout.print("   /''\\ /'''') ", width, color); kout.setpos(x, y-1);     
@@ -79,11 +80,10 @@ void Cactus::flyup(int x, int y, char color){
 	kout.print("----------------", width, game.game_object_color);
 	kout.setpos(70,21);
 
+	ground(x, y);
 	collision_with_actor(x, y, bird_w, bird_h);
 }
 void Cactus::flydown(int x, int y, char color){
-	//if(x < 0 || x > 79){ x = 0; }
-	//if(y < 0 || y > 24){ y = 0;}
 	int width = 16;
 	kout.setpos(x, y);
 	kout.print("  _         _  ", width, color); kout.setpos(x, y+1);
@@ -91,13 +91,12 @@ void Cactus::flydown(int x, int y, char color){
 	kout.print("   \\,  \\   )   ", width, color); kout.setpos(x, y+3);                               
 	kout.print("    \\,,/\\ ,_)  ", width, color); kout.setpos(x, y+4);                      
 	kout.print("          \\,,/  ", width, color); 
-	//kout.setpos(x,y+4);
-	//kout.print(".    -    `  , ", width, color);
-	//kout.setpos(x,y+5);
+	
 	kout.setpos(x,21);
 	kout.print("-----------------", width, game.game_object_color);
 	kout.setpos(70,21);
 
+	ground(x, y);
 	collision_with_actor(x, y, bird_w, bird_h);
 }
 
@@ -119,6 +118,8 @@ void Cactus::cloud1(int x, int y, char color){
 	kout.print("   _   _   ", width, color); kout.setpos(x,y+1);
 	kout.print(" _( )_( )_ ", width, color); kout.setpos(x,y+2);
 	kout.print("(_________)", width, color); 
+
+	ground(x, y);
 }
 void Cactus::cloud2(int x, int y, char color){
 	int width = 12;
@@ -126,6 +127,8 @@ void Cactus::cloud2(int x, int y, char color){
 	kout.print("   ___     ", width, color); kout.setpos(x,y+1);
 	kout.print(" _(   )___ ", width, color); kout.setpos(x,y+2);
 	kout.print("(_________)", width, color); 
+
+	ground(x, y);
 }
 
 void Cactus::clear_cloud1(int x, int y){
@@ -171,7 +174,7 @@ void Cactus::action ()
 
 	int sunx = 67; int suny=6;
 	semaphore.wait();
-	sun(sunx, suny, 0x7e);
+	sun(sunx, suny, 0x7f);
 	semaphore.signal();
 	
 	int cloud_bird_distance = 6;
@@ -185,16 +188,16 @@ void Cactus::action ()
 	int bird_time =x;
 
  	while(1){
- 		
  		//sleep(rate);
-
 		semaphore.wait();
 		kout.setpos(0,y+5);
 		kout.print("-----", 5, game.game_object_color);
 		kout.setpos(11,y+5); 
 		kout.print("--------------------------------------------------------------------", 68, game.game_object_color); 
-		//kout.setpos(11,y+5);
-		//kout.print("--------------------------------------------------------------------", 68, 0x3);
+		kout.setpos(0,y+6);
+		kout.print(".   '", 5, game.game_object_color);
+		kout.setpos(11,y+6);
+		kout.print("-   '   .     `     -     '      .     `     -     '      `      -  ", 68, game.game_object_color);
 
 		//#### CACTUS 1 ####
 		clear_cactus1(oldx,y);
@@ -323,8 +326,9 @@ void Cactus::action ()
 			bird_time = x;
 		}
 		
-		
 		sleep(rate);
+
+		//game.score++;
 		
 	}
  }

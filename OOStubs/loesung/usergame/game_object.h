@@ -28,13 +28,13 @@ public:
     }
 
     void collision_with_actor(int x,int y, const int width, const int height){
-        int time = 50;
+        int time = 5;
         if((x >= 5 && x<= game.actor_posx + game.width_actor -2) || (x + width>= 5 && x + width<= game.actor_posx + game.width_actor)){
             
             if(y >= game.actor_posy && y <= game.actor_posy + game.height_actor){
                 //if(height )
                 //game.set_actor_posy(game.actor_posy - 8);
-                //game.clash(true);
+                game.clash(true);
                 kout.setpos(0,24);
                 kout << "colision:" <<"x:" << x<< " y:" << y << " actor_posy:" << game.actor_posy << " actor_posy + height_actor=" << game.actor_posy + game.height_actor;
                 kout.flush();
@@ -43,14 +43,19 @@ public:
                 kout << "HIT: " << game.collision_count++;
                 kout.flush();
                // sleep(time);
+                //semaphore.wait(); 
+                sleep(time);
+                //semaphore.signal(); 
+
             }else{
-                //game.clash(false);
+                game.clash(false);
                 kout.setpos(0,24);
                 kout << "NO colision:" << " y=" << y << " game.actor_posy + game.height_actor=" << game.actor_posy + game.height_actor;
                 kout.flush();
                 //sleep(time);
             }
         }else{
+            game.clash(false);
             kout.setpos(0,24);
             kout << "                                                                      ";
             kout.flush();

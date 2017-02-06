@@ -59,21 +59,39 @@ void Application::action ()
 	}
  }
  
+ void EmptyApp::show_digit(int to_show, int col, int row){
+ 	
+	int i = col + 5;
+	do{
+		char c = '0' + (to_show % 10);
+		kout.show(i , row, c, game.game_object_color);
+		i--;
+		to_show = to_show / 10;
+	}while(to_show  != 0);
+}
+
  void EmptyApp::action ()
  {
  	
- 	/*count_interrupt = 0;
- 	int col = 1; int row = 24;
-	kout.setpos(col, row);
-	kout << "TIME: " ;
-	kout.flush();*/
+ 	count_interrupt = 0;
+ 	int col = 70; int row = 2;
+ 	for(int i = 0; i <5 ; i++){
+ 		kout.show(col+i , row, '0', game.game_object_color);
+ 	}
+
  	while(1){
 		
 		//semaphore.wait();
-		//unsigned long int val;
-		//val = count_interrupt/(watch.interval());
-		//watch.show_digit(val, col+6, row);
+		unsigned long int val;
+		val = count_interrupt/(watch.interval()*12);
+		show_digit(val, col, row);
+		//semaphore.signal();
+
+ 		//count_interrupt ++;
+
 		scheduler.resume();
+
+		//scheduler.Scheduler::resume();
 		//semaphore.signal();
 	}
  }

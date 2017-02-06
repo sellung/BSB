@@ -23,7 +23,7 @@ private:
 	int counter;
 public:
 	Semaphore (int c): Waitingroom(), counter(c){
-		kout << "counter=" << c << endl;
+		//kout << "counter=" << c << endl;
 	}
 	//inline void p ();
 	//inline void v ();

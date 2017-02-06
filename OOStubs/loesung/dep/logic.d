@@ -10,4 +10,4 @@ build/logic.o: usergame/logic.cc usergame/logic.h thread/entrant.h \
  usergame/game_object.h usergame/game.h guard/secure.h guard/guard.h \
  guard/locker.h usergame/bird.h usergame/cactus.h usergame/road.h \
  syscall/guarded_organizer.h thread/organizer.h thread/scheduler.h \
- thread/dispatch.h
+ thread/dispatch.h device/watch.h machine/pit.h

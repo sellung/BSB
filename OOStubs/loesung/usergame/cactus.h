@@ -15,7 +15,7 @@ class Cactus : public Game_Object
  {
 private:
     Cactus (const Cactus &copy); // Verhindere Kopieren
-    
+
     int rate;
     int width;
     int height;
@@ -35,6 +35,8 @@ private:
 
     int bird_h; int bird_w;
 
+     Guarded_Semaphore jump_sem;
+
 public:
 	enum {back=0, front=1};
 
@@ -43,7 +45,8 @@ public:
         cactus2_h(5), cactus2_w(14), 
         cactus3_h(5), cactus3_w(9), 
         cactus4_h(5), cactus4_w(14),
-        bird_h(3), bird_w(16)
+        bird_h(3), bird_w(16),
+        jump_sem(1)
         {} 
     
     void speed(int s){ rate = s;}
@@ -78,14 +81,17 @@ public:
     void clear_cloud1(int x, int y);
     void clear_cloud2(int x, int y);
 
-    void tooglefly(){ flyhigh = flyhigh? true: true;}
+    void tooglefly(){ flyhigh = flyhigh? false: true;}
 
     //void collision(int x,int y, int width, int height);
 
     void action ();
 
     void draw(void (*fkt)(int x, int y, char color));
-    //(O_Stream& (*fkt) (O_Stream&));
+    
+    void ground(int x, int y);
+
+    //void wait_jump();
  };
 
 

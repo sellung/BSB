@@ -27,6 +27,11 @@ public:
     char game_object_color;
     char game_object_clear_color;
     int collision_count;
+
+    int score;
+    int high_score;
+    int live;
+
     Game() : game_object_color(0x70), game_object_clear_color(0x77), collision_count(0){}
 	char color;
 	int actor_posx;
@@ -77,7 +82,7 @@ public:
     int row = 0;
     int col = 0;
     for ( row =0; row < 80 ; row ++) {
-        for ( col =0; col < 24 ; col ++) {
+        for ( col =1; col < 24 ; col ++) {
         kout.show( row , col , ' ' , bgcolor );
         }
     }

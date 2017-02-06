@@ -40,6 +40,12 @@ public:
     void clear_move_2(int x, int y);
     void clear_jump(int x, int y);
 
+    void stop();
+    
+    void score();
+    void high_score();
+    void live();
+
     void action ();
  };
 

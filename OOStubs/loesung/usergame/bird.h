@@ -27,7 +27,7 @@ private:
 public:
 	enum {back=0, front=1};
 
-    Bird(void* tos): Game_Object(tos),rate(5),  width(game.width_bird), frequency(200),advance(5){
+    Bird(void* tos): Game_Object(tos),rate(15),  width(game.width_bird), frequency(200),advance(1){
         //width(game.width_bird);
     } 
     

@@ -74,6 +74,7 @@ public:
     EmptyApp(void* tos): Thread(tos), i(0){} 
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
+    void show_digit(int to_show, int col, int row);
  };
 
 #endif
