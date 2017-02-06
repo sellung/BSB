@@ -35,9 +35,9 @@ public:
                 //if(height )
                 //game.set_actor_posy(game.actor_posy - 8);
                 game.clash(true);
-                kout.setpos(0,24);
-                kout << "colision:" <<"x:" << x<< " y:" << y << " actor_posy:" << game.actor_posy << " actor_posy + height_actor=" << game.actor_posy + game.height_actor;
-                kout.flush();
+               // kout.setpos(0,24);
+                //kout << "colision:" <<"x:" << x<< " y:" << y << " actor_posy:" << game.actor_posy << " actor_posy + height_actor=" << game.actor_posy + game.height_actor;
+                //kout.flush();
                 
                 kout.setpos(70,24);
                 kout << "HIT: " << game.collision_count++;
@@ -49,9 +49,9 @@ public:
 
             }else{
                 game.clash(false);
-                kout.setpos(0,24);
-                kout << "NO colision:" << " y=" << y << " game.actor_posy + game.height_actor=" << game.actor_posy + game.height_actor;
-                kout.flush();
+                //kout.setpos(0,24);
+                //kout << "NO colision:" << " y=" << y << " game.actor_posy + game.height_actor=" << game.actor_posy + game.height_actor;
+                //kout.flush();
                 //sleep(time);
             }
         }else{

@@ -16,10 +16,12 @@ private:
     int advance;
     
     bool jump;
+    bool actor_up_or_down;
     bool hit;
 
     int timer;
-    
+
+
     Guarded_Semaphore jump_sem;
 public:
 	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5};
@@ -34,7 +36,7 @@ public:
     int high_score;
     int live;
 
-    Game() : jump_sem(1), game_object_color(0x70), game_object_clear_color(0x77), collision_count(0){}
+    Game() :jump(false), actor_up_or_down(false), jump_sem(0), game_object_color(0x70), game_object_clear_color(0x77), collision_count(0){}
 	char color;
 	int actor_posx;
     int actor_posy;
@@ -45,13 +47,22 @@ public:
     }
 
     void wan_to_godown(){
-        //Secure secure;
+        actor_up(true);
         jump_sem.wait();
     }
 
     void godown(){
-       // Secure secure;
+        actor_up(false);
         jump_sem.signal();
+    }
+
+    bool is_actor_up(){
+        Secure secure;
+        return actor_up_or_down;
+    }
+    void actor_up(bool b){
+        Secure secure;
+        actor_up_or_down = b;
     }
 
     bool isclash(){ return hit; }

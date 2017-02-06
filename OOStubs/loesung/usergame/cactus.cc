@@ -189,7 +189,9 @@ void Cactus::action ()
 
 	int distance_to_godown = 1;
  	while(1){
-		 if(game.isjump() && distance_to_godown%25 == 0){
+		 if(game.is_actor_up() && distance_to_godown >= 27){
+		//if(game.is_actor_up() ){
+			// sleep(100);
 			 game.godown();
 			 distance_to_godown = 0;
 		 }
@@ -252,7 +254,7 @@ void Cactus::action ()
 		x = x-advance;
 		cactus_time = cactus_time - advance;
 		bird_time = bird_time -advance;
-		if(game.isjump()){
+		if(game.is_actor_up()){
 			distance_to_godown += advance;
 		}
 
@@ -284,8 +286,8 @@ void Cactus::action ()
 				//collision(birdx, birdy, bird_w, bird_h);
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
-				if(game.isjump()){
-					//distance_to_godown += advance;
+				if(game.is_actor_up()){
+					distance_to_godown += advance;
 				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
@@ -312,8 +314,8 @@ void Cactus::action ()
 
 				birdoldx = birdx;
 				birdx = birdx-advance*4;
-				if(game.isjump()){
-					//distance_to_godown += advance;
+				if(game.is_actor_up()){
+					distance_to_godown += advance;
 				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
