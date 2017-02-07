@@ -75,6 +75,7 @@ public:
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
     void show_digit(int to_show, int col, int row);
+	void gameover(int x, int y, char color);
  };
 
 /*#############################################################*/

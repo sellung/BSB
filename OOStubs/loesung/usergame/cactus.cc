@@ -236,7 +236,7 @@ void Cactus::action ()
 			cactus3(x + d1+ d2, y, game.game_object_color);
 			//collision(x+40+50, y,cactus3_w, cactus3_h);
 		}
-
+		
 		//#### CLOUD 1 ####
 		if(x + (d1/2) + d1 + d1 + 12 < 80){
 			clear_cloud1(oldx + + (d1/2) + d1 + d1,cloudy);

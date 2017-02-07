@@ -70,28 +70,76 @@ void Application::action ()
 	}while(to_show  != 0);
 }
 
+void EmptyApp::gameover(int x, int y, char color){
+	
+	kout.setpos(x,y);
+	kout.setcolor(color);
+	/*kout <<"  _____"; kout.flush(); kout.setpos(x,y+1);                                 
+	kout <<" / ___/__ ___ _  ___   ___ _  _____ ____ "; kout.flush(); kout.setpos(x,y+2);                                 
+	kout <<"/ (_ / _ `/  ' \/ -_) / _ \ |/ / -_) __/ "; kout.flush(); kout.setpos(x,y+3);                                 
+	kout <<"\___/\_,_/_/_/_/\__/  \___/___/\__/_/    "; kout.flush(); kout.setpos(x,y+4);*/
+	/*
+	kout <<"  _____"; kout.flush(); kout.setpos(x,y+1);                                 
+	kout <<" / ___/__ ___ _  ___   ___ _  _____ ____ "; kout.flush(); kout.setpos(x,y+2);                                 
+	kout <<"/ (_ / _ `/  ' \/ -_) / _ \ |/ / -_) __/ "; kout.flush(); kout.setpos(x,y+3);                                 
+	kout <<"\\___/\\_,_/_/_/_/\\__/  \\___/___/\\__/_/    "; kout.flush(); kout.setpos(x,y+4);*/
+	
+	kout <<"  _____                                                  "; kout.flush(); kout.setpos(x,y+1);                                 
+	kout <<" / ____|                                                 "; kout.flush(); kout.setpos(x,y+2);                                 
+	kout <<"| |  __  __ _ _ __ ___   ___    _____   _____ _ __       "; kout.flush(); kout.setpos(x,y+3);                                 
+	kout <<"| | |_ |/ _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__| "; kout.flush(); kout.setpos(x,y+4);                                 
+	kout <<"| |__| | (_| | | | | | |  __/ | (_) \\ \\V /  __/ |       "; kout.flush(); kout.setpos(x,y+5);                                 
+	kout <<" \\_____|\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|    "; kout.flush(); kout.setpos(x,y+6);                                 
+                                                
+	kout.resetcolor();
+}
+
  void EmptyApp::action ()
  {
  	
  	count_interrupt = 0;
  	int col = 70; int row = 2;
- 	for(int i = 0; i <5 ; i++){
- 		kout.show(col+i , row, '0', game.game_object_color);
- 	}
 	int x = 26; int y = 8;
  	while(1){
-		if(game.isjump() && game.game_status== START){
+		
+		if(game.live <= 0){
+			game.game_status= OVER;
+			game.end_game();
+			gameover(10, 7, 0x70);
+			game.live = 10;
+			count_interrupt = 0;
+
+			kout.setcolor(game.game_object_color);
+			kout.setpos(60, row);
+			kout << "HI 00000";
+			kout.flush();
+			show_digit(game.high_score, 62, row);
+			kout.resetcolor();
+		}
+		if(game.isjump() && (game.game_status== START || game.game_status== OVER )){
 			// game.day();
 			 game.game_status= ON;
 			 game.setjump(false);
 			 game.start_game();
+			for(int i = 0; i <5 ; i++){
+ 				kout.show(col+i , row, '0', game.game_object_color);
+ 			}
+			kout.setcolor(game.game_object_color);
+			kout.setpos(5, row);
+			kout << "LIVE: ";
+			kout.flush();
+			kout.resetcolor();
+
+			show_digit(game.live, 6, row);
 		 }
 		switch(game.game_status){
 			case ON: 
 				//semaphore.wait();
 				unsigned long int val;
 				val = count_interrupt/(watch.interval()*17);
+				game.high_score = val;
 				show_digit(val, col, row);
+				show_digit(game.live, 6, row);
 				//semaphore.signal();
 
 				//count_interrupt ++;
@@ -166,15 +214,17 @@ void Start::instruction(int x, int y, char color){
 		kout.flush(); kout.setpos(x,y+1);
 		kout << "------------------- " ;
 		kout.flush(); kout.setpos(x,y+2);  
-		kout << "    Intruction      "    ;
+		kout << "    Instructions      "    ;
 		kout.flush(); kout.setpos(x,y+3);
 		kout << "------------------- " ;
 		kout.flush(); kout.setpos(x,y+4); 
 		kout << "PRESS SPACE to START ";
 		kout.flush(); kout.setpos(x,y+5);
-		kout << "Press SPACE to JUMP " ;
+		kout << "PRESS SPACE to JUMP " ;
 		kout.flush(); kout.setpos(x,y+6);
-		kout << "Press ENTER to PAUSE " ;
+		kout.resetcolor(); 
+		kout.setcolor(0x78);     
+		kout << "PRESS ENTER to PAUSE " ;
 		kout.flush(); kout.setpos(x,y+7);
 		kout << "------------------- "  ;//kout.setpos(x+10,y+8;
 		kout.flush();  

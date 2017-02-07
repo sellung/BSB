@@ -38,7 +38,7 @@ public:
                // kout.setpos(0,24);
                 //kout << "colision:" <<"x:" << x<< " y:" << y << " actor_posy:" << game.actor_posy << " actor_posy + height_actor=" << game.actor_posy + game.height_actor;
                 //kout.flush();
-                
+                game.live--;
                 kout.setpos(70,24);
                 kout << "HIT: " << game.collision_count++;
                 kout.flush();

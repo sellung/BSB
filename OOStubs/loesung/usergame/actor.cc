@@ -95,7 +95,6 @@ void Actor::action ()
 	int oldx = game.actor_posx; int newy=game.actor_posy;
 	//score();
  	while(1){
- 		
  		if(game.isjump()){
  			semaphore.wait();
  			clear_move_2(oldx, game.actor_posy);

@@ -30,6 +30,7 @@
 				//game.game_start_sem.wait();
 				//game.setjump(true); 
 				//game.wan_to_startgame(); 
+				game.tooglepause();
 				break;
 		}
 		
@@ -41,12 +42,12 @@
 		kout << "Keyboard hit " << count;
 		kout.flush();
 		//count ++;
-		*/
+		
 		kout.setcolor(0x03);
 		kout.setpos(10, 10);
 	    kout << key.ascii() ;
 	    kout.flush();
 	    kout.resetcolor();
-	    semaphore.signal();
+	    semaphore.signal();*/
  	}
  }

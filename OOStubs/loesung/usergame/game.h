@@ -46,6 +46,7 @@ public:
 
     int game_status;
     bool key_space_press_status;
+    bool pause;
 
     Thread *actor;
     Thread *cactus;
@@ -53,12 +54,27 @@ public:
     Guarded_Semaphore game_start_sem;
 
     Game() :jump(false), actor_up_or_down(false), game_sem(0),
-        game_object_color(0x70), game_object_clear_color(0x77), collision_count(0),
-        game_status(OFF),key_space_press_status(false),
+        game_object_color(0x70), game_object_clear_color(0x77), collision_count(0),live(10),
+        game_status(OFF),key_space_press_status(false),pause(false),
         game_start_sem(0){}
 	char color;
 	int actor_posx;
     int actor_posy;
+
+   bool ispause(){
+       Secure secure;
+       return pause;
+   }
+
+   void setpause(bool b){
+        Secure secure;
+        pause = b;
+   }
+
+   void tooglepause(){
+       Secure secure;
+       pause = pause? false : true;
+   }
 
     void wan_to_startgame(){
         if(game_status == OFF){
@@ -81,6 +97,10 @@ public:
         scheduler.ready(*actor);
 	    scheduler.ready(*cactus);
         //scheduler.resume();
+    }
+    void end_game(){
+        scheduler.kill(*actor);
+	    scheduler.kill(*cactus);
     }
     void set_actor_posy(int y){
        // Secure secure;
