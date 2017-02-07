@@ -89,7 +89,8 @@ void EmptyApp::gameover(int x, int y, char color){
 	kout <<"| |  __  __ _ _ __ ___   ___    _____   _____ _ __       "; kout.flush(); kout.setpos(x,y+3);                                 
 	kout <<"| | |_ |/ _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__| "; kout.flush(); kout.setpos(x,y+4);                                 
 	kout <<"| |__| | (_| | | | | | |  __/ | (_) \\ \\V /  __/ |       "; kout.flush(); kout.setpos(x,y+5);                                 
-	kout <<" \\_____|\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|    "; kout.flush(); kout.setpos(x,y+6);                                 
+	kout <<" \\_____|\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|    "; kout.flush(); kout.setpos(x,y+7);                                 
+	kout <<"                            PRESS SPACE TO RESTART "; kout.flush(); kout.setpos(x,y+8);                                 
                                                 
 	kout.resetcolor();
 }
