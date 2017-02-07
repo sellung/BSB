@@ -28,7 +28,7 @@ private:
 
     int timer;
 
-    Guarded_Semaphore jump_sem;
+    Guarded_Semaphore game_sem;
 
 public:
     enum {OFF=0, START=1, ON=2, PAUSE=3, OVER=4};
@@ -45,18 +45,34 @@ public:
     int live;
 
     int game_status;
+    bool key_space_press_status;
 
     Thread *actor;
     Thread *cactus;
 
+    Guarded_Semaphore game_start_sem;
 
-    Game() :jump(false), actor_up_or_down(false), jump_sem(0),
+    Game() :jump(false), actor_up_or_down(false), game_sem(0),
         game_object_color(0x70), game_object_clear_color(0x77), collision_count(0),
-        game_status(OFF){}
+        game_status(OFF),key_space_press_status(false),
+        game_start_sem(0){}
 	char color;
 	int actor_posx;
     int actor_posy;
 
+    void wan_to_startgame(){
+        if(game_status == OFF){
+            game_start_sem.signal();
+        }
+    }
+    bool iskeyspacepressed(){
+        Secure secure;
+        return key_space_press_status;
+    }
+    void presskeyspace(bool b){
+        Secure secure;
+        key_space_press_status = b;
+    }
     void setgame(Actor *a, Cactus *c){
         actor = (Thread*)a; 
         cactus =(Thread*)c; 
@@ -70,15 +86,15 @@ public:
        // Secure secure;
         actor_posy = y;
     }
-
+    
     void wan_to_godown(){
         actor_up(true);
-        jump_sem.wait();
+        game_sem.wait();
     }
 
     void godown(){
         actor_up(false);
-        jump_sem.signal();
+        game_sem.signal();
     }
 
     bool is_actor_up(){

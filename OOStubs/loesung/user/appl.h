@@ -75,7 +75,6 @@ public:
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
     void show_digit(int to_show, int col, int row);
-	void game_logo1(int x, int y, char color);
  };
 
 /*#############################################################*/
@@ -91,9 +90,9 @@ public:
 	void game_logo2(int x, int y, char color);      
 	void instruction(int x, int y, char color);
 
-	void clear_game_logo1(int x, int y, char color);
-	void clear_game_logo2(int x, int y, char color);
-	void clear_instruction(int x, int y, char color);
+	void clear_game_logo1(int x, int y);
+	void clear_game_logo2(int x, int y);
+	void clear_instruction(int x, int y);
     void action ();
  };
 

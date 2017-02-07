@@ -70,7 +70,6 @@ void Application::action ()
 	}while(to_show  != 0);
 }
 
-
  void EmptyApp::action ()
  {
  	
@@ -81,13 +80,8 @@ void Application::action ()
  	}
 	int x = 26; int y = 8;
  	while(1){
-		 if(game.isjump() && game.game_status== START){
-			 game.day();
-
-			 while(y <= 16){
-				
-			 }
-			 while()
+		if(game.isjump() && game.game_status== START){
+			// game.day();
 			 game.game_status= ON;
 			 game.setjump(false);
 			 game.start_game();
@@ -96,7 +90,7 @@ void Application::action ()
 			case ON: 
 				//semaphore.wait();
 				unsigned long int val;
-				val = count_interrupt/(watch.interval()*20);
+				val = count_interrupt/(watch.interval()*17);
 				show_digit(val, col, row);
 				//semaphore.signal();
 
@@ -142,7 +136,6 @@ void Application::action ()
 
 
 void Start::game_logo1(int x, int y, char color){      
-		int offset = 10;
 		int width = 9;
 		kout.setpos(x,y);
 		kout.print("  //     ", width, color); kout.setpos(x,y+1);	  
@@ -188,13 +181,13 @@ void Start::instruction(int x, int y, char color){
 		kout.resetcolor();            
 	}
 
-void Start::clear_game_logo1(int x, int y, char color){
+void Start::clear_game_logo1(int x, int y){
 	game_logo1(x,y,game.game_object_clear_color);
 }
-void Start::clear_game_logo2(int x, int y, char color){
+void Start::clear_game_logo2(int x, int y){
 	game_logo2(x,y,game.game_object_clear_color);
 }
-void Start::clear_instruction(int x, int y, char color){
+void Start::clear_instruction(int x, int y){
 	instruction(x,y,game.game_object_clear_color);
 }
 
@@ -244,12 +237,13 @@ void Start::clear_instruction(int x, int y, char color){
 			semaphore.wait();
 
 			if(x % 2 == 0){
-				clear_game_logo2(oldx, y, game.game_object_clear_color);
+				clear_game_logo2(oldx, y);
 				game_logo2(x,y, game.game_object_color);
 			}else{
-				clear_game_logo1(oldx, y, game.game_object_clear_color);
+				clear_game_logo1(oldx, y);
 				game_logo1(x,y, game.game_object_color);
 			}
+			
 			
 			instruction(60-x, y, game.game_object_color);
 			semaphore.signal();
@@ -259,9 +253,42 @@ void Start::clear_instruction(int x, int y, char color){
 			buzzer.set(5);
 			buzzer.sleep();
 		}
+		game.game_start_sem.wait();
+		game.day();
+		 x = 25; y = 8;
+		 oldx = x;
+	      int pos = 7;
+		  while(y <= 16){
+				semaphore.wait();
+				game_logo1(x, y, game.game_object_color);
+				semaphore.signal();
+				
+				buzzer.set(10);
+				buzzer.sleep();
+
+				if(x>5){
+					oldx = x;
+					x -=3;
+				}else{
+					oldx = x;
+					x = 5;
+				}
+				y += 1;
+
+				semaphore.wait();
+				clear_game_logo1(oldx, y-1);
+				clear_game_logo1(x, y-1);
+				semaphore.signal();
+
+		}
+	   	semaphore.wait();
+		game_logo1(5, 16, game.game_object_color);
+		semaphore.signal();
+		
+		buzzer.set(40);
+		buzzer.sleep();
 
 		game.game_status = game.START;
-		game.setjump(false);
 		scheduler.exit();
 	}
  }

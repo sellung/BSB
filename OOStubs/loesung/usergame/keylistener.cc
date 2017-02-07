@@ -20,7 +20,19 @@
  	while(1){
 		key = keyboard.getkey();
 		//semaphore.wait();
-		if(key.ascii() == 32) { game.setjump(true);}
+		switch(key.ascii()){
+			case 32:
+				game.setjump(true); 
+				game.wan_to_startgame(); 
+				break;
+			case 'p':
+				//game.pause();
+				//game.game_start_sem.wait();
+				//game.setjump(true); 
+				//game.wan_to_startgame(); 
+				break;
+		}
+		
 		//semaphore.signal();
 
 		/*semaphore.wait();
@@ -29,12 +41,12 @@
 		kout << "Keyboard hit " << count;
 		kout.flush();
 		//count ++;
-		
+		*/
 		kout.setcolor(0x03);
 		kout.setpos(10, 10);
 	    kout << key.ascii() ;
 	    kout.flush();
 	    kout.resetcolor();
-	    semaphore.signal();*/
+	    semaphore.signal();
  	}
  }
