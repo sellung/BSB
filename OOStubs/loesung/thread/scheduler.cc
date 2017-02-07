@@ -50,3 +50,7 @@ void Scheduler::resume(){
 	
 	dispatch(*entrant);
 }
+
+void Scheduler::application(Entrant& that) {
+	applicationlist.enqueue(&that);
+}

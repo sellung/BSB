@@ -26,8 +26,8 @@
 #include "usergame/cactus.h"
 #include "usergame/logic.h"
 
-void* stack_1[2048];
-void* stack_2[1024];
+void* stack_empty_app[2048];
+void* stack_start[1024];
 
 void* stack_cactus[1024];
 void* stack_keylistener[1024];
@@ -47,7 +47,7 @@ int main()
 	kout.clearscreen();
 
 	//kout.startMsg();
-	game.day();
+	//game.day();
 
 	keyboard.plugin();
 	
@@ -55,37 +55,26 @@ int main()
 
 	//kout << "salut pantos2" << endl;
 	
-	EmptyApp app1(&stack_1[1024]);
-	Application app2(&stack_2[1024]);
+	EmptyApp empty_app(&stack_empty_app[1024]);
+	Start start_app(&stack_start[1024]);
 	
 	Keylistener keylistener(&stack_keylistener[1024]);
 	
+
 	//Bird bird(&stack_bird[1024]);
 	Actor actor(&stack_actor[1024]);
 	//Road road(&stack_road[1024]);
 	Cactus cactus(&stack_cactus[1024]);
 
-	//Logic(void* tos, Actor* a, Bird* b, Cactus* c,Road* r): 
-	//Logic logic(&stack_logic[1024], &actor, &bird, &cactus, &road);
-
-	int col = 30;
-	int row = 8;
-	app1.setName("App1");
-	app1.color = 0x03;
-	app1.setCoord(col, row);
-	app1.id = 1;
+	game.setgame(&actor, &cactus);
 	
-	app2.setName("App2");
-	app2.color = 0x04;
-	app2.setCoord(col, row + 2);
-	app2.id = 2;
-
-	scheduler.Organizer::ready(app1);
+	scheduler.Scheduler::ready(start_app);
+	scheduler.Organizer::ready(empty_app);
 	scheduler.Scheduler::ready(keylistener);
 	//scheduler.Scheduler::ready(app2);		
 	//scheduler.Scheduler::ready(bird);		
-	scheduler.Scheduler::ready(actor);
-	scheduler.Scheduler::ready(cactus);
+	//scheduler.Scheduler::ready(actor);
+	//scheduler.Scheduler::ready(cactus);
 	//scheduler.Scheduler::ready(road);
 	//scheduler.Scheduler::ready(logic);
 

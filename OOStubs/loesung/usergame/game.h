@@ -4,10 +4,17 @@
 #include "guard/secure.h"
 #include "device/cgastr.h"
 #include "syscall/guarded_semaphore.h"
+#include "syscall/guarded_organizer.h"
+//#include "usergame/actor.h"
+//#include "usergame/cactus.h"
+
+class Actor;
+class Cactus;
 
 class Game {
 private:
     Game (const Game &copy); // Verhindere Kopieren
+
     int rate;
     int width;
     int height;
@@ -21,9 +28,10 @@ private:
 
     int timer;
 
-
     Guarded_Semaphore jump_sem;
+
 public:
+    enum {OFF=0, START=1, ON=2, PAUSE=3, OVER=4};
 	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5};
 	enum {width_actor=9, width_bird=15, width_cactus=12};
     enum {height_actor=6, height_bird=9, height_cactus=12};
@@ -36,11 +44,28 @@ public:
     int high_score;
     int live;
 
-    Game() :jump(false), actor_up_or_down(false), jump_sem(0), game_object_color(0x70), game_object_clear_color(0x77), collision_count(0){}
+    int game_status;
+
+    Thread *actor;
+    Thread *cactus;
+
+
+    Game() :jump(false), actor_up_or_down(false), jump_sem(0),
+        game_object_color(0x70), game_object_clear_color(0x77), collision_count(0),
+        game_status(OFF){}
 	char color;
 	int actor_posx;
     int actor_posy;
 
+    void setgame(Actor *a, Cactus *c){
+        actor = (Thread*)a; 
+        cactus =(Thread*)c; 
+    }
+    void start_game(){
+        scheduler.ready(*actor);
+	    scheduler.ready(*cactus);
+        //scheduler.resume();
+    }
     void set_actor_posy(int y){
        // Secure secure;
         actor_posy = y;

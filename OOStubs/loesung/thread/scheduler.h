@@ -21,6 +21,7 @@ class Scheduler: public Dispatcher
 	private:
     	Scheduler (const Scheduler &copy); // Verhindere Kopieren
     	Queue readylist;
+		Queue applicationlist;
      	// Entrant* entrant;
 	public:
 		Scheduler():Dispatcher(){}
@@ -30,6 +31,7 @@ class Scheduler: public Dispatcher
 		void exit();
 		void kill(Entrant& that);
 		void resume();
+		void application(Entrant& that);
 };
 
 //extern Scheduler scheduler;

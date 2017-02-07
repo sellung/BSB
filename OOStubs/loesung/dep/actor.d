@@ -7,4 +7,6 @@ build/actor.o: usergame/actor.cc usergame/actor.h thread/entrant.h \
  meeting/semaphore.h meeting/waitingroom.h object/queue.h \
  syscall/guarded_buzzer.h meeting/buzzer.h meeting/bell.h \
  meeting/bellringer.h object/list.h usergame/game_object.h \
- usergame/game.h guard/secure.h guard/guard.h guard/locker.h
+ usergame/game.h guard/secure.h guard/guard.h guard/locker.h \
+ syscall/guarded_organizer.h thread/organizer.h thread/scheduler.h \
+ thread/dispatch.h
