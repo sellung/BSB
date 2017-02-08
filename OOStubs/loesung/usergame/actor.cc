@@ -8,7 +8,7 @@ void Actor::move_1(int x, int y, char color){
 	kout.setpos(x,y);
 	kout.print("  //     ", width, color); kout.setpos(x,y+1);	  
 	kout.print("  \\\\_  ", width, color); kout.setpos(x,y+2);	  
-	kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);	  
+	kout.print("  ( \xF8_>  ", width, color); kout.setpos(x,y+3);	  
 	kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);	  
 	kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5); 	             
 	kout.print("@\\/\\) -", width, color); kout.setpos(x,y+6);	     
@@ -23,7 +23,7 @@ void Actor::move_2(int x, int y, char color){
 	kout.setpos(x,y);
 	kout.print("  //     ", width, color); kout.setpos(x,y+1);	  	  
 	kout.print("  \\\\_    ", width, color); kout.setpos(x,y+2);	  
-	kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);	  
+	kout.print("  ( \xF8_>  ", width, color); kout.setpos(x,y+3);	  
 	kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);	  
 	kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5);	             
 	kout.print("@\\)   --", width, color); kout.setpos(x,y+6);	  
@@ -40,7 +40,7 @@ void Actor::jump(int x, int y, char color){
 	kout.setpos(x,y);      
 	kout.print(" \\\\      ", width, color); kout.setpos(x,y+1);
 	kout.print("  \\\\_    ", width, color); kout.setpos(x,y+2);
-	kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);
+	kout.print("  ( \xF8_>  ", width, color); kout.setpos(x,y+3);
 	kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);
 	kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5);
 	kout.print("@\\/\\)  ", width-4, color); kout.setpos(x,y+6);	     

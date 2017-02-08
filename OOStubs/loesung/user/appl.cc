@@ -109,11 +109,11 @@ void EmptyApp::gameover(int x, int y, char color){
 	kout <<"\\___/\\_,_/_/_/_/\\__/  \\___/___/\\__/_/    "; kout.flush(); kout.setpos(x,y+4);*/
 	
 	kout <<"  _____                                                  "; kout.flush(); kout.setpos(x,y+1);                                 
-	kout <<" / ____|                                                 "; kout.flush(); kout.setpos(x,y+2);                                 
-	kout <<"| |  __  __ _ _ __ ___   ___    _____   _____ _ __       "; kout.flush(); kout.setpos(x,y+3);                                 
-	kout <<"| | |_ |/ _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__| "; kout.flush(); kout.setpos(x,y+4);                                 
-	kout <<"| |__| | (_| | | | | | |  __/ | (_) \\ \\V /  __/ |       "; kout.flush(); kout.setpos(x,y+5);                                 
-	kout <<" \\_____|\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|    "; kout.flush(); kout.setpos(x,y+7);                                 
+	kout <<" \xB1\xB1\xB1\xB1\xB1\xB1                                                 "; kout.flush(); kout.setpos(x,y+2);                                 
+	kout <<"\xB1\xB1  __  __ _ _ __ ___   ___    _____   _____ _ __       "; kout.flush(); kout.setpos(x,y+3);                                 
+	kout <<"\xB1\xB1 \xB1\xB1\xB1|/ _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__| "; kout.flush(); kout.setpos(x,y+4);                                 
+	kout <<"\xB1\xB1__\xB1\xB1| (_| | | | | | |  __/ | (_) \\ \\V /  __/ |       "; kout.flush(); kout.setpos(x,y+5);                                 
+	kout <<" \\\xB1\xB1\xB1\xB1|\\__,_|_| |_| |_|\\___|  \\___/ \\_/ \\___|_|    "; kout.flush(); kout.setpos(x,y+7);                                 
 	kout <<"                            PRESS SPACE TO RESTART "; kout.flush(); kout.setpos(x,y+8);                                 
                                                 
 	kout.resetcolor();
@@ -179,27 +179,12 @@ void EmptyApp::gameover(int x, int y, char color){
 				game.high_score = game.score > game.high_score ? game.score : game.high_score;
 				show_digit(game.score, col, row);
 
-				//watch.show_digit(game.speed(), 12, row);
-
-				//if(game.score >0 && game.score == 100) { 
-					//int s = game.speed();
-					//game.speed(--s);
 				 count =  count_interrupt/(watch.interval()*1700);
 				 //game.start_rate - count;
 				 game.speed(game.start_rate - count);
-				 
+
 				 watch.show_digit(game.live, 12, row);
-				//}
-				//count++; 
-			
-				//show_digit(game.live, 16, row, 2);
 				
-				//semaphore.signal();
-
-				//count_interrupt ++;
-
-				//scheduler.Scheduler::resume();
-				//semaphore.signal();
 				break;
 			case START:
 				//instruction(26, 5, game.game_object_clear_color);
@@ -242,7 +227,7 @@ void Start::game_logo1(int x, int y, char color){
 		kout.setpos(x,y);
 		kout.print("  //     ", width, color); kout.setpos(x,y+1);	  
 		kout.print("  \\\\_  ", width, color); kout.setpos(x,y+2);	  
-		kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);	  
+		kout.print("  ( \xF8_>  ", width, color); kout.setpos(x,y+3);	  
 		kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);	  
 		kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5); 	             
 		kout.print("@\\/\\)  ", width, color); kout.setpos(x,y+6);	     
@@ -254,7 +239,7 @@ void Start::game_logo2(int x, int y, char color){
 	int width = 9;
 	kout.print("  //     ", width, color); kout.setpos(x,y+1);	  	  
 	kout.print("  \\\\_    ", width, color); kout.setpos(x,y+2);	  
-	kout.print("  ( o_>  ", width, color); kout.setpos(x,y+3);	  
+	kout.print("  ( \xF8_>  ", width, color); kout.setpos(x,y+3);	  
 	kout.print("  /:\\__ ", width, color); kout.setpos(x,y+4);	  
 	kout.print(" /:_/`\"`", width, color); kout.setpos(x,y+5);	             
 	kout.print("@\\)     ", width, color); kout.setpos(x,y+6);	  
@@ -383,8 +368,8 @@ void Start::clear_instruction(int x, int y){
 				clear_game_logo1(oldx, y-1);
 				clear_game_logo1(x, y-1);
 				semaphore.signal();
-
 		}
+
 	   	semaphore.wait();
 		game_logo1(5, 16, game.game_object_color);
 		semaphore.signal();

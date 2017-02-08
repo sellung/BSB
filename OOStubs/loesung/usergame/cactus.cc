@@ -74,7 +74,7 @@ void Cactus::flyup(int x, int y, char color){
 	kout.print("   /''\\ /'''') ", width, color); kout.setpos(x, y-1);     
 	kout.print("   \\   /    /  ", width, color); kout.setpos(x, y);           
 	kout.print("  _/       /_  ", width, color); kout.setpos(x, y+1);                                                                               
-	kout.print("<o _...,,.../  ", width, color);
+	kout.print("<\x93 _...,,.../  ", width, color);
 	kout.setpos(x,21);
 	//kout.print(".    -    `  , ", width, color);kout.setpos(x,y+5);
 	kout.print("----------------", width, game.game_object_color);
@@ -87,7 +87,7 @@ void Cactus::flydown(int x, int y, char color){
 	int width = 16;
 	kout.setpos(x, y);
 	kout.print("  _         _  ", width, color); kout.setpos(x, y+1);
-	kout.print("<o_````````./  ", width, color); kout.setpos(x, y+2);           
+	kout.print("<\x93_````````./  ", width, color); kout.setpos(x, y+2);           
 	kout.print("   \\,  \\   )   ", width, color); kout.setpos(x, y+3);                               
 	kout.print("    \\,,/\\ ,_)  ", width, color); kout.setpos(x, y+4);                      
 	kout.print("          \\,,/  ", width, color); 
@@ -203,6 +203,7 @@ void Cactus::action ()
 
 			game.advance = 2;
 			game.speed(5);
+			
 			x = 69; 
 			y = 16;
 			oldx = x;
