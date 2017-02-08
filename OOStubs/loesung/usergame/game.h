@@ -31,7 +31,7 @@ private:
 
 public:
     enum {OFF=0, START=1, ON=2, PAUSE=3, OVER=4, RESTART=5};
-	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5, maxlive=100, start_rate=5};
+	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5, maxlive=20, start_rate=5};
 	enum {width_actor=9, width_bird=15, width_cactus=12};
     enum {height_actor=6, height_bird=9, height_cactus=12};
    

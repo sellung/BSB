@@ -129,7 +129,7 @@ void EmptyApp::gameover(int x, int y, char color){
 	int count = 0;
  	while(1){
 		
-		if(game.live < 0){
+		if(game.live <= 0){
 			//game.day();
 			game.game_status= OVER;
 			game.end_game();
@@ -161,11 +161,11 @@ void EmptyApp::gameover(int x, int y, char color){
  			}
 			kout.setcolor(game.game_object_color);
 			kout.setpos(5, row);
-			kout << "LIVE: " << game.speed();
+			kout << "LIVE: ";
 			kout.flush();
 			kout.resetcolor();
 
-			//watch.show_digit(game.speed(), 12, row);
+			watch.show_digit(game.live, 12, row);
 
 			//show_digit(game.live, 16, row, 2);
 		 }
@@ -187,14 +187,11 @@ void EmptyApp::gameover(int x, int y, char color){
 				 count =  count_interrupt/(watch.interval()*1700);
 				 //game.start_rate - count;
 				 game.speed(game.start_rate - count);
+				 
+				 watch.show_digit(game.live, 12, row);
 				//}
 				//count++; 
-				kout.setcolor(game.game_object_color);
-				kout.setpos(5, row);
-				kout << "LIVE: " << count;
-				kout.flush();
-				kout.resetcolor();
-
+			
 				//show_digit(game.live, 16, row, 2);
 				
 				//semaphore.signal();
