@@ -137,7 +137,7 @@ public:
 
     void speed(int s){ 
 		Secure secure;
-        if(s <= 3){ advance = 1;}
+        if(s < 2){ s=2;}
 		rate = s;
 	}
     int speed(){ 
