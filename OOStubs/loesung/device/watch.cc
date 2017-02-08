@@ -98,8 +98,8 @@ void Watch::show_digit(int to_show, int col, int row){
 	for (int i = high_col; i > 0; i--)
 	{
 		char c = '0' + (to_show % 10);
-		kout.show((col-1) + i, row, c, 0x0f);
-		if(c == '9'){kout.show(col + i, row, ' ', 0x0f);}
+		kout.show((col-1) + i, row, c, 0x70);
+		if(c == '9'){kout.show(col + i, row, ' ', 0x70);}
 
 		to_show = to_show /10;
 	}

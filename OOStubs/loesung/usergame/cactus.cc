@@ -189,6 +189,42 @@ void Cactus::action ()
 
 	int distance_to_godown = 1;
  	while(1){
+		 if(game.score > 0 && game.score % 100 == 0){
+			// rate -= 1;
+			kout.setcolor(0x0f);
+			kout.setpos(0, 24);
+			kout << "Score: "<< game.score;
+			kout.flush();
+		 }
+		 if(game.game_status == game.RESTART){
+			
+			//rate = 5;
+			game.day(0, 5);
+
+			game.advance = 2;
+			game.speed(5);
+			x = 69; 
+			y = 16;
+			oldx = x;
+
+			birdx = 62; 
+			birdy = 16;
+			birdoldx = birdx;
+	
+			cloudx = 67; cloudy=12;
+			cloudoldx;
+
+			cloud_bird_distance = 6;
+
+			cactus_time = x;
+			bird_time =x;
+
+			distance_to_godown = 1;
+
+			game.game_status = game.ON;
+			sleep(100);
+		}
+
 		 if(game.is_actor_up() && distance_to_godown >= 27){
 		//if(game.is_actor_up() ){
 			// sleep(100);
@@ -251,11 +287,11 @@ void Cactus::action ()
 
 
 		oldx =x;
-		x = x-advance;
-		cactus_time = cactus_time - advance;
-		bird_time = bird_time -advance;
+		x = x-game.advance;
+		cactus_time = cactus_time - game.advance;
+		bird_time = bird_time -game.advance;
 		if(game.is_actor_up()){
-			distance_to_godown += advance;
+			distance_to_godown += game.advance;
 		}
 
 		semaphore.signal();
@@ -285,9 +321,9 @@ void Cactus::action ()
 				flyup(birdx, birdy, game.game_object_color);
 				//collision(birdx, birdy, bird_w, bird_h);
 				birdoldx = birdx;
-				birdx = birdx-advance*4;
+				birdx = birdx-game.advance*4;
 				if(game.is_actor_up()){
-					distance_to_godown += advance*2;
+					distance_to_godown += game.advance*2;
 				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
@@ -296,7 +332,7 @@ void Cactus::action ()
 			}
 		
 			cloudoldx = cloudx;
-			cloudx = cloudx-advance*3;
+			cloudx = cloudx-game.advance*3;
 
 			semaphore.signal();
 
@@ -313,9 +349,9 @@ void Cactus::action ()
 				//collision(birdx, birdy, bird_w, bird_h);
 
 				birdoldx = birdx;
-				birdx = birdx-advance*4;
+				birdx = birdx-game.advance*4;
 				if(game.is_actor_up()){
-					distance_to_godown += advance*2;
+					distance_to_godown += game.advance*2;
 				}
 				//cloudoldx = birdoldx;
 				//cloudx = birdx;
@@ -325,7 +361,7 @@ void Cactus::action ()
 				//cloudx = cloudx-advance*4;
 			}
 			cloudoldx = cloudx;
-			cloudx = cloudx-advance*3;
+			cloudx = cloudx-game.advance*3;
 
 			semaphore.signal();
 
@@ -343,7 +379,7 @@ void Cactus::action ()
 			//distance_to_godown = 0;
 		}
 		
-		sleep(rate);
+		sleep(game.speed());
 
 		//game.score++;
 		

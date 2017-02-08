@@ -27,4 +27,7 @@ void Game::night(){
 	clearscreen(0x0);
 }
 
+void Game::day(int x, int y){
+	clearscreen(x, y, 0x70);
+}
 	

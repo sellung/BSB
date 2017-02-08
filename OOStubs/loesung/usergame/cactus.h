@@ -40,7 +40,7 @@ private:
 public:
 	enum {back=0, front=1};
 
-    Cactus(void* tos): Game_Object(tos),rate(4), width(11), frequency(200),advance(2), distance(40), flyhigh(false),
+    Cactus(void* tos): Game_Object(tos),rate(game.start_rate), width(11), frequency(200),advance(2), distance(40), flyhigh(false),
         cactus1_h(5), cactus1_w(11),
         cactus2_h(5), cactus2_w(14), 
         cactus3_h(5), cactus3_w(9), 

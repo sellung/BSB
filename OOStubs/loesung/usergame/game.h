@@ -20,7 +20,6 @@ private:
     int height;
    
     int frequency;
-    int advance;
     
     bool jump;
     bool actor_up_or_down;
@@ -31,14 +30,15 @@ private:
     Guarded_Semaphore game_sem;
 
 public:
-    enum {OFF=0, START=1, ON=2, PAUSE=3, OVER=4};
-	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5};
+    enum {OFF=0, START=1, ON=2, PAUSE=3, OVER=4, RESTART=5};
+	enum { color_black= 0x0,  color_cyan= 0x3,color_red=0x5, maxlive=100, start_rate=5};
 	enum {width_actor=9, width_bird=15, width_cactus=12};
     enum {height_actor=6, height_bird=9, height_cactus=12};
    
     char game_object_color;
     char game_object_clear_color;
     int collision_count;
+     int advance;
 
     int score;
     int high_score;
@@ -53,8 +53,8 @@ public:
 
     Guarded_Semaphore game_start_sem;
 
-    Game() :jump(false), actor_up_or_down(false), game_sem(0),
-        game_object_color(0x70), game_object_clear_color(0x77), collision_count(0),live(10),
+    Game() :rate(start_rate),jump(false), actor_up_or_down(false), game_sem(0),
+        game_object_color(0x70), game_object_clear_color(0x77), collision_count(0), advance(2),live(maxlive),
         game_status(OFF),key_space_press_status(false),pause(false),
         game_start_sem(0){}
 	char color;
@@ -137,11 +137,12 @@ public:
 
     void speed(int s){ 
 		Secure secure;
-		timer = s;
+        if(s <= 3){ advance = 1;}
+		rate = s;
 	}
     int speed(){ 
         Secure secure;
-        return timer;
+        return rate;
      }
 
     bool collision(int x, int y, int width, int height);
@@ -160,21 +161,35 @@ public:
 
     void day();
 
+    void day(int x, int y);
+    
     void night();
 
     void clearscreen(char bgcolor){
-    int row = 0;
-    int col = 0;
-    for ( row =0; row < 80 ; row ++) {
-        for ( col =1; col < 24 ; col ++) {
-        kout.show( row , col , ' ' , bgcolor );
+        int row = 0;
+        int col = 0;
+        for ( row =0; row < 80 ; row ++) {
+            for ( col =1; col < 24 ; col ++) {
+            kout.show( row , col , ' ' , bgcolor );
+            }
         }
+        // Move the cursor back to the top left corner.
+        kout. setpos(0 , 0);
     }
-    // Move the cursor back to the top left corner.
-    kout. setpos(0 , 0);
-}
- };
 
+     void clearscreen(int x, int y, char bgcolor){
+        int row = 0;
+        int col = 0;
+        for ( row =x; row < 80 ; row ++) {
+            for ( col =y; col < 24 ; col ++) {
+            kout.show( row , col , ' ' , bgcolor );
+            }
+        }
+        // Move the cursor back to the top left corner.
+        kout. setpos(0 , 0);
+    }
+ 
+ };
 
 extern Game game;
 

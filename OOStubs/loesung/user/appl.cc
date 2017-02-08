@@ -70,6 +70,30 @@ void Application::action ()
 	}while(to_show  != 0);
 }
 
+void EmptyApp::show_digit(int to_show, int col, int row, int size){
+	int high_col = 1;
+ 	if(to_show < 10){
+		high_col = 1;
+	}else if(to_show < 100){
+		high_col = 2;
+	}else if(to_show < 1000){
+		high_col = 3;
+	}else if(to_show < 10000){
+		high_col = 4;
+	}
+	int j = 0;
+	for(int j = col+high_col; j < col + size; j++){
+		kout.show(j , row, '0', game.game_object_color);
+	}
+	int i = j;
+	do{
+		char c = '0' + (to_show % 10);
+		kout.show(i , row, c, game.game_object_color);
+		i--;
+		to_show = to_show / 10;
+	}while(to_show  != 0);
+}
+
 void EmptyApp::gameover(int x, int y, char color){
 	
 	kout.setpos(x,y);
@@ -101,15 +125,18 @@ void EmptyApp::gameover(int x, int y, char color){
  	count_interrupt = 0;
  	int col = 70; int row = 2;
 	int x = 26; int y = 8;
+
+	int count = 0;
  	while(1){
 		
-		if(game.live <= 0){
+		if(game.live < 0){
+			//game.day();
 			game.game_status= OVER;
 			game.end_game();
 			gameover(10, 7, 0x70);
-			game.live = 10;
+			game.live = game.maxlive;
 			count_interrupt = 0;
-
+			
 			kout.setcolor(game.game_object_color);
 			kout.setpos(60, row);
 			kout << "HI 00000";
@@ -119,28 +146,57 @@ void EmptyApp::gameover(int x, int y, char color){
 		}
 		if(game.isjump() && (game.game_status== START || game.game_status== OVER )){
 			// game.day();
-			 game.game_status= ON;
-			 game.setjump(false);
-			 game.start_game();
+			if(game.game_status== OVER){
+				game.game_status= game.RESTART;
+				gameover(10, 7, 0x77);
+				//game.day();
+			}else{
+				game.game_status= ON;
+			}
+			
+			game.setjump(false);
+			game.start_game();
 			for(int i = 0; i <5 ; i++){
  				kout.show(col+i , row, '0', game.game_object_color);
  			}
 			kout.setcolor(game.game_object_color);
 			kout.setpos(5, row);
-			kout << "LIVE: ";
+			kout << "LIVE: " << game.speed();
 			kout.flush();
 			kout.resetcolor();
 
-			show_digit(game.live, 6, row);
+			//watch.show_digit(game.speed(), 12, row);
+
+			//show_digit(game.live, 16, row, 2);
 		 }
 		switch(game.game_status){
+			case RESTART:
 			case ON: 
 				//semaphore.wait();
-				unsigned long int val;
-				val = count_interrupt/(watch.interval()*17);
-				game.high_score = val;
-				show_digit(val, col, row);
-				show_digit(game.live, 6, row);
+				//unsigned long int val;
+				game.score = count_interrupt/(watch.interval()*17);
+				//game.score
+				game.high_score = game.score > game.high_score ? game.score : game.high_score;
+				show_digit(game.score, col, row);
+
+				//watch.show_digit(game.speed(), 12, row);
+
+				//if(game.score >0 && game.score == 100) { 
+					//int s = game.speed();
+					//game.speed(--s);
+				 count =  count_interrupt/(watch.interval()*1700);
+				 //game.start_rate - count;
+				 game.speed(game.start_rate - count);
+				//}
+				//count++; 
+				kout.setcolor(game.game_object_color);
+				kout.setpos(5, row);
+				kout << "LIVE: " << count;
+				kout.flush();
+				kout.resetcolor();
+
+				//show_digit(game.live, 16, row, 2);
+				
 				//semaphore.signal();
 
 				//count_interrupt ++;

@@ -66,7 +66,7 @@ private:
     EmptyApp (const EmptyApp &copy); // Verhindere Kopieren
 	Guarded_Buzzer buzzer;
 public:
-	enum {OFF=0, START=1, ON=2, PAUSE=3, OVER=4};
+	enum {OFF=0, START=1, ON=2, PAUSE=3, OVER=4 , RESTART=5};
 	int row;
 	int col;
 	int i;
@@ -75,6 +75,7 @@ public:
     void action ();
     void setCoord(int c, int r){ col = c; row = r;}
     void show_digit(int to_show, int col, int row);
+	void show_digit(int to_show, int col, int row, int size);
 	void gameover(int x, int y, char color);
  };
 
