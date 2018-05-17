@@ -104,7 +104,7 @@ void Cactus::sun(int x, int y, char color){
 	int width =11 ;
 	kout.setpos(x,y);
 	kout.print("     .     ", width, color); kout.setpos(x,y+1);
-	kout.print("   \\ | /  ", width, color); kout.setpos(x,y+2);
+	kout.print("   \\ | /  ", width, color); kout.setpos(x,y+2); 
 	kout.print(" '-.;;;.-' ", width, color); kout.setpos(x,y+3);
 	kout.print("-==;;;;;==-", width, color); kout.setpos(x,y+4);
 	kout.print(" .-';;;'-. ", width, color); kout.setpos(x,y+5);

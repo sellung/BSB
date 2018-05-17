@@ -109,7 +109,7 @@ void EmptyApp::gameover(int x, int y, char color){
 	kout <<"\\___/\\_,_/_/_/_/\\__/  \\___/___/\\__/_/    "; kout.flush(); kout.setpos(x,y+4);*/
 	
 	kout <<"  _____                                                  "; kout.flush(); kout.setpos(x,y+1);                                 
-	kout <<" \xB1\xB1\xB1\xB1\xB1\xB1                                                 "; kout.flush(); kout.setpos(x,y+2);                                 
+	kout <<"\x92\xB1\xB1\xB1\xB1\xB1\xB1                                                 "; kout.flush(); kout.setpos(x,y+2);                                 
 	kout <<"\xB1\xB1  __  __ _ _ __ ___   ___    _____   _____ _ __       "; kout.flush(); kout.setpos(x,y+3);                                 
 	kout <<"\xB1\xB1 \xB1\xB1\xB1|/ _` | '_ ` _ \\ / _ \\  / _ \\ \\ / / _ \\ '__| "; kout.flush(); kout.setpos(x,y+4);                                 
 	kout <<"\xB1\xB1__\xB1\xB1| (_| | | | | | |  __/ | (_) \\ \\V /  __/ |       "; kout.flush(); kout.setpos(x,y+5);                                 
